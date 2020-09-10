@@ -10,20 +10,21 @@ import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.VoiceState;
 import discord4j.core.object.entity.Member;
+import discord4j.core.object.entity.channel.VoiceChannel;
 import discord4j.voice.AudioProvider;
 import fr.dawoox.yua.commands.Command;
 import fr.dawoox.yua.commands.music.LavaPlayerAudioProvider;
 import fr.dawoox.yua.commands.music.TrackScheduler;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Yua {
 
     private static final Map<String, Command> commands = new HashMap<>();
+    private static final String prefix = "*";
 
     public static void main(String[] args) {
 
@@ -32,17 +33,16 @@ public class Yua {
         final GatewayDiscordClient g = client.login().block();
 
         g.getEventDispatcher().on(MessageCreateEvent.class)
-                // 3.1 Message.getContent() is a String
-                .flatMap(event -> Mono.just(event.getMessage().getContent())
-                        .flatMap(content -> Flux.fromIterable(commands.entrySet())
-                                // We will be using ! as our "prefix" to any command in the system.
-                                .filter(entry -> content.startsWith('!' + entry.getKey()))
-                                .flatMap(entry -> entry.getValue().execute(event))
-                                .next()))
-                .subscribe();
-
+                .subscribe(event -> {
+                    final String content = event.getMessage().getContent();
+                    for (final Map.Entry<String, Command> entry : commands.entrySet()) {
+                        if (content.startsWith(prefix + entry.getKey())) {
+                            entry.getValue().execute(event);
+                            break;
+                        }
+                    }
+                });
         g.onDisconnect().block();
-
     }
 
     static {
@@ -58,21 +58,28 @@ public class Yua {
         // We will be creating LavaPlayerAudioProvider in the next step
         AudioProvider provider = new LavaPlayerAudioProvider(player);
 
-        commands.put("ping", event -> event.getMessage().getChannel()
-                .flatMap(channel -> channel.createMessage("Pong!"))
-                .then());
-        commands.put("join", event -> Mono.justOrEmpty(event.getMember())
-                .flatMap(Member::getVoiceState)
-                .flatMap(VoiceState::getChannel)
-                // join returns a VoiceConnection which would be required if we were
-                // adding disconnection features, but for now we are just ignoring it.
-                .flatMap(channel -> channel.join(spec -> spec.setProvider(provider)))
-                .then());
         final TrackScheduler scheduler = new TrackScheduler(player);
-        commands.put("play", event -> Mono.justOrEmpty(event.getMessage().getContent())
-                .map(content -> Arrays.asList(content.split(" ")))
-                .doOnNext(command -> playerManager.loadItem(command.get(1), scheduler))
-                .then());
+
+        commands.put("ping", event -> event.getMessage()
+                .getChannel().block()
+                .createMessage("Pong!").block());
+        commands.put("join", event -> {
+            final Member member = event.getMember().orElse(null);
+            if (member != null) {
+                final VoiceState voiceState = member.getVoiceState().block();
+                if (voiceState != null) {
+                    final VoiceChannel channel = voiceState.getChannel().block();
+                    if (channel != null) {
+                        channel.join(spec -> spec.setProvider(provider)).block();
+                    }
+                }
+            }
+        });
+        commands.put("play", event -> {
+            final String content = event.getMessage().getContent();
+            final List<String> command = Arrays.asList(content.split(" "));
+            playerManager.loadItem(command.get(1), scheduler);
+        });
 
     }
 }
