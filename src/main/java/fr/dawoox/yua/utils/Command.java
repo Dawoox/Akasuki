@@ -1,4 +1,4 @@
-package fr.dawoox.yua.commands;
+package fr.dawoox.yua.utils;
 
 import discord4j.core.event.domain.message.MessageCreateEvent;
 

@@ -1,4 +1,4 @@
-package fr.dawoox.yua.commands.music;
+package fr.dawoox.yua.utils.music;
 
 import com.sedmelluq.discord.lavaplayer.format.StandardAudioDataFormats;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
