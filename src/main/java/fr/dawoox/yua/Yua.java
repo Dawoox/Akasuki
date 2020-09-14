@@ -4,11 +4,16 @@ import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.core.object.presence.Activity;
+import discord4j.core.object.presence.Presence;
+import fr.dawoox.yua.commands.Download;
+import fr.dawoox.yua.commands.interactions.Kiss;
 import fr.dawoox.yua.commands.misc.Ping;
 import fr.dawoox.yua.commands.misc.UserInfo;
 import fr.dawoox.yua.commands.music.Join;
 import fr.dawoox.yua.commands.music.Play;
 import fr.dawoox.yua.utils.Command;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +25,11 @@ public class Yua {
 
     public static void main(String[] args) {
 
+        final String version = "0.4.7";
         final String token = args[0];
         final DiscordClient client = DiscordClient.create(token);
         final GatewayDiscordClient g = client.login().block();
+
 
         g.getEventDispatcher().on(MessageCreateEvent.class)
                 .subscribe(event -> {
@@ -35,14 +42,22 @@ public class Yua {
                     }
                 });
 
+
         g.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(readyEvent -> {
-                    System.out.println("Yua Shard Connected");
+                    LoggerFactory.getLogger(Yua.class).info("Yua Shard Initialing ");
+                    commands.clear();
 
                     Ping.reg(commands);
                     Join.reg(commands);
                     Play.reg(commands);
                     UserInfo.reg(commands);
+                    Kiss.reg(commands);
+                    Download.reg(commands);
+                    LoggerFactory.getLogger(Yua.class).info("Commands Initialized");
+                    LoggerFactory.getLogger(Yua.class).info("Yua Shard Connected");
+
+                    g.updatePresence(Presence.online(Activity.watching("la version " + version))).block();
                 });
 
         g.onDisconnect().block();

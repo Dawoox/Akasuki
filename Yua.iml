@@ -57,5 +57,8 @@
     <orderEntry type="library" name="Maven: net.iharder:base64:2.3.9" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-sync:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:bson:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:4.1.0" level="project" />
   </component>
 </module>
