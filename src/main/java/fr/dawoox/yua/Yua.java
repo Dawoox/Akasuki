@@ -53,7 +53,6 @@ public class Yua {
                     Play.reg(commands);
                     UserInfo.reg(commands);
                     Kiss.reg(commands);
-                    Download.reg(commands);
                     LoggerFactory.getLogger(Yua.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Yua.class).info("Yua Shard Connected");
 
