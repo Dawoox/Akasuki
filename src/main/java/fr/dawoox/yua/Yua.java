@@ -7,6 +7,7 @@ import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.presence.Activity;
 import discord4j.core.object.presence.Presence;
 import fr.dawoox.yua.commands.Download;
+import fr.dawoox.yua.commands.interactions.Hug;
 import fr.dawoox.yua.commands.interactions.Kiss;
 import fr.dawoox.yua.commands.misc.Ping;
 import fr.dawoox.yua.commands.misc.UserInfo;
@@ -53,6 +54,7 @@ public class Yua {
                     Play.reg(commands);
                     UserInfo.reg(commands);
                     Kiss.reg(commands);
+                    Hug.reg(commands);
                     LoggerFactory.getLogger(Yua.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Yua.class).info("Yua Shard Connected");
 

@@ -11,14 +11,14 @@ import org.slf4j.LoggerFactory;
 import java.time.Instant;
 import java.util.Map;
 
-public class Kiss {
+public class Hug {
 
     private static Member target;
     private static String reply = "default error";
 
     public static void reg(Map<String, Command> commands){
-        commands.put("kiss", event -> {
-            MongoCollection collection = DBManager.getDatabase().getCollection("kiss");
+        commands.put("hug", event -> {
+            MongoCollection collection = DBManager.getDatabase().getCollection("hug");
 
             int R = (int) Math.floor(Math.random() * collection.countDocuments());
             String randomLink = collection.find().limit(1).skip(R).first().toString().substring(45, collection.find().limit(1).skip(R).first().toString().length() - 2);
@@ -27,10 +27,10 @@ public class Kiss {
             Member sender = event.getMessage().getAuthorAsMember().block();
 
             if (!event.getMessage().getUserMentionIds().isEmpty()){
-                Kiss.target = event.getMessage().getUserMentions().blockFirst().asMember(event.getGuildId().get()).block();
-                reply = sender.getUsername() + " embrasse " + target.getUsername();
+                Hug.target = event.getMessage().getUserMentions().blockFirst().asMember(event.getGuildId().get()).block();
+                reply = sender.getUsername() + " fait un calin à " + target.getUsername();
             } else {
-                reply = sender.getUsername() + " embrasse quelqu'un";
+                reply = sender.getUsername() + " fait un calin";
             }
 
             channel.createEmbed(embed -> {
@@ -40,7 +40,7 @@ public class Kiss {
                         .setFooter("Yua", null)
                         .setTimestamp(Instant.now());
             }).block();
-            LoggerFactory.getLogger(Kiss.class).info("Kiss[" + R + "] : " + randomLink);
+            LoggerFactory.getLogger(Hug.class).info("Hug[" + R + "] : " + randomLink);
         });
     }
 
