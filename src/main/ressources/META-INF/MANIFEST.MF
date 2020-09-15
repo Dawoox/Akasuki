@@ -1,0 +1,2 @@
+Main-Class: fr.dawoox.yua.Yua
+Manifest-Version: 1.0

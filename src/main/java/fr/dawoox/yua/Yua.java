@@ -6,7 +6,6 @@ import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.presence.Activity;
 import discord4j.core.object.presence.Presence;
-import fr.dawoox.yua.commands.Download;
 import fr.dawoox.yua.commands.interactions.Hug;
 import fr.dawoox.yua.commands.interactions.Kiss;
 import fr.dawoox.yua.commands.misc.Ping;
@@ -26,7 +25,7 @@ public class Yua {
 
     public static void main(String[] args) {
 
-        final String version = "0.4.7";
+        final String version = "0.5.4";
         final String token = args[0];
         final DiscordClient client = DiscordClient.create(token);
         final GatewayDiscordClient g = client.login().block();
