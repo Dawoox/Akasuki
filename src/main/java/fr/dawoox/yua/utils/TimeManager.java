@@ -16,8 +16,12 @@ public class TimeManager {
     }
 
     public static long diffInDays(Instant first, Instant second){
-        long diffInMilmies = Math.abs(Date.from(second).getTime() - Date.from(first).getTime());
-        long diff = TimeUnit.DAYS.convert(diffInMilmies, TimeUnit.MILLISECONDS);
-        return diff;
+        long diffInDays = TimeUnit.DAYS.convert(diffInMillis(first, second), TimeUnit.MILLISECONDS);
+        return diffInDays;
+    }
+
+    public static long diffInMillis(Instant first, Instant second){
+        long diffInMillies = Math.abs(Date.from(second).getTime() - Date.from(first).getTime());
+        return diffInMillies;
     }
 }
