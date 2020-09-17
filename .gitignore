@@ -28,3 +28,6 @@ hs_err_pid*
 # Logs files and internal Javadocs
 /logs
 /javadocs
+
+# Config file
+.properties
