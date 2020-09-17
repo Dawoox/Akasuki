@@ -43,7 +43,7 @@
     <!-- Log to a audit file, with size and time base rolling -->
     <appender name="AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>ALL</level>
+            <level>DEBUG</level>
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>

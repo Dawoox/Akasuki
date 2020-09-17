@@ -6,6 +6,7 @@ import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;
 import fr.dawoox.yua.utils.Command;
+import fr.dawoox.yua.utils.LogsManager;
 import fr.dawoox.yua.utils.MemberManager;
 
 import java.time.Instant;
@@ -71,9 +72,11 @@ public class UserInfo {
                             .addField("Membre depuis le", memberOld, true)
                             .addField("Création du compte le", "           " + accountOld, true)
                             .addField("Statut", statut, true)
+                            .addField("ID", member.getId().toString(), false)
                             .setFooter("Yua", null)
                             .setTimestamp(Instant.now())
             ).block();
+            LogsManager.logAction("UserInfo", member, UserInfo.class);
         });
     }
  //

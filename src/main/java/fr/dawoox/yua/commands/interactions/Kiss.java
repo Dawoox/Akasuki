@@ -5,6 +5,7 @@ import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;
 import fr.dawoox.yua.utils.Command;
+import fr.dawoox.yua.utils.LogsManager;
 import fr.dawoox.yua.utils.database.DBManager;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +41,7 @@ public class Kiss {
                         .setFooter("Yua", null)
                         .setTimestamp(Instant.now());
             }).block();
-            LoggerFactory.getLogger(Kiss.class).info("Kiss[" + R + "] : " + randomLink);
+            LogsManager.logAction("Kiss[\" + R + \"] : \" + randomLink", sender, Kiss.class);
         });
     }
 
