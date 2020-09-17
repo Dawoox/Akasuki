@@ -13,6 +13,7 @@ import fr.dawoox.yua.commands.misc.UserInfo;
 import fr.dawoox.yua.commands.music.Join;
 import fr.dawoox.yua.commands.music.Play;
 import fr.dawoox.yua.utils.Command;
+import fr.dawoox.yua.utils.ConfigReader;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
@@ -26,7 +27,7 @@ public class Yua {
     public static void main(String[] args) {
 
         final String version = "0.5.4";
-        final String token = args[0];
+        final String token = ConfigReader.getToken();
         final DiscordClient client = DiscordClient.create(token);
         final GatewayDiscordClient g = client.login().block();
 
