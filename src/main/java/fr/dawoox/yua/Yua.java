@@ -12,6 +12,7 @@ import fr.dawoox.yua.commands.misc.Ping;
 import fr.dawoox.yua.commands.misc.UserInfo;
 import fr.dawoox.yua.commands.music.Join;
 import fr.dawoox.yua.commands.music.Play;
+import fr.dawoox.yua.commands.social.Marry;
 import fr.dawoox.yua.utils.Command;
 import fr.dawoox.yua.utils.ConfigReader;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public class Yua {
         final DiscordClient client = DiscordClient.create(token);
         final GatewayDiscordClient g = client.login().block();
 
-
+        assert g != null;
         g.getEventDispatcher().on(MessageCreateEvent.class)
                 .subscribe(event -> {
                     final String content = event.getMessage().getContent();
@@ -55,6 +56,7 @@ public class Yua {
                     UserInfo.reg(commands);
                     Kiss.reg(commands);
                     Hug.reg(commands);
+                    Marry.reg(commands);
                     LoggerFactory.getLogger(Yua.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Yua.class).info("dawoox.yua.Yua Shard Connected");
 

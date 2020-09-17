@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    private static Properties prop = new Properties();
+    private static final Properties prop = new Properties();
     private static FileInputStream fip;
 
     public static String getToken(){

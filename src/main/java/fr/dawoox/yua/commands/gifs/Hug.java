@@ -22,8 +22,8 @@ public class Hug {
             MongoCollection collection = DBManager.getDatabase().getCollection("hug");
 
             int R = (int) Math.floor(Math.random() * collection.countDocuments());
-            String randomLink = collection.find().limit(1).skip(R).first().toString()
-                    .substring(45, collection.find().limit(1).skip(R).first().toString().length() - 2);
+            String randomLink = Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString()
+                    .substring(45, Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString().length() - 2);
 
             MessageChannel channel = event.getMessage().getChannel().block();
             Member sender = event.getMessage().getAuthorAsMember().block();
@@ -38,13 +38,11 @@ public class Hug {
                 reply = sender.getUsername() + " fait un calin";
             }
 
-            channel.createEmbed(embed -> {
-                embed.setColor(Color.DEEP_LILAC)
-                        .setAuthor(reply, null, null)
-                        .setImage(randomLink)
-                        .setFooter("Yua", null)
-                        .setTimestamp(Instant.now());
-            }).block();
+            channel.createEmbed(embed -> embed.setColor(Color.DEEP_LILAC)
+                    .setAuthor(reply, null, null)
+                    .setImage(randomLink)
+                    .setFooter("Yua", null)
+                    .setTimestamp(Instant.now())).block();
             LogsManager.logAction("Hug[\" + R + \"] : \" + randomLink", sender, Hug.class);
         });
     }

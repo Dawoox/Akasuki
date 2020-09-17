@@ -10,6 +10,7 @@ import fr.dawoox.yua.utils.database.DBManager;
 
 import java.time.Instant;
 import java.util.Map;
+import java.util.Objects;
 
 public class Kiss {
 
@@ -21,8 +22,8 @@ public class Kiss {
             MongoCollection collection = DBManager.getDatabase().getCollection("kiss");
 
             int R = (int) Math.floor(Math.random() * collection.countDocuments());
-            String randomLink = collection.find().limit(1).skip(R).first().toString()
-                    .substring(45, collection.find().limit(1).skip(R).first().toString().length() - 2);
+            String randomLink = Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString()
+                    .substring(45, Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString().length() - 2);
 
             MessageChannel channel = event.getMessage().getChannel().block();
             Member sender = event.getMessage().getAuthorAsMember().block();
@@ -31,19 +32,17 @@ public class Kiss {
             assert channel != null;
 
             if (!event.getMessage().getUserMentionIds().isEmpty()){
-                Kiss.target = event.getMessage().getUserMentions().blockFirst().asMember(event.getGuildId().get()).block();
+                Kiss.target = Objects.requireNonNull(event.getMessage().getUserMentions().blockFirst()).asMember(event.getGuildId().get()).block();
                 reply = sender.getUsername() + " embrasse " + target.getUsername();
             } else {
                 reply = sender.getUsername() + " embrasse quelqu'un";
             }
 
-            channel.createEmbed(embed -> {
-                embed.setColor(Color.DEEP_LILAC)
-                        .setAuthor(reply, null, null)
-                        .setImage(randomLink)
-                        .setFooter("Yua", null)
-                        .setTimestamp(Instant.now());
-            }).block();
+            channel.createEmbed(embed -> embed.setColor(Color.DEEP_LILAC)
+                    .setAuthor(reply, null, null)
+                    .setImage(randomLink)
+                    .setFooter("Yua", null)
+                    .setTimestamp(Instant.now())).block();
             LogsManager.logAction("Kiss[\" + R + \"] : \" + randomLink", sender, Kiss.class);
         });
     }

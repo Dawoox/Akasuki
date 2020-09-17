@@ -16,12 +16,10 @@ public class TimeManager {
     }
 
     public static long diffInDays(Instant first, Instant second){
-        long diffInDays = TimeUnit.DAYS.convert(diffInMillis(first, second), TimeUnit.MILLISECONDS);
-        return diffInDays;
+        return TimeUnit.DAYS.convert(diffInMillis(first, second), TimeUnit.MILLISECONDS);
     }
 
     public static long diffInMillis(Instant first, Instant second){
-        long diffInMillies = Math.abs(Date.from(second).getTime() - Date.from(first).getTime());
-        return diffInMillies;
+        return Math.abs(Date.from(second).getTime() - Date.from(first).getTime());
     }
 }
