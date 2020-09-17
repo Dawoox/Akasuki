@@ -10,6 +10,7 @@ import fr.dawoox.yua.utils.database.DBManager;
 
 import java.time.Instant;
 import java.util.Map;
+import java.util.Objects;
 
 public class Hug {
 
@@ -21,14 +22,17 @@ public class Hug {
             MongoCollection collection = DBManager.getDatabase().getCollection("hug");
 
             int R = (int) Math.floor(Math.random() * collection.countDocuments());
-            String randomLink = collection.find().limit(1).skip(R).first().toString().substring(45, collection.find().limit(1).skip(R).first().toString().length() - 2);
+            String randomLink = collection.find().limit(1).skip(R).first().toString()
+                    .substring(45, collection.find().limit(1).skip(R).first().toString().length() - 2);
 
             MessageChannel channel = event.getMessage().getChannel().block();
             Member sender = event.getMessage().getAuthorAsMember().block();
 
+            assert sender != null;
+            assert channel != null;
+
             if (!event.getMessage().getUserMentionIds().isEmpty()){
-                Hug.target = event.getMessage().getUserMentions().blockFirst().asMember(event.getGuildId().get()).block();
-                assert sender != null;
+                Hug.target = Objects.requireNonNull(event.getMessage().getUserMentions().blockFirst()).asMember(event.getGuildId().get()).block();
                 reply = sender.getUsername() + " fait un calin à " + target.getUsername();
             } else {
                 reply = sender.getUsername() + " fait un calin";
@@ -38,7 +42,7 @@ public class Hug {
                 embed.setColor(Color.DEEP_LILAC)
                         .setAuthor(reply, null, null)
                         .setImage(randomLink)
-                        .setFooter("dawoox.yua.Yua", null)
+                        .setFooter("Yua", null)
                         .setTimestamp(Instant.now());
             }).block();
             LogsManager.logAction("Hug[\" + R + \"] : \" + randomLink", sender, Hug.class);

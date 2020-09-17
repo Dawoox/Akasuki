@@ -21,10 +21,14 @@ public class Kiss {
             MongoCollection collection = DBManager.getDatabase().getCollection("kiss");
 
             int R = (int) Math.floor(Math.random() * collection.countDocuments());
-            String randomLink = collection.find().limit(1).skip(R).first().toString().substring(45, collection.find().limit(1).skip(R).first().toString().length() - 2);
+            String randomLink = collection.find().limit(1).skip(R).first().toString()
+                    .substring(45, collection.find().limit(1).skip(R).first().toString().length() - 2);
 
             MessageChannel channel = event.getMessage().getChannel().block();
             Member sender = event.getMessage().getAuthorAsMember().block();
+
+            assert sender != null;
+            assert channel != null;
 
             if (!event.getMessage().getUserMentionIds().isEmpty()){
                 Kiss.target = event.getMessage().getUserMentions().blockFirst().asMember(event.getGuildId().get()).block();
@@ -37,7 +41,7 @@ public class Kiss {
                 embed.setColor(Color.DEEP_LILAC)
                         .setAuthor(reply, null, null)
                         .setImage(randomLink)
-                        .setFooter("dawoox.yua.Yua", null)
+                        .setFooter("Yua", null)
                         .setTimestamp(Instant.now());
             }).block();
             LogsManager.logAction("Kiss[\" + R + \"] : \" + randomLink", sender, Kiss.class);
