@@ -37,7 +37,7 @@ public class Kiss {
                 embed.setColor(Color.DEEP_LILAC)
                         .setAuthor(reply, null, null)
                         .setImage(randomLink)
-                        .setFooter("Yua", null)
+                        .setFooter("dawoox.yua.Yua", null)
                         .setTimestamp(Instant.now());
             }).block();
             LogsManager.logAction("Kiss[\" + R + \"] : \" + randomLink", sender, Kiss.class);

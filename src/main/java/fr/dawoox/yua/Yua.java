@@ -45,7 +45,7 @@ public class Yua {
 
         g.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(readyEvent -> {
-                    LoggerFactory.getLogger(Yua.class).info("Yua Shard Initialing ");
+                    LoggerFactory.getLogger(Yua.class).info("dawoox.yua.Yua Shard Initialing ");
                     commands.clear();
 
                     Ping.reg(commands);
@@ -55,7 +55,7 @@ public class Yua {
                     Kiss.reg(commands);
                     Hug.reg(commands);
                     LoggerFactory.getLogger(Yua.class).info("Commands Initialized");
-                    LoggerFactory.getLogger(Yua.class).info("Yua Shard Connected");
+                    LoggerFactory.getLogger(Yua.class).info("dawoox.yua.Yua Shard Connected");
 
                     g.updatePresence(Presence.online(Activity.watching("la version " + version))).block();
                 });

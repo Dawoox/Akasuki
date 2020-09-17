@@ -28,6 +28,7 @@ public class Hug {
 
             if (!event.getMessage().getUserMentionIds().isEmpty()){
                 Hug.target = event.getMessage().getUserMentions().blockFirst().asMember(event.getGuildId().get()).block();
+                assert sender != null;
                 reply = sender.getUsername() + " fait un calin à " + target.getUsername();
             } else {
                 reply = sender.getUsername() + " fait un calin";
@@ -37,7 +38,7 @@ public class Hug {
                 embed.setColor(Color.DEEP_LILAC)
                         .setAuthor(reply, null, null)
                         .setImage(randomLink)
-                        .setFooter("Yua", null)
+                        .setFooter("dawoox.yua.Yua", null)
                         .setTimestamp(Instant.now());
             }).block();
             LogsManager.logAction("Hug[\" + R + \"] : \" + randomLink", sender, Hug.class);

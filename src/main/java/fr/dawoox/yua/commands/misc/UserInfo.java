@@ -73,7 +73,7 @@ public class UserInfo {
                             .addField("Création du compte le", "           " + accountOld, true)
                             .addField("Statut", statut, true)
                             .addField("ID", member.getId().toString(), false)
-                            .setFooter("Yua", null)
+                            .setFooter("dawoox.yua.Yua", null)
                             .setTimestamp(Instant.now())
             ).block();
             LogsManager.logAction("UserInfo", member, UserInfo.class);

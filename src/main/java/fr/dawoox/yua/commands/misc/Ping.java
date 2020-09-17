@@ -14,9 +14,9 @@ public class Ping {
             Instant messageInstant = event.getMessage().getTimestamp();
             event.getMessage().getChannel().block().createMessage("Pinging...");
             Instant botInstant = Instant.now();
-            String reply = "La latence de Yua est de `" + TimeManager.diffInMillis(messageInstant, botInstant) + "ms` actuellement" +
+            String reply = "La latence de dawoox.yua.Yua est de `" + TimeManager.diffInMillis(messageInstant, botInstant) + "ms` actuellement" +
                     "\nUn problème de latence ? Venez nous l'indiquer sur notre Discord de support";
-            event.getMessage().getChannel().block().getLastMessage().block().delete("Yua auto ping message deleted");
+            event.getMessage().getChannel().block().getLastMessage().block().delete("dawoox.yua.Yua auto ping message deleted");
             event.getMessage().getChannel().block().createMessage(reply).block();
             LogsManager.logAction("Ping", event.getMessage().getAuthorAsMember().block(), Ping.class);
         });
