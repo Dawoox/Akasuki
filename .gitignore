@@ -24,3 +24,7 @@ hs_err_pid*
 
 # Maven Compiled files
 /target/
+
+# Logs files and internal Javadocs
+/logs
+/javadocs
