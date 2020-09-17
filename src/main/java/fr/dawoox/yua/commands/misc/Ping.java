@@ -1,6 +1,5 @@
 package fr.dawoox.yua.commands.misc;
 
-import fr.dawoox.yua.commands.interactions.Kiss;
 import fr.dawoox.yua.utils.Command;
 import fr.dawoox.yua.utils.LogsManager;
 import fr.dawoox.yua.utils.TimeManager;
