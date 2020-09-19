@@ -3,4 +3,4 @@ install:
   - mvn install
 script: java -jar Yua-0.5.4-jar-with-dependencies.jar
 jdk:
-  - oraclejdk8
+  - openjdk8
