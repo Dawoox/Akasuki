@@ -4,6 +4,7 @@ import com.mongodb.client.MongoCollection;
 import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;
+import fr.dawoox.yua.modules.DBChecker;
 import fr.dawoox.yua.utils.Command;
 import fr.dawoox.yua.utils.LogsManager;
 import fr.dawoox.yua.utils.database.DBManager;
@@ -37,7 +38,6 @@ public class Hug {
             } else {
                 reply = sender.getUsername() + " fait un calin";
             }
-
             channel.createEmbed(embed -> embed.setColor(Color.DEEP_LILAC)
                     .setAuthor(reply, null, null)
                     .setImage(randomLink)

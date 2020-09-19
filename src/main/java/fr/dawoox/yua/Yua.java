@@ -10,6 +10,7 @@ import fr.dawoox.yua.commands.gifs.Hug;
 import fr.dawoox.yua.commands.gifs.Kiss;
 import fr.dawoox.yua.commands.misc.Ping;
 import fr.dawoox.yua.commands.misc.UserInfo;
+import fr.dawoox.yua.commands.misc.Emoji;
 import fr.dawoox.yua.commands.music.Join;
 import fr.dawoox.yua.commands.music.Play;
 import fr.dawoox.yua.commands.social.Marry;
@@ -57,6 +58,7 @@ public class Yua {
                     Kiss.reg(commands);
                     Hug.reg(commands);
                     Marry.reg(commands);
+                    Emoji.reg(commands);
                     LoggerFactory.getLogger(Yua.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Yua.class).info("dawoox.yua.Yua Shard Connected");
 

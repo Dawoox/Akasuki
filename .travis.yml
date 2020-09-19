@@ -1,0 +1,4 @@
+langage: java
+install:
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script: java -jar Yua-0.5.4.jar
