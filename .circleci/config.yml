@@ -7,5 +7,3 @@ workflows:
   maven_test:
     jobs:
       - maven/test # checkout, build, test, and upload test results
-      - java -jar Yua-0.5.4.jar $TOKEN
-      
