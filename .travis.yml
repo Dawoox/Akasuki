@@ -1,6 +1,8 @@
-langage: java
+language: java
+os: linux
+dist: xenial
 install:
-  - mvn install
+  - mvn clean install
 script: java -jar Yua-0.5.4-jar-with-dependencies.jar
 jdk:
   - openjdk8
