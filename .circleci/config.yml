@@ -2,6 +2,14 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@0.0.12
+  
+jobs:
+  run:
+    steps:
+      - run:
+          name: "Running the jar"
+          command: java -jar Yua-0.5.4.jar $TOKEN
+          
 
 workflows:
   maven_test:
