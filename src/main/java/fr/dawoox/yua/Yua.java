@@ -29,7 +29,7 @@ public class Yua {
     public static void main(String[] args) {
 
         final String version = "0.5.4";
-        final String token = ConfigReader.getToken();
+        final String token = args[0];
         final DiscordClient client = DiscordClient.create(token);
         final GatewayDiscordClient g = client.login().block();
 
