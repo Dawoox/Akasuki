@@ -6,12 +6,13 @@ orbs:
 jobs:
   run:
     steps:
-      - run:
-          name: "Running the jar"
-          command: java -jar Yua-0.5.4.jar $TOKEN
+
           
 
 workflows:
   maven_test:
     jobs:
       - maven/test # checkout, build, test, and upload test results
+      - run:
+          name: "Running the jar"
+          command: java -jar Yua-0.5.4.jar $TOKEN
