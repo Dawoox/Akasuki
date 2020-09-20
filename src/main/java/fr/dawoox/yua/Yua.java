@@ -15,7 +15,6 @@ import fr.dawoox.yua.commands.music.Join;
 import fr.dawoox.yua.commands.music.Play;
 import fr.dawoox.yua.commands.social.Marry;
 import fr.dawoox.yua.utils.Command;
-import fr.dawoox.yua.utils.ConfigReader;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
