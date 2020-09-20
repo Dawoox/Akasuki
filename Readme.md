@@ -7,16 +7,14 @@
 * [Setup](#setup)
 * [Features](#features)
 * [Status](#status)
-
-
 * [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## General info
-This project use Circle CI
+This project use Circle CI and JUnit Jupiter for testing and CI/CD
 	
 ## Technologies
-Project is created with:
+Yua is created with:
 * Discord4J: 3.1.1
 * Lavaplayer: 1.3.50
 * Logback: 1.2.3
