@@ -19,12 +19,6 @@ public class Kiss {
 
     public static void reg(Map<String, Command> commands){
         commands.put("kiss", event -> {
-            MongoCollection collection = DBManager.getDatabase().getCollection("kiss");
-
-            int R = (int) Math.floor(Math.random() * collection.countDocuments());
-            String randomLink = Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString()
-                    .substring(45, Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString().length() - 2);
-
             MessageChannel channel = event.getMessage().getChannel().block();
             Member sender = event.getMessage().getAuthorAsMember().block();
 
@@ -40,11 +34,21 @@ public class Kiss {
 
             channel.createEmbed(embed -> embed.setColor(Color.DEEP_LILAC)
                     .setAuthor(reply, null, null)
-                    .setImage(randomLink)
+                    .setImage(getRandomLink())
                     .setFooter("Yua", null)
                     .setTimestamp(Instant.now())).block();
             LogsManager.logAction("Kiss[\" + R + \"] : \" + randomLink", sender, Kiss.class);
         });
+    }
+
+    public static String getRandomLink(){
+        MongoCollection collection = DBManager.getDatabase().getCollection("kiss");
+
+        int R = (int) Math.floor(Math.random() * collection.countDocuments());
+        String randomLink = Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString()
+                .substring(45, Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString().length() - 2);
+
+        return randomLink;
     }
 
 }
