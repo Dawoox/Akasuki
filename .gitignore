@@ -30,7 +30,4 @@ hs_err_pid*
 /javadocs
 
 # Config file
-.properties
-
-# Yua's config file with db token
-config.properties
+*.properties
