@@ -1,4 +1,4 @@
-# Yua
+# Akasuki
 > Simple and easy to custom Java Discord bot, build with Discord4J and many more libraries.
 
 ## Table of contents
@@ -28,9 +28,9 @@ Yua is created with:
 #### Using git clone:  
 ```
 $ git clone https://github.com/Dawoox/Yua.git
-$ cd ./Yua
+$ cd ./Akasuki
 $ mvn clean install
-$ java -jar Yua-jar-with-dependencies.fr {your_bot_token}
+$ java -jar Akasuki-jar-with-dependencies.fr {mongodb_username} {mongodb_password}
 ```
 
 #### Using docker:
