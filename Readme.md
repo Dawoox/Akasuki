@@ -27,7 +27,7 @@ Yua is created with:
 
 #### Using git clone:  
 ```
-$ git clone https://github.com/Dawoox/Yua.git
+$ git clone https://github.com/Dawoox/Akasuki.git
 $ cd ./Akasuki
 $ mvn clean install
 $ java -jar Akasuki-jar-with-dependencies.fr {mongodb_username} {mongodb_password}
