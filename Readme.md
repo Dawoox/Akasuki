@@ -24,6 +24,7 @@ Yua is created with:
 * Maven Compiler: 3.8.1
 	
 ## Setup  
+Note: You must first install a [MongoDB database](https://docs.mongodb.com/manual/installation/).
 
 #### Using git clone:  
 ```
