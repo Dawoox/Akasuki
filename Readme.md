@@ -1,4 +1,4 @@
-# Yua
+# Akasuki
 > Simple and easy to custom Java Discord bot, build with Discord4J and many more libraries.
 
 ## Table of contents
@@ -8,6 +8,7 @@
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
+* [NotaBene](#nb)
 * [Contact](#contact)
 
 ## General info
@@ -23,13 +24,14 @@ Yua is created with:
 * Maven Compiler: 3.8.1
 	
 ## Setup  
+Note: You must first install a [MongoDB database](https://docs.mongodb.com/manual/installation/).
 
 #### Using git clone:  
 ```
-$ git clone https://github.com/Dawoox/Yua.git
-$ cd ./Yua
+$ git clone https://github.com/Dawoox/Akasuki.git
+$ cd ./Akasuki
 $ mvn clean install
-$ java -jar Yua-jar-with-dependencies.fr {your_bot_token}
+$ java -jar Akasuki-jar-with-dependencies.fr {mongodb_username} {mongodb_password}
 ```
 
 #### Using docker:
@@ -53,6 +55,11 @@ Maintained
 
 ## Inspiration
 The gif system is inspired by the bot Koya
+
+## NB
+
+I know at the beginning of this project some Discord token and database id leaked, these id had been changed a long time ago, and the IPs have changed.
+This is no longer a security flaw, the problem has been solved.
 
 ## Contact
 Created by [@Dawoox](https://www.github.com/dawoox) - feel free to contact me!

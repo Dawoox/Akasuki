@@ -15,6 +15,7 @@ import fr.dawoox.yua.commands.music.Join;
 import fr.dawoox.yua.commands.music.Play;
 import fr.dawoox.yua.commands.social.Marry;
 import fr.dawoox.yua.utils.Command;
+import fr.dawoox.yua.utils.ConfigReader;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
@@ -24,12 +25,13 @@ public class Yua {
 
     private static final Map<String, Command> commands = new HashMap<>();
     private static final String prefix = "*";
+    private static String[] args;
 
     public static void main(String[] args) {
-
+        Yua.args = args;
         final String version = "0.5.4";
-        final String token = args[0];
-        final DiscordClient client = DiscordClient.create(token);
+        final String TOKEN = ConfigReader.getToken();
+        final DiscordClient client = DiscordClient.create(TOKEN);
         final GatewayDiscordClient g = client.login().block();
 
         assert g != null;
@@ -65,5 +67,9 @@ public class Yua {
                 });
 
         g.onDisconnect().block();
+    }
+
+    public static String[] getArgs(){
+        return args;
     }
 }

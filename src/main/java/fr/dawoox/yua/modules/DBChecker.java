@@ -1,8 +1,8 @@
 package fr.dawoox.yua.modules;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
+//import com.mongodb.DBCursor;
+//import com.mongodb.DBObject;
 import com.mongodb.client.MongoCollection;
 import fr.dawoox.yua.utils.database.DBManager;
 import org.apache.commons.logging.LogFactory;
