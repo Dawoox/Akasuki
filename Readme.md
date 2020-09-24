@@ -8,6 +8,7 @@
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
+* [NotaBene](#nb)
 * [Contact](#contact)
 
 ## General info
@@ -53,6 +54,11 @@ Maintained
 
 ## Inspiration
 The gif system is inspired by the bot Koya
+
+## NB
+
+I know at the beginning of this project some Discord token and database id leaked, these id had been changed a long time ago, and the IPs have changed.
+This is no longer a security flaw, the problem has been solved.
 
 ## Contact
 Created by [@Dawoox](https://www.github.com/dawoox) - feel free to contact me!
