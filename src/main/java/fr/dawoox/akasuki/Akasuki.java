@@ -13,7 +13,6 @@ import fr.dawoox.akasuki.commands.misc.UserInfo;
 import fr.dawoox.akasuki.commands.misc.Emoji;
 import fr.dawoox.akasuki.commands.music.Join;
 import fr.dawoox.akasuki.commands.music.Play;
-import fr.dawoox.akasuki.commands.social.Marry;
 import fr.dawoox.akasuki.utils.Command;
 import fr.dawoox.akasuki.utils.ConfigReader;
 import org.slf4j.LoggerFactory;
@@ -56,7 +55,6 @@ public class Akasuki {
                     UserInfo.reg(commands);
                     Kiss.reg(commands);
                     Hug.reg(commands);
-                    Marry.reg(commands);
                     Emoji.reg(commands);
                     LoggerFactory.getLogger(Akasuki.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Connected");
