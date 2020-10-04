@@ -2,8 +2,11 @@ package fr.dawoox.akasuki.utils.database;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import fr.dawoox.akasuki.utils.ConfigReader;
+
+import java.util.Objects;
 
 public class DBManager {
 
@@ -17,5 +20,15 @@ public class DBManager {
     private static final MongoDatabase database = mongoClient.getDatabase(MAIN);
     public static MongoDatabase getDatabase() { return database; }
     public static boolean isLink() { if (database == null) { return false; } else { return true; } }
+
+    public static String getRandomLink(String db) {
+        MongoCollection collection = DBManager.getDatabase().getCollection(db);
+
+        int R = (int) Math.floor(Math.random() * collection.countDocuments());
+        String randomLink = Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString()
+                .substring(45, Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString().length() - 2);
+
+        return randomLink;
+    }
 
 }
