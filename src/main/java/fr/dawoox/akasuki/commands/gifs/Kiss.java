@@ -28,7 +28,7 @@ public class Kiss {
                 reply = sender.getUsername() + " embrasse quelqu'un";
             }
 
-            GifTemplate.sendEmbed(channel, reply, "kiss");
+            EmbedTemplate.sendEmbed(channel, reply, "kiss");
             LogsManager.logAction("Kiss : \" + randomLink", sender, Kiss.class);
         });
     }

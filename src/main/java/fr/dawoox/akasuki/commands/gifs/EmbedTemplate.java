@@ -6,7 +6,7 @@ import fr.dawoox.akasuki.utils.database.DBManager;
 
 import java.time.Instant;
 
-public class GifTemplate {
+public class EmbedTemplate {
 
     public static void sendEmbed(MessageChannel channel, String reply, String db){
 

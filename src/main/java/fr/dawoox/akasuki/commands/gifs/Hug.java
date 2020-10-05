@@ -28,7 +28,7 @@ public class Hug {
                 reply = sender.getUsername() + " fait un calin";
             }
 
-            GifTemplate.sendEmbed(channel, reply, "hug");
+            EmbedTemplate.sendEmbed(channel, reply, "hug");
             LogsManager.logAction("Hug : \" + randomLink", sender, Hug.class);
         });
     }
