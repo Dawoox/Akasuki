@@ -11,6 +11,7 @@ import fr.dawoox.akasuki.commands.gifs.Kiss;
 import fr.dawoox.akasuki.commands.misc.Ping;
 import fr.dawoox.akasuki.commands.misc.UserInfo;
 import fr.dawoox.akasuki.commands.misc.Emoji;
+import fr.dawoox.akasuki.commands.moderator.Ban;
 import fr.dawoox.akasuki.commands.music.Join;
 import fr.dawoox.akasuki.commands.music.Play;
 import fr.dawoox.akasuki.utils.Command;
@@ -56,6 +57,7 @@ public class Akasuki {
                     Kiss.reg(commands);
                     Hug.reg(commands);
                     Emoji.reg(commands);
+                    Ban.reg(commands);
                     LoggerFactory.getLogger(Akasuki.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Connected");
 
