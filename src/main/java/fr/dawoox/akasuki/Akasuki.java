@@ -36,6 +36,7 @@ public class Akasuki {
         g.getEventDispatcher().on(MessageCreateEvent.class)
                 .subscribe(event -> {
                     final String content = event.getMessage().getContent();
+                    if (event.getMessage().getAuthor().get().isBot()) { return; }
                     for (final Map.Entry<String, Command> entry : commands.entrySet()) {
                         if (content.startsWith(prefix + entry.getKey())) {
                             entry.getValue().execute(event);
