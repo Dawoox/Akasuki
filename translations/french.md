@@ -56,12 +56,12 @@ $ java -jar Akasuki-jar-with-dependencies.fr
 
 ## Fonctionnalités
 
-#####Fonctions de la version stable
+####Fonctions de la version stable
 * Gif aléatoires (*kiss, *hug, etc)
 * Informations sur un utilisateur
 * Moderation (*ban, *kick, *warn etc)
 
-#####To-do list:
+####To-do list:
 * Mariage
 * Plus de gif
 * Prefix personnalisé
