@@ -21,8 +21,8 @@ help you in the moderation of your server, or even encourage your members to
 be active via a system of inventories, rewards and levels!
 
 ## Screenshots
-![Example of the ban command](./img/ban.png)
-![Example of the hug command](./img/hug.png)
+![Example of the ban command](./img/ban.gif)
+![Example of the hug command](./img/hug.gif)
 ![Example of the userinfo command](./img/userinfo.png)
 
 ## Technologies

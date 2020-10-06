@@ -21,8 +21,8 @@ vous aider dans la modération de votre serveur, ou même encourager vos membres
 être actif via un système d'inventaires, de récompenses et de niveaux !
 
 ## Captures d'écran
-![Exemple de la commande ban](../img/ban.png)
-![Exemple de la commande hug](../img/hug.png)
+![Exemple de la commande ban](../img/ban.gif)
+![Exemple de la commande hug](../img/hug.gif)
 ![Exemple de la commande userinfo](../img/userinfo.png)
 
 ## Technologies
