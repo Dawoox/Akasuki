@@ -17,10 +17,13 @@ public class Ban {
             final Member sender = event.getMessage().getAuthorAsMember().block();
             final boolean canBan = Objects.requireNonNull(Objects.requireNonNull(sender).getBasePermissions().block()).toString().contains("BAN_MEMBERS");
 
+            event.getMessage().getChannel().block().createMessage(event.getMessage().getContent()).block();
             if (canBan && !event.getMessage().getUserMentionIds().isEmpty()){
                 final Member target = Objects.requireNonNull(event.getMessage().getUserMentions().blockFirst()).asMember(event.getGuildId().get()).block();
                 assert target != null;
                 reply = sender.getUsername() + " vient de bannir " + target.getUsername();
+
+                target.ban(banQuerySpec -> banQuerySpec.setReason("AKASUKI BAN : ").setDeleteMessageDays(0)).block();
 
                 EmbedTemplate.sendEmbed(Objects.requireNonNull(event.getMessage().getChannel().block()), reply, "ban");
                 LogsManager.logAction("Ban : ", sender, Ban.class);
