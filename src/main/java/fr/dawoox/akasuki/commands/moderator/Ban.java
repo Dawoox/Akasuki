@@ -1,14 +1,13 @@
 package fr.dawoox.akasuki.commands.moderator;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import discord4j.core.object.entity.Member;
 import fr.dawoox.akasuki.commands.gifs.EmbedTemplate;
+import fr.dawoox.akasuki.utils.ArgumentManager;
 import fr.dawoox.akasuki.utils.Command;
 import fr.dawoox.akasuki.utils.LogsManager;
 
 import java.util.Map;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class Ban {
     private static String reply = "default error";
@@ -23,7 +22,7 @@ public class Ban {
                 assert target != null;
                 reply = sender.getUsername() + " vient de bannir " + target.getUsername();
 
-                String[] temp = getBody(event.getMessage().getContent());
+                String[] temp = ArgumentManager.getBody(event.getMessage().getContent());
                 if (temp.length >= 2){
                     reply += " pour :";
                     for (int i=2;i<=temp.length - 1; i++){
@@ -39,10 +38,5 @@ public class Ban {
                 LogsManager.logAction("Ban", sender, Ban.class);
             }
         });
-    }
-
-    public static String[] getBody(String string){
-        String[] temp = Pattern.compile(" ").split(string);
-        return temp;
     }
 }
