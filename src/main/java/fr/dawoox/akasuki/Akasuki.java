@@ -28,7 +28,7 @@ public class Akasuki {
     private static final String prefix = "*";
 
     public static void main(String[] args) {
-        final String version = "0.5.4";
+        final String version = "0.8.2";
         final String TOKEN = ConfigReader.getEntry("token");
         final DiscordClient client = DiscordClient.create(TOKEN);
         final GatewayDiscordClient g = client.login().block();
@@ -52,6 +52,12 @@ public class Akasuki {
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Initialing ");
                     commands.clear();
 
+                    //Output all guild's name where Akasuki is
+                    for (int i=0;i<g.getGuilds().collectList().block().size();i++){
+                        System.out.println(g.getGuilds().collectList().block().get(i).getName());
+                    }
+
+                    //Register all commands
                     Ping.reg(commands);
                     Join.reg(commands);
                     Play.reg(commands);
@@ -64,6 +70,7 @@ public class Akasuki {
                     LoggerFactory.getLogger(Akasuki.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Connected");
 
+                    //Update status
                     g.updatePresence(Presence.online(Activity.watching("la version " + version))).block();
                 });
 
