@@ -23,7 +23,7 @@ public class Ban {
                 reply = sender.getUsername() + " vient de bannir " + target.getUsername();
 
                 String[] temp = ArgumentManager.getBody(event.getMessage().getContent());
-                if (temp.length >= 2){
+                if (temp.length >= 3){
                     reply += " pour :";
                     for (int i=2;i<=temp.length - 1; i++){
                         reply += " " + temp[i];
