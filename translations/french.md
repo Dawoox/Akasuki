@@ -1,7 +1,7 @@
 # Akasuki
 > Un bot Discord fait en java simple et amusant, construit via Discord4J.
 
-Cette page est traduite en [Anglais](../readme.md)
+Cette page est disponible en [Anglais](../readme.md)
 
 ## Sommaire
 * [Informations](#Informations)
@@ -26,7 +26,7 @@ vous aider dans la modération de votre serveur, ou même encourager vos membres
 ![Exemple de la commande userinfo](../img/userinfo.png)
 
 ## Technologies
-Akasuki est crée grâce à:
+Akasuki est créée grâce à :
 * Discord4J: 3.1.1
 * Lavaplayer: 1.3.50
 * Logback: 1.2.3
@@ -76,11 +76,11 @@ Le système de gif est inspiré de [Koya](https://koya.gg/) <br>
 La gestion de la base de données pour le système d'inventaire vient de PWK (un bot privé)
 
 ## Support
-Si vous avez besoin d'aide avec Akasuki, sur comment la configurer ou si vous avez trouvé des bugs, venez sur le [Discord](https://discord.com/invite/973paeN)
+Si vous avez besoin d'aide avec Akasuki, sur comment la configurer ou si vous avez trouvé des bogues, venez sur le [Discord](https://discord.com/invite/973paeN)
 
 ## NB
-Je suis au courant des mots de passe et identifiants qui ont fuités au début du projets, ils ont étaient modifiés depuis.
+Je suis au courant des mots de passe et identifiants qui ont fuités au début du projet, ils ont été modifiés depuis.
 Ce n'est plus une faille de sécurité.
 
 ## Contact
-Crée par [@Dawoox](https://www.github.com/dawoox) - n'hésitez pas a me contacter!
+Crée par [@Dawoox](https://www.github.com/dawoox) - n'hésitez pas à me contacter !

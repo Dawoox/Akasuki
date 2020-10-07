@@ -1,7 +1,7 @@
 # Akasuki
 > Simple and funny little Java Discord bot, build with Discord4J.
 
-This file is translated into [French](./translations/french.md)
+This page is available in [French](./translations/french.md)
 
 ## Table of contents
 * [General info](#general-info)

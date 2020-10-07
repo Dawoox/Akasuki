@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Akasuki {
 
@@ -53,8 +54,8 @@ public class Akasuki {
                     commands.clear();
 
                     //Output all guild's name where Akasuki is
-                    for (int i=0;i<g.getGuilds().collectList().block().size();i++){
-                        System.out.println(g.getGuilds().collectList().block().get(i).getName());
+                    for (int i = 0; i< Objects.requireNonNull(Objects.requireNonNull(g.getGuilds().collectList().block())).size(); i++){
+                        System.out.println(Objects.requireNonNull(g.getGuilds().collectList().block()).get(i).getName());
                     }
 
                     //Register all commands
