@@ -13,7 +13,15 @@ public class EmbedTemplate {
         channel.createEmbed(embed -> embed.setColor(Color.DEEP_LILAC)
                 .setAuthor(reply, null, null)
                 .setImage(DBManager.getRandomLink(db))
-                .setFooter("Yua", null)
+                .setFooter("Akasuki", null)
+                .setTimestamp(Instant.now())).block();
+    }
+
+    public static void sendEmbed(MessageChannel channel, String reply){
+
+        channel.createEmbed(embed -> embed.setColor(Color.DEEP_LILAC)
+                .setAuthor(reply, null, null)
+                .setFooter("Akasuki", null)
                 .setTimestamp(Instant.now())).block();
     }
 
