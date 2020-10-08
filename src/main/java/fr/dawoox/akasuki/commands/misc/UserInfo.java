@@ -77,7 +77,7 @@ public class UserInfo {
                             .setFooter("Yua", null)
                             .setTimestamp(Instant.now())
             ).block();
-            LogsWriter.logAction("UserInfo", member, UserInfo.class);
+            LogsWriter.logAction("UserInfo : ", member, UserInfo.class);
         });
     }
  //

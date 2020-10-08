@@ -33,7 +33,7 @@ public class Kick {
                 target.kick(reply).block();
 
                 EmbedTemplate.sendEmbed(Objects.requireNonNull(event.getMessage().getChannel().block()), reply, "kick");
-                LogsWriter.logAction("Kick", sender, Ban.class);
+                LogsWriter.logAction("Kick : ", sender, Ban.class);
             }
         });
     }

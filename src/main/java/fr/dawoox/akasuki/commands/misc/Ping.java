@@ -19,7 +19,7 @@ public class Ping {
                     "\nUn problème de latence ? Venez nous l'indiquer sur notre Discord de support";
             Objects.requireNonNull(Objects.requireNonNull(event.getMessage().getChannel().block()).getLastMessage().block()).delete("Yua auto ping message deleted");
             Objects.requireNonNull(event.getMessage().getChannel().block()).createMessage(reply).block();
-            LogsWriter.logAction("Ping", Objects.requireNonNull(event.getMessage().getAuthorAsMember().block()), Ping.class);
+            LogsWriter.logAction("Ping : ", Objects.requireNonNull(event.getMessage().getAuthorAsMember().block()), Ping.class);
         });
     }
 

@@ -29,7 +29,7 @@ public class Hug {
             }
 
             EmbedTemplate.sendEmbed(channel, reply, "hug");
-            LogsWriter.logAction("Hug : \" + randomLink", sender, Hug.class);
+            LogsWriter.logAction("Hug : ", sender, Hug.class);
         });
     }
 

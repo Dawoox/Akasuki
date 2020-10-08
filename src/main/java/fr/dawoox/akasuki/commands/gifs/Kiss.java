@@ -29,7 +29,7 @@ public class Kiss {
             }
 
             EmbedTemplate.sendEmbed(channel, reply, "kiss");
-            LogsWriter.logAction("Kiss : \" + randomLink", sender, Kiss.class);
+            LogsWriter.logAction("Kiss : ", sender, Kiss.class);
         });
     }
 

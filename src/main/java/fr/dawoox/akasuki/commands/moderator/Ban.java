@@ -35,7 +35,7 @@ public class Ban {
                 System.out.println("2");
 
                 EmbedTemplate.sendEmbed(Objects.requireNonNull(event.getMessage().getChannel().block()), reply, "ban");
-                LogsWriter.logAction("Ban", sender, Ban.class);
+                LogsWriter.logAction("Ban : ", sender, Ban.class);
             }
         });
     }
