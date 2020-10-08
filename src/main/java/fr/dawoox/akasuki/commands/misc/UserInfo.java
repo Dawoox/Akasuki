@@ -6,15 +6,15 @@ import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;
 import fr.dawoox.akasuki.utils.Command;
-import fr.dawoox.akasuki.utils.LogsManager;
-import fr.dawoox.akasuki.utils.MemberManager;
+import fr.dawoox.akasuki.utils.LogsWriter;
+import fr.dawoox.akasuki.utils.MemberUtils;
 
 import java.time.Instant;
 import java.util.Map;
 import java.util.Objects;
 
-import static fr.dawoox.akasuki.utils.TimeManager.format;
-import static fr.dawoox.akasuki.utils.TimeManager.diffInDays;
+import static fr.dawoox.akasuki.utils.TimeUtils.format;
+import static fr.dawoox.akasuki.utils.TimeUtils.diffInDays;
 
 public class UserInfo {
 
@@ -37,8 +37,8 @@ public class UserInfo {
                 UserInfo.author = Objects.requireNonNull(member).getUsername() + "#" + member.getDiscriminator();
                 UserInfo.memberOld = format(member.getJoinTime())
                         + "\n(soit il y a " + diffInDays(member.getJoinTime(), Instant.now()) + " jours)";
-                UserInfo.accountOld = format(MemberManager.getAccountCreationDate(member))
-                        + "\n(soit il y a " + diffInDays(MemberManager.getAccountCreationDate(member), Instant.now()) + " jours)";
+                UserInfo.accountOld = format(MemberUtils.getAccountCreationDate(member))
+                        + "\n(soit il y a " + diffInDays(MemberUtils.getAccountCreationDate(member), Instant.now()) + " jours)";
                 UserInfo.statut = Objects.requireNonNull(member.getPresence().block()).getStatus().toString();
 
             } else {
@@ -46,8 +46,8 @@ public class UserInfo {
                 UserInfo.author = Objects.requireNonNull(member).getUsername() + "#" + member.getDiscriminator();
                 UserInfo.memberOld = format(member.getJoinTime())
                         + "\n(soit il y a " + diffInDays(member.getJoinTime(), Instant.now()) + " jours)";
-                UserInfo.accountOld = format(MemberManager.getAccountCreationDate(member))
-                        + "\n(soit il y a " + diffInDays(MemberManager.getAccountCreationDate(member), Instant.now()) + " jours)";
+                UserInfo.accountOld = format(MemberUtils.getAccountCreationDate(member))
+                        + "\n(soit il y a " + diffInDays(MemberUtils.getAccountCreationDate(member), Instant.now()) + " jours)";
                 UserInfo.statut = Objects.requireNonNull(member.getPresence().block()).getStatus().toString();
 
             }
@@ -77,7 +77,7 @@ public class UserInfo {
                             .setFooter("Yua", null)
                             .setTimestamp(Instant.now())
             ).block();
-            LogsManager.logAction("UserInfo", member, UserInfo.class);
+            LogsWriter.logAction("UserInfo", member, UserInfo.class);
         });
     }
  //

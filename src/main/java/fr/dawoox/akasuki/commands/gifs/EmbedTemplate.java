@@ -2,7 +2,7 @@ package fr.dawoox.akasuki.commands.gifs;
 
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;
-import fr.dawoox.akasuki.utils.database.DBManager;
+import fr.dawoox.akasuki.utils.database.DBUtils;
 
 import java.time.Instant;
 
@@ -12,7 +12,7 @@ public class EmbedTemplate {
 
         channel.createEmbed(embed -> embed.setColor(Color.DEEP_LILAC)
                 .setAuthor(reply, null, null)
-                .setImage(DBManager.getRandomLink(db))
+                .setImage(DBUtils.getRandomLink(db))
                 .setFooter("Akasuki", null)
                 .setTimestamp(Instant.now())).block();
     }

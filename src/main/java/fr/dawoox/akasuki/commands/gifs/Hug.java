@@ -3,7 +3,7 @@ package fr.dawoox.akasuki.commands.gifs;
 import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.channel.MessageChannel;
 import fr.dawoox.akasuki.utils.Command;
-import fr.dawoox.akasuki.utils.LogsManager;
+import fr.dawoox.akasuki.utils.LogsWriter;
 
 import java.util.Map;
 import java.util.Objects;
@@ -29,7 +29,7 @@ public class Hug {
             }
 
             EmbedTemplate.sendEmbed(channel, reply, "hug");
-            LogsManager.logAction("Hug : \" + randomLink", sender, Hug.class);
+            LogsWriter.logAction("Hug : \" + randomLink", sender, Hug.class);
         });
     }
 

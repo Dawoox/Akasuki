@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 
-import static fr.dawoox.akasuki.utils.TimeManager.diffInDays;
-import static fr.dawoox.akasuki.utils.TimeManager.diffInMillis;
+import static fr.dawoox.akasuki.utils.TimeUtils.diffInDays;
+import static fr.dawoox.akasuki.utils.TimeUtils.diffInMillis;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTimeManager {

@@ -8,7 +8,7 @@ import fr.dawoox.akasuki.utils.ConfigReader;
 
 import java.util.Objects;
 
-public class DBManager {
+public class DBController {
 
     private static final String USER = ConfigReader.getEntry("db_user");
     private static final String PASSWORD = ConfigReader.getEntry("db_passwd");
@@ -19,13 +19,5 @@ public class DBManager {
     private static final MongoClient mongoClient = MongoClients.create("mongodb+srv://" + USER + ":" + PASSWORD + "@" + IP + "/" + MAIN + "?retryWrites=" + RETRY + "&w=majority");
     private static final MongoDatabase database = mongoClient.getDatabase(MAIN);
     public static MongoDatabase getDatabase() { return database; }
-
-    public static String getRandomLink(String db) {
-        MongoCollection collection = DBManager.getDatabase().getCollection(db);
-
-        int R = (int) Math.floor(Math.random() * collection.countDocuments());
-        return Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString()
-                .substring(45, Objects.requireNonNull(collection.find().limit(1).skip(R).first()).toString().length() - 2);
-    }
 
 }

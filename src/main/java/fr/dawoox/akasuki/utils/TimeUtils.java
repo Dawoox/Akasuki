@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-public class TimeManager {
+public class TimeUtils {
 
     public static String format(Instant instant){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")

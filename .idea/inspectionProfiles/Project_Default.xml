@@ -35,5 +35,7 @@
     <inspection_tool class="MissingDeprecatedAnnotation" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="warnOnMissingJavadoc" value="true" />
     </inspection_tool>
+    <inspection_tool class="OptionalGetWithoutIsPresent" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RawUseOfParameterizedType" enabled="false" level="WARNING" enabled_by_default="false" />
   </profile>
 </component>
