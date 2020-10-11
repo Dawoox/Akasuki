@@ -8,6 +8,11 @@ import fr.dawoox.akasuki.utils.ConfigReader;
 
 import java.util.Objects;
 
+/**
+ * Database controller
+ * @author Dawoox
+ * @version 2.0.0
+ */
 public class DBController {
 
     private static final String USER = ConfigReader.getEntry("db_user");
@@ -18,6 +23,12 @@ public class DBController {
 
     private static final MongoClient mongoClient = MongoClients.create("mongodb+srv://" + USER + ":" + PASSWORD + "@" + IP + "/" + MAIN + "?retryWrites=" + RETRY + "&w=majority");
     private static final MongoDatabase database = mongoClient.getDatabase(MAIN);
+
+    /**
+     * Get the MongoDB Database Object
+     * @return MongoDatabase
+     * Return MongoDatabase link to the database
+     */
     public static MongoDatabase getDatabase() { return database; }
 
 }
