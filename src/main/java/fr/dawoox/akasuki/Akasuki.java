@@ -8,6 +8,8 @@ import discord4j.core.object.presence.Activity;
 import discord4j.core.object.presence.Presence;
 import fr.dawoox.akasuki.commands.gifs.Hug;
 import fr.dawoox.akasuki.commands.gifs.Kiss;
+import fr.dawoox.akasuki.commands.images.Stonks;
+import fr.dawoox.akasuki.commands.images.Wanted;
 import fr.dawoox.akasuki.commands.misc.Ping;
 import fr.dawoox.akasuki.commands.misc.UserInfo;
 import fr.dawoox.akasuki.commands.misc.Emoji;
@@ -72,6 +74,8 @@ public class Akasuki {
                     Kick.reg(commands);
                     Mute.reg(commands);
                     Unmute.reg(commands);
+                    Stonks.reg(commands);
+                    Wanted.reg(commands);
                     LoggerFactory.getLogger(Akasuki.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Connected");
 

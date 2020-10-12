@@ -32,6 +32,7 @@ Akasuki est créée grâce à :
 * Logback: 1.2.3
 * MongoDB Sync Driver: 4.1.0
 * Maven Compiler: 3.8.1
+* ImageJ: 1.53e
 	
 ## Installation  
 ```
