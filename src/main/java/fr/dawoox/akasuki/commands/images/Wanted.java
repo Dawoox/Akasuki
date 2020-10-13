@@ -35,10 +35,9 @@ public class Wanted {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            font.show();
-/*
+
             event.getMessage().getChannel().block().createMessage(MessageCreateSpec ->
-                    MessageCreateSpec.addFile("wanted.png", ImageUtils.getDiscordCompatibleFile(font))).block();*/
+                    MessageCreateSpec.addFile("wanted.png", ImageUtils.getDiscordCompatibleFile(font))).block();
         });
     }
 }
