@@ -77,5 +77,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: com.apptastic:rssreader:2.3.1" level="project" />
   </component>
 </module>

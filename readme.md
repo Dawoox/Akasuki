@@ -33,6 +33,7 @@ Akasuki is created with:
 * MongoDB Sync Driver: 4.1.0
 * Maven Compiler: 3.8.1
 * ImageJ: 1.53e
+* Rssreader: 2.3.1
 	
 ## Setup  
 ```
