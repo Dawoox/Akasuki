@@ -13,7 +13,6 @@ public class Wanted {
 
     public static void reg(Map<String, Command> commands) {
         commands.put("wanted", event -> {
-            System.setProperty("http.agent", "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)");
             ImagePlus font = IJ.openImage("src\\main\\java\\fr\\dawoox\\akasuki\\commands\\images\\wanted.png");
             ImagePlus tempavatar = IJ.openImage(event.getMessage().getAuthor().get().getAvatarUrl());
             ImageProcessor ip = font.getProcessor();

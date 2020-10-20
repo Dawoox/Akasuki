@@ -8,6 +8,7 @@ import discord4j.core.object.presence.Activity;
 import discord4j.core.object.presence.Presence;
 import fr.dawoox.akasuki.commands.gifs.Hug;
 import fr.dawoox.akasuki.commands.gifs.Kiss;
+import fr.dawoox.akasuki.commands.images.Apod;
 import fr.dawoox.akasuki.commands.images.Stonks;
 import fr.dawoox.akasuki.commands.images.Wanted;
 import fr.dawoox.akasuki.commands.misc.Ping;
@@ -37,6 +38,8 @@ public class Akasuki {
         final String TOKEN = ConfigReader.getEntry("token");
         final DiscordClient client = DiscordClient.create(TOKEN);
         final GatewayDiscordClient g = client.login().block();
+
+        System.setProperty("http.agent", "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)");
 
         assert g != null;
         g.getEventDispatcher().on(MessageCreateEvent.class)
@@ -76,6 +79,7 @@ public class Akasuki {
                     Unmute.reg(commands);
                     Stonks.reg(commands);
                     Wanted.reg(commands);
+                    Apod.reg(commands);
                     LoggerFactory.getLogger(Akasuki.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Connected");
 

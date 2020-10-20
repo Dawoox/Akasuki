@@ -98,9 +98,10 @@
             <version>1.53e</version>
         </dependency>
         <dependency>
-            <groupId>com.apptastic</groupId>
-            <artifactId>rssreader</artifactId>
-            <version>2.3.1</version>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
