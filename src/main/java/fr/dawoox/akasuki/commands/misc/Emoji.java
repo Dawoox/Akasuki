@@ -9,6 +9,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+/**
+ * Show a image of the emoji requested /!\ IN BETA /!\
+ * @author Dawoox
+ * @version 1.1.0
+ */
 public class Emoji {
     public static void reg(Map<String, Command> commands){
         commands.put("emoji", event -> {

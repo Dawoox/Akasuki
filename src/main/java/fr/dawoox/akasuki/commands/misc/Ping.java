@@ -8,6 +8,11 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Return the bot ping
+ * @author Dawoox
+ * @version 1.2.0
+ */
 public class Ping {
 
     public static void reg(Map<String, Command> commands){

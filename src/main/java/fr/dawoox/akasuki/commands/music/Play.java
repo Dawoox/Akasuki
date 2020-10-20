@@ -14,6 +14,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Request the bot to play any song into the vocal where he is /!\ IN BETA /!\
+ * @author Dawoox
+ * @version 1.0.0
+ */
 public class Play {
 
     private static AudioPlayer player;

@@ -43,12 +43,13 @@ $ mvn clean install
 $ touch config.properties
 $ vim config.properties
 
-token={your bot token}
-db_user={your database username}
-db_passwd={your database password}
-db_ip={ip adress of your database}
-db_retry={true/false the db will retry to connect if the connexion crash}
-db_main={the name of the database}
+token={votre token}
+db_user={nom d'utilisateur de la base de données}
+db_passwd={mot de passe de la base de données}
+db_ip={ip de la abse de données}
+db_retry={true/false La base de données va essayer de se reconnecter après une erreure}
+db_main={le nom de la base de données}
+nasa_api_key={une clé de l'API de la NASA}
 ~
 ~
 

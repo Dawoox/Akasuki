@@ -9,6 +9,11 @@ import ij.process.ImageProcessor;
 import java.awt.*;
 import java.util.Map;
 
+/**
+ * Show a image of a wanted templated with the sender profil image into /!\ IN BETA /!\
+ * @author Dawoox
+ * @version 0.1.1
+ */
 public class Wanted {
 
     public static void reg(Map<String, Command> commands) {

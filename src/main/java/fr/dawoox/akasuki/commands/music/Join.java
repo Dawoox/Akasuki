@@ -7,6 +7,11 @@ import fr.dawoox.akasuki.utils.Command;
 
 import java.util.Map;
 
+/**
+ * Let the bot join the vocal channel where the sender is into /!\ IN BETA /!\
+ * @author Dawoox
+ * @version 1.0.0
+ */
 public class Join {
 
     public static void reg(Map<String, Command> commands){

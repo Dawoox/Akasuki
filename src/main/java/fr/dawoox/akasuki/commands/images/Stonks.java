@@ -9,6 +9,11 @@ import ij.process.ImageProcessor;
 import java.awt.*;
 import java.util.Map;
 
+/**
+ * Show a image of a stonks templated with the sender profil image into /!\ IN BETA /!\
+ * @author Dawoox
+ * @version 1.3.0
+ */
 public class Stonks {
 
     public static void reg(Map<String, Command> commands) {

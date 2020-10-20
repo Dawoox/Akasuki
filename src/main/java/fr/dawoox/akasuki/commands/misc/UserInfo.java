@@ -16,6 +16,11 @@ import java.util.Objects;
 import static fr.dawoox.akasuki.utils.TimeUtils.format;
 import static fr.dawoox.akasuki.utils.TimeUtils.diffInDays;
 
+/**
+ * Return informations about the mender mentioned or who has send the command
+ * @author Dawoox
+ * @version 1.0.0
+ */
 public class UserInfo {
 
     private static String author;

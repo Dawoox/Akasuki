@@ -2,13 +2,18 @@ package fr.dawoox.akasuki.commands.moderator;
 
 import discord4j.common.util.Snowflake;
 import discord4j.core.object.entity.Member;
-import fr.dawoox.akasuki.commands.gifs.EmbedTemplate;
+import fr.dawoox.akasuki.utils.EmbedTemplate;
 import fr.dawoox.akasuki.utils.Command;
 import fr.dawoox.akasuki.utils.LogsWriter;
 
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Unmute the member mentioned
+ * @author Dawoox
+ * @version 1.0.0
+ */
 public class Unmute {
     private static String reply = "default error";
 

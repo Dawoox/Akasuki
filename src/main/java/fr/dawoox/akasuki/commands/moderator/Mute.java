@@ -5,7 +5,7 @@ import discord4j.core.object.PermissionOverwrite;
 import discord4j.core.object.entity.Member;
 import discord4j.rest.util.Color;
 import discord4j.rest.util.PermissionSet;
-import fr.dawoox.akasuki.commands.gifs.EmbedTemplate;
+import fr.dawoox.akasuki.utils.EmbedTemplate;
 import fr.dawoox.akasuki.utils.ArgumentUtils;
 import fr.dawoox.akasuki.utils.Command;
 import fr.dawoox.akasuki.utils.LogsWriter;
@@ -13,6 +13,11 @@ import fr.dawoox.akasuki.utils.LogsWriter;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Mute the member mentioned
+ * @author Dawoox
+ * @version 1.1.0
+ */
 public class Mute {
     private static String reply = "default error";
 

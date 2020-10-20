@@ -1,7 +1,7 @@
 package fr.dawoox.akasuki.commands.moderator;
 
 import discord4j.core.object.entity.Member;
-import fr.dawoox.akasuki.commands.gifs.EmbedTemplate;
+import fr.dawoox.akasuki.utils.EmbedTemplate;
 import fr.dawoox.akasuki.utils.ArgumentUtils;
 import fr.dawoox.akasuki.utils.Command;
 import fr.dawoox.akasuki.utils.LogsWriter;
@@ -9,6 +9,11 @@ import fr.dawoox.akasuki.utils.LogsWriter;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Kick the member mentioned /!\ IN BETA /!\
+ * @author Dawoox
+ * @version 1.0.0
+ */
 public class Kick {
     private static String reply = "default error";
 

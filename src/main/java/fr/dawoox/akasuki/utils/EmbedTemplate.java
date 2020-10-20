@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.commands.gifs;
+package fr.dawoox.akasuki.utils;
 
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;
@@ -7,6 +7,7 @@ import fr.dawoox.akasuki.utils.database.DBUtils;
 import java.time.Instant;
 
 /**
+ * Utils class to help sending Embed.
  * @author Dawoox
  * @version 1.3.0
  */

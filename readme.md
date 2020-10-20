@@ -49,6 +49,7 @@ db_passwd={your database password}
 db_ip={ip adress of your database}
 db_retry={true/false the db will retry to connect if the connexion crash}
 db_main={the name of the database}
+nasa_api_key={a NASA api key}
 ~
 ~
 
