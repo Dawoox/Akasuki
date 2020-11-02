@@ -25,8 +25,8 @@ public class Stonks {
             try {
                 for (int i=0;i<avatar.getWidth();i++){
                     for (int i2=0;i2<avatar.getHeight();i2++){
-                        int[] test = avatar.getPixel(i, i2);
-                        Color color = new Color(test[0], test[1], test[2]);
+                        int[] temp = avatar.getPixel(i, i2);
+                        Color color = new Color(temp[0], temp[1], temp[2]);
                         ip.setColor(color);
                         ip.setLineWidth(1);
                         if (!color.equals(Color.BLACK)){

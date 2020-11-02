@@ -10,7 +10,6 @@ import fr.dawoox.akasuki.commands.gifs.Hug;
 import fr.dawoox.akasuki.commands.gifs.Kiss;
 import fr.dawoox.akasuki.commands.images.Apod;
 import fr.dawoox.akasuki.commands.images.Stonks;
-import fr.dawoox.akasuki.commands.images.Wanted;
 import fr.dawoox.akasuki.commands.misc.Ping;
 import fr.dawoox.akasuki.commands.misc.UserInfo;
 import fr.dawoox.akasuki.commands.misc.Emoji;
@@ -69,7 +68,7 @@ public class Akasuki {
         //Get call when the bot start
         g.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(readyEvent -> {
-                    LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Initialing ");
+                    LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Initialing...");
                     commands.clear();
 
                     //Output all guild's name where Akasuki is
@@ -92,15 +91,22 @@ public class Akasuki {
                     if (args[0].equalsIgnoreCase("dev")){
                         Emoji.reg(commands);
                         Stonks.reg(commands);
-                        Wanted.reg(commands);
                         Join.reg(commands);
                         Play.reg(commands);
                     }
                     LoggerFactory.getLogger(Akasuki.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Connected");
 
-                    //Update status
-                    g.updatePresence(Presence.online(Activity.watching("Release J-4"))).block();
+                    //Update status if present.
+                    if (args.length >= 2){
+                        LoggerFactory.getLogger(Akasuki.class).info("Changing Activity...");
+                        String activity = "";
+                        for (int i=1;i<args.length;i++){
+                            activity = activity += args[i] + " ";
+                        }
+                        g.updatePresence(Presence.online(Activity.watching(activity))).block();
+                        LoggerFactory.getLogger(Akasuki.class).info("Activity Changed");
+                    }
                 });
 
         g.onDisconnect().block();

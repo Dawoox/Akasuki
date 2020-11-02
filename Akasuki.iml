@@ -12,7 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/logs" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8 - Oracle" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.7.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
@@ -68,15 +68,6 @@
     <orderEntry type="library" name="Maven: org.mongodb:bson:4.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:4.1.0" level="project" />
     <orderEntry type="library" name="Maven: net.imagej:ij:1.53e" level="project" />
-    <orderEntry type="module-library">
-      <library name="Maven: com.sun:tools:1.4.2">
-        <CLASSES>
-          <root url="jar://D:/Program Files/Java/jdk1.8.0_251/lib/tools.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:20.1.0" level="project" />
   </component>
 </module>
