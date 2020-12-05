@@ -2,8 +2,8 @@ package fr.dawoox.akasuki.commands.gifs;
 
 import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.channel.MessageChannel;
-import fr.dawoox.akasuki.utils.Command;
-import fr.dawoox.akasuki.utils.EmbedTemplate;
+import fr.dawoox.akasuki.core.command.BaseCmd;
+import fr.dawoox.akasuki.utils.template.EmbedTemplate;
 import fr.dawoox.akasuki.utils.LogsWriter;
 
 import java.util.Map;
@@ -19,7 +19,7 @@ public class Hug {
     private static Member target;
     private static String reply = "default error";
 
-    public static void reg(Map<String, Command> commands){
+    public static void reg(Map<String, BaseCmd> commands){
         commands.put("hug", event -> {
             MessageChannel channel = event.getMessage().getChannel().block();
             Member sender = event.getMessage().getAuthorAsMember().block();

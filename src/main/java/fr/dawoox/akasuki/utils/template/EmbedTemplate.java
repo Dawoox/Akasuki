@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.utils;
+package fr.dawoox.akasuki.utils.template;
 
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;

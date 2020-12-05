@@ -1,6 +1,7 @@
-package fr.dawoox.akasuki.utils;
+package fr.dawoox.akasuki.utils.API;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.dawoox.akasuki.utils.ConfigReader;
 import fr.dawoox.akasuki.utils.json.APOD;
 
 import java.io.IOException;

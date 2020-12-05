@@ -6,7 +6,7 @@ import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import com.sedmelluq.discord.lavaplayer.track.playback.NonAllocatingAudioFrameBuffer;
 import discord4j.voice.AudioProvider;
-import fr.dawoox.akasuki.utils.Command;
+import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.utils.music.LavaPlayerAudioProvider;
 import fr.dawoox.akasuki.utils.music.TrackScheduler;
 
@@ -24,7 +24,7 @@ public class Play {
     private static AudioPlayer player;
     private static AudioProvider provider;
 
-    public static void reg(Map<String, Command> commands){
+    public static void reg(Map<String, BaseCmd> commands){
 
         final AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
         playerManager.getConfiguration().setFrameBufferFactory(NonAllocatingAudioFrameBuffer::new);

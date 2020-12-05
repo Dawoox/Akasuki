@@ -5,7 +5,7 @@ import discord4j.core.object.entity.GuildEmoji;
 import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;
-import fr.dawoox.akasuki.utils.Command;
+import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.utils.LogsWriter;
 import fr.dawoox.akasuki.utils.MemberUtils;
 
@@ -29,7 +29,7 @@ public class UserInfo {
     private static Member member;
     private static String statut;
 
-    public static void reg(Map<String, Command> commands){
+    public static void reg(Map<String, BaseCmd> commands){
         commands.put("userinfo", event -> {
             final MessageChannel channel = event.getMessage().getChannel().block();
             GuildEmoji onlineEmoji = Objects.requireNonNull(event.getGuild().block()).getGuildEmojiById(Snowflake.of("749009520507879556")).block();

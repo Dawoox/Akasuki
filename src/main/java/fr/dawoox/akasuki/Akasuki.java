@@ -6,24 +6,17 @@ import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.presence.Activity;
 import discord4j.core.object.presence.Presence;
-import fr.dawoox.akasuki.commands.gifs.Hug;
-import fr.dawoox.akasuki.commands.gifs.Kiss;
-import fr.dawoox.akasuki.commands.images.Apod;
-import fr.dawoox.akasuki.commands.images.Stonks;
-import fr.dawoox.akasuki.commands.misc.Ping;
-import fr.dawoox.akasuki.commands.misc.UserInfo;
-import fr.dawoox.akasuki.commands.misc.Emoji;
-import fr.dawoox.akasuki.commands.moderator.Ban;
-import fr.dawoox.akasuki.commands.moderator.Kick;
-import fr.dawoox.akasuki.commands.moderator.Mute;
-import fr.dawoox.akasuki.commands.moderator.Unmute;
-import fr.dawoox.akasuki.commands.music.Join;
-import fr.dawoox.akasuki.commands.music.Play;
-import fr.dawoox.akasuki.utils.Command;
+import discord4j.rest.response.ResponseFunction;
+import fr.dawoox.akasuki.core.command.BaseCmd;
+import fr.dawoox.akasuki.core.command.MessageProcessor;
 import fr.dawoox.akasuki.utils.ConfigReader;
+import io.sentry.Sentry;
 import org.slf4j.LoggerFactory;
+import reactor.util.Logger;
+import reactor.util.Loggers;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -34,50 +27,71 @@ import java.util.Objects;
  */
 public class Akasuki {
 
-    private static final Map<String, Command> commands = new HashMap<>();
+    public static final Logger DEFAULT_LOGGER = Loggers.getLogger("akasuki");
+
+    private static final Map<String, BaseCmd> commands = new HashMap<>();
     private static final String prefix = "*";
 
     /**
-     * Main function, call on startup.
+     * Main class, call on startup.
      * @param args
      * Args are the supplied command-line argument.
      * @since 1.0.0
      */
     public static void main(String[] args) {
+        //Set default locale to FR
+        Locale.setDefault(Locale.FRANCE);
+
+        if (true){
+            DEFAULT_LOGGER.info("Initializing Sentry");
+            Sentry.init(sentryOptions -> sentryOptions.setDsn("https://8f8f812b07284a7b99b8527cb2b94839@o473268.ingest.sentry.io/5508041"));
+        }
+        System.out.println("Test");
+
+        DEFAULT_LOGGER.info("Initializing ");
+
+        final DiscordClient client = DiscordClient.builder(ConfigReader.getEntry("token")).onClientResponse(ResponseFunction.emptyIfNotFound()).build();
+
+        DEFAULT_LOGGER.info("Connecting to Discord");
+
         final String TOKEN = ConfigReader.getEntry("token");
-        final DiscordClient client = DiscordClient.create(TOKEN);
-        final GatewayDiscordClient g = client.login().block();
+        final GatewayDiscordClient gateway = client.login().block();
 
         System.setProperty("http.agent", "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)");
-        assert g != null;
+        assert gateway != null;
+
 
         //Get call when a new message is send in any guild where the bot is
-        g.getEventDispatcher().on(MessageCreateEvent.class)
+        gateway.getEventDispatcher().on(MessageCreateEvent.class)
                 .subscribe(event -> {
+
+                    MessageProcessor.processEvent(event);
+
+                    /*
                     final String content = event.getMessage().getContent();
                     if (event.getMessage().getAuthor().get().isBot()) { return; }
-                    for (final Map.Entry<String, Command> entry : commands.entrySet()) {
+                    for (final Map.Entry<String, BaseCmd> entry : commands.entrySet()) {
                         if (content.startsWith(prefix + entry.getKey())) {
                             entry.getValue().execute(event);
                             break;
                         }
-                    }
+                    }*/
                 });
 
 
         //Get call when the bot start
-        g.getEventDispatcher().on(ReadyEvent.class)
+        gateway.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(readyEvent -> {
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Initialing...");
                     commands.clear();
 
                     //Output all guild's name where Akasuki is
-                    for (int i = 0; i< Objects.requireNonNull(Objects.requireNonNull(g.getGuilds().collectList().block())).size(); i++){
-                        System.out.println(Objects.requireNonNull(g.getGuilds().collectList().block()).get(i).getName());
+                    for (int i = 0; i< Objects.requireNonNull(Objects.requireNonNull(gateway.getGuilds().collectList().block())).size(); i++){
+                        System.out.println(Objects.requireNonNull(gateway.getGuilds().collectList().block()).get(i).getName());
                     }
 
                     //Register all commands
-                    Ping.reg(commands);
+                    /*Ping.reg(commands);
                     UserInfo.reg(commands);
                     Kiss.reg(commands);
                     Hug.reg(commands);
@@ -85,14 +99,14 @@ public class Akasuki {
                     Kick.reg(commands);
                     Mute.reg(commands);
                     Unmute.reg(commands);
-                    Apod.reg(commands);
+                    Apod.reg(commands);*/
 
                     //Register beta commands if the server is in dev mode
                     if (args[0].equalsIgnoreCase("dev")){
-                        Emoji.reg(commands);
+                        /*Emoji.reg(commands);
                         Stonks.reg(commands);
                         Join.reg(commands);
-                        Play.reg(commands);
+                        Play.reg(commands);*/
                     }
                     LoggerFactory.getLogger(Akasuki.class).info("Commands Initialized");
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Connected");
@@ -104,11 +118,15 @@ public class Akasuki {
                         for (int i=1;i<args.length;i++){
                             activity = activity += args[i] + " ";
                         }
-                        g.updatePresence(Presence.online(Activity.watching(activity))).block();
+                        gateway.updatePresence(Presence.online(Activity.watching(activity))).block();
                         LoggerFactory.getLogger(Akasuki.class).info("Activity Changed");
                     }
                 });
 
-        g.onDisconnect().block();
+        gateway.onDisconnect().block();
+    }
+
+    public static Map<String, BaseCmd> getCommands(){
+        return commands;
     }
 }

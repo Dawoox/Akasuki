@@ -1,6 +1,6 @@
 package fr.dawoox.akasuki.commands.misc;
 
-import fr.dawoox.akasuki.utils.Command;
+import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.utils.LogsWriter;
 import fr.dawoox.akasuki.utils.TimeUtils;
 
@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public class Ping {
 
-    public static void reg(Map<String, Command> commands){
+    public static void reg(Map<String, BaseCmd> commands){
         commands.put("ping", event -> {
             Instant messageInstant = event.getMessage().getTimestamp();
             Objects.requireNonNull(event.getMessage().getChannel().block()).createMessage("Pinging...");

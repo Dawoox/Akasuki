@@ -1,9 +1,9 @@
 package fr.dawoox.akasuki.commands.moderator;
 
 import discord4j.core.object.entity.Member;
-import fr.dawoox.akasuki.utils.EmbedTemplate;
+import fr.dawoox.akasuki.utils.template.EmbedTemplate;
 import fr.dawoox.akasuki.utils.ArgumentUtils;
-import fr.dawoox.akasuki.utils.Command;
+import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.utils.LogsWriter;
 
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.util.Objects;
 public class Ban {
     private static String reply = "default error";
 
-    public static void reg(Map<String, Command> commands){
+    public static void reg(Map<String, BaseCmd> commands){
         commands.put("ban", event -> {
             final Member sender = event.getMessage().getAuthorAsMember().block();
             final boolean canBan = Objects.requireNonNull(Objects.requireNonNull(sender).getBasePermissions().block()).toString().contains("BAN_MEMBERS");
