@@ -15,6 +15,7 @@ import java.util.Objects;
  */
 public class Ping {
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("ping", event -> {
             Instant messageInstant = event.getMessage().getTimestamp();
@@ -26,6 +27,6 @@ public class Ping {
             Objects.requireNonNull(event.getMessage().getChannel().block()).createMessage(reply).block();
             LogsWriter.logAction("Ping : ", Objects.requireNonNull(event.getMessage().getAuthorAsMember().block()), Ping.class);
         });
-    }
+    }*/
 
 }

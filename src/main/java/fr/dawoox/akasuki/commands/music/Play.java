@@ -24,6 +24,7 @@ public class Play {
     private static AudioPlayer player;
     private static AudioProvider provider;
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
 
         final AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
@@ -44,5 +45,5 @@ public class Play {
     }
 
     public static AudioPlayer getPlayer() { return player; }
-    public static AudioProvider getProvider() { return provider; }
+    public static AudioProvider getProvider() { return provider; }*/
 }

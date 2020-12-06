@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public class Join {
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("join", event -> {
             final Member member = event.getMember().orElse(null);
@@ -27,6 +28,6 @@ public class Join {
                 }
             }
         });
-    }
+    }*/
 
 }

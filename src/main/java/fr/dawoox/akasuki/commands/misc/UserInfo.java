@@ -29,7 +29,9 @@ public class UserInfo {
     private static Member member;
     private static String statut;
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
+
         commands.put("userinfo", event -> {
             final MessageChannel channel = event.getMessage().getChannel().block();
             GuildEmoji onlineEmoji = Objects.requireNonNull(event.getGuild().block()).getGuildEmojiById(Snowflake.of("749009520507879556")).block();
@@ -84,6 +86,6 @@ public class UserInfo {
             ).block();
             LogsWriter.logAction("UserInfo : ", member, UserInfo.class);
         });
-    }
- //
+    }*/
+
 }

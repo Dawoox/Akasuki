@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Ban {
     private static String reply = "default error";
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("ban", event -> {
             final Member sender = event.getMessage().getAuthorAsMember().block();
@@ -43,5 +44,5 @@ public class Ban {
                 LogsWriter.logAction("Ban : ", sender, Ban.class);
             }
         });
-    }
+    }*/
 }

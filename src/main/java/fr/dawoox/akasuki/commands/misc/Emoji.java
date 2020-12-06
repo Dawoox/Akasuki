@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
  * @version 1.1.0
  */
 public class Emoji {
+
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("emoji", event -> {
             String[] temp = getEmojiId(event.getMessage().getContent());
@@ -23,7 +25,7 @@ public class Emoji {
             GuildEmoji emoji = Objects.requireNonNull(event.getGuild().block()).getGuildEmojiById(Snowflake.of(emojiId)).block(Duration.ofSeconds(2));
             Objects.requireNonNull(event.getMessage().getChannel().block()).createMessage(Objects.requireNonNull(emoji).getImageUrl()).block();
         });
-    }
+    }*/
 
     public static String[] getEmojiId(String string){
         return Pattern.compile(":").split(string);

@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Kick {
     private static String reply = "default error";
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("kick", event -> {
             final Member sender = event.getMessage().getAuthorAsMember().block();
@@ -41,5 +42,5 @@ public class Kick {
                 LogsWriter.logAction("Kick : ", sender, Ban.class);
             }
         });
-    }
+    }*/
 }

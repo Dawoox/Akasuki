@@ -21,6 +21,7 @@ import java.util.Objects;
 public class Mute {
     private static String reply = "default error";
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("mute", event -> {
             final Member sender = event.getMessage().getAuthorAsMember().block();
@@ -72,5 +73,5 @@ public class Mute {
                 LogsWriter.logAction("Mute : ", sender, Mute.class);
             }
         });
-    }
+    }*/
 }

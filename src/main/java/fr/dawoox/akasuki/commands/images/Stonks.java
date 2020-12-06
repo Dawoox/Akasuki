@@ -16,6 +16,7 @@ import java.util.Map;
  */
 public class Stonks {
 
+    /*
     public static void reg(Map<String, BaseCmd> commands) {
         commands.put("stonks", event -> {
             ImagePlus font = IJ.openImage("src\\main\\java\\fr\\dawoox\\akasuki\\commands\\images\\stonks.png");
@@ -41,5 +42,5 @@ public class Stonks {
             event.getMessage().getChannel().block().createMessage(MessageCreateSpec ->
                     MessageCreateSpec.addFile("stonks.png", ImageUtils.getDiscordCompatibleFile(font))).block();
         });
-    }
+    }*/
 }

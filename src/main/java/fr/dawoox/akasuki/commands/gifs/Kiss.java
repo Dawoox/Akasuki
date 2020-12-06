@@ -19,6 +19,7 @@ public class Kiss {
     private static Member target;
     private static String reply = "default error";
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("kiss", event -> {
             MessageChannel channel = event.getMessage().getChannel().block();
@@ -37,6 +38,6 @@ public class Kiss {
             EmbedTemplate.sendEmbed(channel, reply, "kiss");
             LogsWriter.logAction("Kiss : ", sender, Kiss.class);
         });
-    }
+    }*/
 
 }

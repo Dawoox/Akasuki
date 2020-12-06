@@ -46,7 +46,6 @@ public class Akasuki {
             DEFAULT_LOGGER.info("Initializing Sentry");
             Sentry.init(sentryOptions -> sentryOptions.setDsn("https://8f8f812b07284a7b99b8527cb2b94839@o473268.ingest.sentry.io/5508041"));
         }
-        System.out.println("Test");
 
         DEFAULT_LOGGER.info("Initializing ");
 

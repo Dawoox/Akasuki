@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Unmute {
     private static String reply = "default error";
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("unmute", event -> {
             final Member sender = event.getMessage().getAuthorAsMember().block();
@@ -45,5 +46,5 @@ public class Unmute {
                 }
             }
         });
-    }
+    }*/
 }

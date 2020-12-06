@@ -19,6 +19,7 @@ public class Hug {
     private static Member target;
     private static String reply = "default error";
 
+    /*
     public static void reg(Map<String, BaseCmd> commands){
         commands.put("hug", event -> {
             MessageChannel channel = event.getMessage().getChannel().block();
@@ -37,6 +38,6 @@ public class Hug {
             EmbedTemplate.sendEmbed(channel, reply, "hug");
             LogsWriter.logAction("Hug : ", sender, Hug.class);
         });
-    }
+    }*/
 
 }

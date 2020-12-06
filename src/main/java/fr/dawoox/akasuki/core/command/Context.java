@@ -1,7 +1,10 @@
 package fr.dawoox.akasuki.core.command;
 
+import discord4j.common.util.Snowflake;
 import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.core.object.Embed;
 import discord4j.core.object.entity.Message;
+import discord4j.core.object.entity.User;
 import fr.dawoox.akasuki.commands.MissingArgumentException;
 import fr.dawoox.akasuki.utils.StringUtils;
 import reactor.util.annotation.Nullable;
@@ -47,5 +50,13 @@ public class Context {
 
     public String getCommandName() {
         return this.cmdName;
+    }
+
+    public User getAuthor() {
+        return event.getMessage().getAuthor().get();
+    }
+
+    public Snowflake getGuildId() {
+        return event.getGuildId().get();
     }
 }

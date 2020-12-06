@@ -33,6 +33,7 @@ public class CommandManager {
                     DEFAULT_LOGGER.error("Collision between names of {} and {}", name, map.get(name).getClass().getSimpleName());
                 }
             }
+            cmd.setEnabled(true);
         }
         DEFAULT_LOGGER.info("{} commands initialized", cmds.length);
         return Collections.unmodifiableMap(map);

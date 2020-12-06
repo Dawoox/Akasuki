@@ -16,11 +16,12 @@ import java.util.Objects;
  */
 public class Apod {
 
+    /*
     public static void reg(Map<String, BaseCmd> commands) {
         commands.put("apod", event -> {
             APOD apod = NasaAPIUtils.requestAPOD();
             EmbedTemplate.sendEmbed(Objects.requireNonNull(event.getMessage().getChannel().block()),
                     "NASA Astronomy Picture of the Day", apod.title, Color.DEEP_LILAC, apod.url);
         });
-    }
+    }*/
 }
