@@ -130,6 +130,18 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <!-- Prometheus client -->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+        <!-- Prometheus Simple HTTPServer -->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_httpserver</artifactId>
+            <version>0.9.0</version>
+        </dependency>
     </dependencies>
 
 </project>

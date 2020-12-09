@@ -1,5 +1,6 @@
 package fr.dawoox.akasuki;
 
+import discord4j.common.util.Snowflake;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.lifecycle.ReadyEvent;
@@ -10,11 +11,13 @@ import discord4j.rest.response.ResponseFunction;
 import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.core.command.MessageProcessor;
 import fr.dawoox.akasuki.utils.ConfigReader;
+import io.prometheus.client.exporter.HTTPServer;
 import io.sentry.Sentry;
 import org.slf4j.LoggerFactory;
 import reactor.util.Logger;
 import reactor.util.Loggers;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -30,7 +33,8 @@ public class Akasuki {
     public static final Logger DEFAULT_LOGGER = Loggers.getLogger("akasuki");
 
     private static final Map<String, BaseCmd> commands = new HashMap<>();
-    private static final String prefix = "*";
+    private static final String prefix = ConfigReader.getEntry("default_prefix");
+    private static Snowflake owner_id;
 
     /**
      * Main class, call on startup.
@@ -42,6 +46,12 @@ public class Akasuki {
         //Set default locale to FR
         Locale.setDefault(Locale.FRANCE);
 
+        try {
+            HTTPServer server = new HTTPServer(8080);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         if (true){
             DEFAULT_LOGGER.info("Initializing Sentry");
             Sentry.init(sentryOptions -> sentryOptions.setDsn("https://8f8f812b07284a7b99b8527cb2b94839@o473268.ingest.sentry.io/5508041"));
@@ -50,6 +60,8 @@ public class Akasuki {
         DEFAULT_LOGGER.info("Initializing ");
 
         final DiscordClient client = DiscordClient.builder(ConfigReader.getEntry("token")).onClientResponse(ResponseFunction.emptyIfNotFound()).build();
+
+        Akasuki.owner_id = Snowflake.of(client.getApplicationInfo().block().owner().id());
 
         DEFAULT_LOGGER.info("Connecting to Discord");
 
@@ -127,5 +139,9 @@ public class Akasuki {
 
     public static Map<String, BaseCmd> getCommands(){
         return commands;
+    }
+
+    public static Snowflake getOwnerId() {
+        return owner_id;
     }
 }

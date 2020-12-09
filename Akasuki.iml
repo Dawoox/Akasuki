@@ -85,5 +85,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.7.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:20.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.9.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_httpserver:0.9.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.9.0" level="project" />
   </component>
 </module>
