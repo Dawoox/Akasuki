@@ -26,7 +26,6 @@ public class SendMessageCmd extends BaseCmd {
 
     @Override
     public void execute(Context context){
-        System.out.println("testtriggered");
         context.getMessage().getChannel().block().createMessage("Test").block();
     }
 

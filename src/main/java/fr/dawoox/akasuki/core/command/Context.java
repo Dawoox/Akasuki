@@ -14,6 +14,7 @@ import fr.dawoox.akasuki.utils.StringUtils;
 import reactor.util.annotation.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class Context {
@@ -73,10 +74,10 @@ public class Context {
     }
 
     public CommandPermission getPermissions() {
-        if (this.getAuthorId().equals(Akasuki.getOwnerId().asString())) {
+        if (this.getAuthorId().equals(Akasuki.getOwnerId())) {
             return CommandPermission.OWNER;
         } else if (this.getChannel().getType().equals(Channel.Type.DM)
-                || getAuthor().asMember(getGuildId()).block().getBasePermissions().block().contains(Permission.ADMINISTRATOR)) {
+                || Objects.requireNonNull(Objects.requireNonNull(getAuthor().asMember(getGuildId()).block()).getBasePermissions().block()).contains(Permission.ADMINISTRATOR)) {
             return CommandPermission.ADMIN;
         }
 
