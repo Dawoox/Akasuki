@@ -64,10 +64,8 @@ public class Akasuki {
         System.setProperty("http.agent", ConfigLoader.USER_AGENT);
         assert gateway != null;
 
-
         //Get call when a new message is send in any guild where the bot is
         gateway.getEventDispatcher().on(MessageCreateEvent.class).subscribe(MessageProcessor::processEvent);
-
 
         //Get call when the bot start
         gateway.getEventDispatcher().on(ReadyEvent.class)
