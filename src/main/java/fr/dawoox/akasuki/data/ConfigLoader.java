@@ -18,8 +18,8 @@ public class ConfigLoader {
     public static final String INVITE_URL = PROPERTIES.getProperty("invite.url");
     public static final String USER_AGENT = String.format("Akasuki/%s/D4J-DiscordBot (%s)", Maven.PROJECT_VERSION, GITHUB_URL);
 
-    public static final String DEFAULT_PREFIX = PROPERTIES.getProperty("default.prefix");
-    public static final String TOKEN = PROPERTIES.getProperty("token");
+    public static final String DEFAULT_PREFIX = PROPERTIES.getProperty("akasuki.prefix");
+    public static final String TOKEN = PROPERTIES.getProperty("akasuki.token");
 
     public static final String DB_USER = PROPERTIES.getProperty("db.user");
     public static final String DB_PASSWD = PROPERTIES.getProperty("db.ip");

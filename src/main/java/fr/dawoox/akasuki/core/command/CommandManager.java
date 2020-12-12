@@ -1,5 +1,6 @@
 package fr.dawoox.akasuki.core.command;
 
+import fr.dawoox.akasuki.commands.misc.InfoCmd;
 import fr.dawoox.akasuki.commands.misc.UserInfoCmd;
 import fr.dawoox.akasuki.commands.owner.SendMessageCmd;
 
@@ -25,7 +26,7 @@ public class CommandManager {
                 new SendMessageCmd(),
 
                 //Utilities Commands
-                new UserInfoCmd()
+                new UserInfoCmd(), new InfoCmd()
         );
     }
 
@@ -53,5 +54,9 @@ public class CommandManager {
 
     public static CommandManager getInstance() {
         return instance;
+    }
+
+    public int getCommandsCount() {
+        return getCommands().size();
     }
 }
