@@ -2,6 +2,7 @@ package fr.dawoox.akasuki.core.command;
 
 import fr.dawoox.akasuki.commands.misc.InfoCmd;
 import fr.dawoox.akasuki.commands.misc.UserInfoCmd;
+import fr.dawoox.akasuki.commands.moderator.KickCmd;
 import fr.dawoox.akasuki.commands.owner.SendMessageCmd;
 
 import java.util.Collections;
@@ -26,7 +27,10 @@ public class CommandManager {
                 new SendMessageCmd(),
 
                 //Utilities Commands
-                new UserInfoCmd(), new InfoCmd()
+                new UserInfoCmd(), new InfoCmd(),
+
+                //Moderation Commands
+                new KickCmd()
         );
     }
 
