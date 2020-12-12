@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.utils.database;
+package fr.dawoox.akasuki.db;
 
 import com.mongodb.client.MongoCollection;
 

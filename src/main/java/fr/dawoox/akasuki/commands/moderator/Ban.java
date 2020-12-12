@@ -1,14 +1,5 @@
 package fr.dawoox.akasuki.commands.moderator;
 
-import discord4j.core.object.entity.Member;
-import fr.dawoox.akasuki.utils.template.EmbedTemplate;
-import fr.dawoox.akasuki.utils.ArgumentUtils;
-import fr.dawoox.akasuki.core.command.BaseCmd;
-import fr.dawoox.akasuki.utils.LogsWriter;
-
-import java.util.Map;
-import java.util.Objects;
-
 /**
  * Ban the member mentioned
  * @author Dawoox
