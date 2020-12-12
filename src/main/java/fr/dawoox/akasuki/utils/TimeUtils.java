@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class TimeUtils {
 
     /**
-     * Return a String with a date format inside from a Instant
+     * Return a String with a date formate inside from a Instant
      * @param instant
      * Any Instant
      * @return String

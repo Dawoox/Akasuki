@@ -10,23 +10,23 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Ban the member mentioned
+ * Kick the member mentioned /!\ IN BETA /!\
  * @author Dawoox
  * @version 1.0.0
  */
-public class Ban {
+public class Kick {
     private static String reply = "default error";
 
     /*
     public static void reg(Map<String, BaseCmd> commands){
-        commands.put("ban", event -> {
+        commands.put("kick", event -> {
             final Member sender = event.getMessage().getAuthorAsMember().block();
-            final boolean canBan = Objects.requireNonNull(Objects.requireNonNull(sender).getBasePermissions().block()).toString().contains("BAN_MEMBERS");
+            final boolean canKick = Objects.requireNonNull(Objects.requireNonNull(sender).getBasePermissions().block()).toString().contains("KICK_MEMBERS");
 
-            if (canBan && !event.getMessage().getUserMentionIds().isEmpty()){
+            if (canKick && !event.getMessage().getUserMentionIds().isEmpty()){
                 final Member target = Objects.requireNonNull(event.getMessage().getUserMentions().blockFirst()).asMember(event.getGuildId().get()).block();
                 assert target != null;
-                reply = sender.getUsername() + " vient de bannir " + target.getUsername();
+                reply = sender.getUsername() + " vient d'expulser " + target.getUsername();
 
                 String[] temp = ArgumentUtils.getBody(event.getMessage().getContent());
                 if (temp.length >= 3){
@@ -36,12 +36,10 @@ public class Ban {
                     }
                 }
 
-                System.out.println("1");
-                target.ban(banQuerySpec -> banQuerySpec.setReason(reply).setDeleteMessageDays(0)).block();
-                System.out.println("2");
+                target.kick(reply).block();
 
-                EmbedTemplate.sendEmbed(Objects.requireNonNull(event.getMessage().getChannel().block()), reply, "ban");
-                LogsWriter.logAction("Ban : ", sender, Ban.class);
+                EmbedTemplate.sendEmbed(Objects.requireNonNull(event.getMessage().getChannel().block()), reply, "kick");
+                LogsWriter.logAction("Kick : ", sender, Ban.class);
             }
         });
     }*/

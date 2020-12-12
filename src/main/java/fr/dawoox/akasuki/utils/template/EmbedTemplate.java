@@ -2,7 +2,7 @@ package fr.dawoox.akasuki.utils.template;
 
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.util.Color;
-import fr.dawoox.akasuki.db.DBUtils;
+import fr.dawoox.akasuki.utils.database.DBUtils;
 
 import java.time.Instant;
 
