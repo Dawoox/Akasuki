@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Main class
@@ -32,7 +33,6 @@ public class Akasuki {
 
     public static final Logger DEFAULT_LOGGER = Loggers.getLogger("akasuki");
 
-    private static final Map<String, BaseCmd> commands = new HashMap<>();
     private static final String prefix = ConfigReader.getEntry("default_prefix");
     private static Snowflake owner_id;
 
@@ -73,54 +73,18 @@ public class Akasuki {
 
 
         //Get call when a new message is send in any guild where the bot is
-        gateway.getEventDispatcher().on(MessageCreateEvent.class)
-                .subscribe(event -> {
-
-                    MessageProcessor.processEvent(event);
-
-                    /*
-                    final String content = event.getMessage().getContent();
-                    if (event.getMessage().getAuthor().get().isBot()) { return; }
-                    for (final Map.Entry<String, BaseCmd> entry : commands.entrySet()) {
-                        if (content.startsWith(prefix + entry.getKey())) {
-                            entry.getValue().execute(event);
-                            break;
-                        }
-                    }*/
-                });
+        gateway.getEventDispatcher().on(MessageCreateEvent.class).subscribe(MessageProcessor::processEvent);
 
 
         //Get call when the bot start
         gateway.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(readyEvent -> {
                     LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Initialing...");
-                    commands.clear();
 
                     //Output all guild's name where Akasuki is
                     for (int i = 0; i< Objects.requireNonNull(Objects.requireNonNull(gateway.getGuilds().collectList().block())).size(); i++){
                         System.out.println(Objects.requireNonNull(gateway.getGuilds().collectList().block()).get(i).getName());
                     }
-
-                    //Register all commands
-                    /*Ping.reg(commands);
-                    UserInfo.reg(commands);
-                    Kiss.reg(commands);
-                    Hug.reg(commands);
-                    Ban.reg(commands);
-                    Kick.reg(commands);
-                    Mute.reg(commands);
-                    Unmute.reg(commands);
-                    Apod.reg(commands);*/
-
-                    //Register beta commands if the server is in dev mode
-                    if (args[0].equalsIgnoreCase("dev")){
-                        /*Emoji.reg(commands);
-                        Stonks.reg(commands);
-                        Join.reg(commands);
-                        Play.reg(commands);*/
-                    }
-                    LoggerFactory.getLogger(Akasuki.class).info("Commands Initialized");
-                    LoggerFactory.getLogger(Akasuki.class).info("Akasuki Shard Connected");
 
                     //Update status if present.
                     if (args.length >= 2){
@@ -137,11 +101,11 @@ public class Akasuki {
         gateway.onDisconnect().block();
     }
 
-    public static Map<String, BaseCmd> getCommands(){
-        return commands;
+    public static final Snowflake getOwnerId() {
+        return owner_id;
     }
 
-    public static Snowflake getOwnerId() {
-        return owner_id;
+    public static final long getGuildCount() {
+        return 1;
     }
 }

@@ -11,6 +11,11 @@ public enum CommandCategory {
 
     private final String name;
 
-    CommandCategory(String name){ this.name = name; }
-    public String getName(){ return this.name; }
+    CommandCategory(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
 }

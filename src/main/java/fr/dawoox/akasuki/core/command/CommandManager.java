@@ -1,5 +1,6 @@
 package fr.dawoox.akasuki.core.command;
 
+import fr.dawoox.akasuki.commands.misc.UserInfoCmd;
 import fr.dawoox.akasuki.commands.owner.SendMessageCmd;
 
 import java.util.Collections;
@@ -21,7 +22,10 @@ public class CommandManager {
     private CommandManager() {
         this.commandsMap = CommandManager.initialize(
                 //Owner Commands
-                new SendMessageCmd()
+                new SendMessageCmd(),
+
+                //Utilities Commands
+                new UserInfoCmd()
         );
     }
 

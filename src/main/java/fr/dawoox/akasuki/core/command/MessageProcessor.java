@@ -63,7 +63,7 @@ public class MessageProcessor {
             context.getMessage().getChannel().block().createMessage("Cette commande est désactivée, désoler pour ça").block();
         }
 
-        if (!command.getPermission().equals(context.getPermissions())){
+        if (context.getPermissions().getPower() < command.getPermission().getPower()){
             context.getChannel().createMessage("Vous n'avez pas les permissions nécessaires /!\\").block();
             return;
         }

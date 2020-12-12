@@ -1,8 +1,10 @@
 package fr.dawoox.akasuki.core.command;
 
 import discord4j.common.util.Snowflake;
+import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.message.MessageCreateEvent;
-import discord4j.core.object.Embed;
+import discord4j.core.object.entity.Guild;
+import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.Channel;
@@ -16,6 +18,7 @@ import reactor.util.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 public class Context {
 
@@ -38,16 +41,27 @@ public class Context {
         return Optional.ofNullable(this.arg);
     }
 
-    public String requireArgs() {
+    public String requireArg() {
         return this.getArg()
                 .map(StringUtils::normalizeSpace)
                 .orElseThrow(MissingArgumentException::new);
     }
 
-    /*
     public List<String> requireArgs(int count) {
         return this.requireArgs(count, count);
-    }*/
+    }
+
+    public List<String> requireArgs(int min, int max) {
+        return this.requireArgs(min, max, " ");
+    }
+
+    public List<String> requireArgs(int min, int max, String delimiter) {
+        final List<String> args = StringUtils.split(this.requireArg(), max, delimiter);
+        if (args.size() < min && args.size() > max) {
+            throw new MissingArgumentException();
+        }
+        return args;
+    }
 
     public Message getMessage() {
         return event.getMessage();
@@ -69,8 +83,16 @@ public class Context {
         return this.getAuthor().getId();
     }
 
+    public Guild getGuild() {
+        return event.getGuild().block();
+    }
+
     public Snowflake getGuildId() {
-        return event.getGuildId().get();
+        return getGuild().getId();
+    }
+
+    public Member getMember() {
+        return event.getMember().get();
     }
 
     public CommandPermission getPermissions() {
@@ -82,5 +104,9 @@ public class Context {
         }
 
         return CommandPermission.USER;
+    }
+
+    public GatewayDiscordClient getClient() {
+        return this.event.getClient();
     }
 }
