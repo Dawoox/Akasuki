@@ -2,11 +2,8 @@ package fr.dawoox.akasuki.utils.database;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import fr.dawoox.akasuki.utils.ConfigReader;
-
-import java.util.Objects;
+import fr.dawoox.akasuki.data.ConfigLoader;
 
 /**
  * Database controller
@@ -15,11 +12,11 @@ import java.util.Objects;
  */
 public class DBController {
 
-    private static final String USER = ConfigReader.getEntry("db_user");
-    private static final String PASSWORD = ConfigReader.getEntry("db_passwd");
-    private static final String IP = ConfigReader.getEntry("db_ip");
-    private static final String RETRY = ConfigReader.getEntry("db_retry");
-    private static final String MAIN = ConfigReader.getEntry("db_main");
+    private static final String USER = ConfigLoader.DB_USER;
+    private static final String PASSWORD = ConfigLoader.DB_PASSWD;
+    private static final String IP = ConfigLoader.DB_IP;
+    private static final boolean RETRY = ConfigLoader.DB_RETRY;
+    private static final String MAIN = ConfigLoader.DB_MAIN;
 
     private static final MongoClient mongoClient = MongoClients.create("mongodb+srv://" + USER + ":" + PASSWORD + "@" + IP + "/" + MAIN + "?retryWrites=" + RETRY + "&w=majority");
     private static final MongoDatabase database = mongoClient.getDatabase(MAIN);

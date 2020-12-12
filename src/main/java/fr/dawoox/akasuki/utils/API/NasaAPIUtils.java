@@ -1,7 +1,7 @@
 package fr.dawoox.akasuki.utils.API;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.dawoox.akasuki.utils.ConfigReader;
+import fr.dawoox.akasuki.data.ConfigLoader;
 import fr.dawoox.akasuki.utils.json.APOD;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.net.URL;
  * @version 1.1.1
  */
 public class NasaAPIUtils {
-    private static final String API_KEY = ConfigReader.getEntry("nasa_api_key");
+    private static final String API_KEY = ConfigLoader.NASA_API_KEY;
 
     /**
      * Return a APOD Object from the API

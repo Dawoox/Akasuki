@@ -3,30 +3,35 @@ package fr.dawoox.akasuki.data;
 import reactor.util.Logger;
 import reactor.util.Loggers;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigLoader {
 
-    public static void main(String[] args){
-        System.out.println(VERSION);
-    }
-
     private static final Logger LOGGER = Loggers.getLogger("akasuki.configloader");
     private static final Properties PROPERTIES = ConfigLoader.loadProperties();
 
-    public static final String VERSION = PROPERTIES.getProperty("version");
-    public static final boolean IS_SNAPSHOT = VERSION.endsWith("SNAPSHOT");
     public static final String GITHUB_URL = PROPERTIES.getProperty("github.url");
     public static final String SUPPORT_SERVER_URL = PROPERTIES.getProperty("support.server.url");
     public static final String INVITE_URL = PROPERTIES.getProperty("invite.url");
-    public static final String USER_AGENT = String.format("Akasuki/%s/D4J-DiscordBot (%s)", VERSION, GITHUB_URL);
+    public static final String USER_AGENT = String.format("Akasuki/%s/D4J-DiscordBot (%s)", Maven.PROJECT_VERSION, GITHUB_URL);
+
+    public static final String DEFAULT_PREFIX = PROPERTIES.getProperty("default.prefix");
+    public static final String TOKEN = PROPERTIES.getProperty("token");
+
+    public static final String DB_USER = PROPERTIES.getProperty("db.user");
+    public static final String DB_PASSWD = PROPERTIES.getProperty("db.ip");
+    public static final String DB_IP = PROPERTIES.getProperty("db.passwd");
+    public static final boolean DB_RETRY = PROPERTIES.getProperty("db.retry").endsWith("true");
+    public static final String DB_MAIN = PROPERTIES.getProperty("db.main");
+
+    public static final String NASA_API_KEY = PROPERTIES.getProperty("api.nasa");
 
     private static Properties loadProperties() {
         final Properties properties = new Properties();
-        try (final InputStream inputStream = Thread.currentThread().getContextClassLoader()
-                .getResourceAsStream("config.properties")) {
+        try (final FileInputStream inputStream = new FileInputStream("config.properties")) {
             if (inputStream == null) {
                 throw new RuntimeException("Configuration file not found. Exiting.");
             }

@@ -2,7 +2,7 @@ package fr.dawoox.akasuki.core.command;
 
 import discord4j.common.util.Snowflake;
 import discord4j.core.event.domain.message.MessageCreateEvent;
-import fr.dawoox.akasuki.utils.ConfigReader;
+import fr.dawoox.akasuki.data.ConfigLoader;
 import io.prometheus.client.Counter;
 
 public class MessageProcessor {
@@ -46,7 +46,7 @@ public class MessageProcessor {
     }
 
     private static void processGuildMessage(Snowflake guildId, MessageCreateEvent event){
-        Context context = new Context(event, ConfigReader.getEntry("default_prefix"));
+        Context context = new Context(event, ConfigLoader.DEFAULT_PREFIX);
         executeCommand(guildId, context);
     }
 

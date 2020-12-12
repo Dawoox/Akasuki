@@ -127,7 +127,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>RELEASE</version>
+            <version>20.1.0</version>
             <scope>compile</scope>
         </dependency>
         <!-- Prometheus client -->
@@ -141,6 +141,12 @@
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient_httpserver</artifactId>
             <version>0.9.0</version>
+        </dependency>
+        <!-- Maven Model Wrapper -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>3.3.9</version>
         </dependency>
     </dependencies>
 

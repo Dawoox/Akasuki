@@ -24,12 +24,14 @@ public class SendMessageCmd extends BaseCmd {
         final java.util.List<String> args = context.requireArgs(2);
 
         final Long userId = Long.valueOf(args.get(0));
-        if (userId == null || userId.equals(context.getClient().getSelfId().asLong())) {
+        assert userId != null;
+        if (userId.equals(context.getClient().getSelfId().asLong())) {
             context.getChannel().createMessage("Je ne peut pas envoyer de message à moi-même ou à cette personne.. :f").block();
             return;
         }
 
         final User target = context.getClient().getUserById(Snowflake.of(userId)).block();
+        assert target != null;
         target.getPrivateChannel().block().createMessage(args.get(1)).block();
     }
 

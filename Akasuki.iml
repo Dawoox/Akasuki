@@ -88,5 +88,8 @@
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.9.0" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_httpserver:0.9.0" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.9.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.3.9" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:3.0.22" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.4" level="project" />
   </component>
 </module>

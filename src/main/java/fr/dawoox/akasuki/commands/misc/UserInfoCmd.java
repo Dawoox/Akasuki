@@ -37,7 +37,9 @@ public class UserInfoCmd extends BaseCmd{
 
     @Override
     public void execute(Context context) {
-        final MessageChannel channel = context.getMessage().getChannel().block();
+        context.requireArgs(0, 1);
+
+        final MessageChannel channel = context.getChannel();
         GuildEmoji onlineEmoji = Objects.requireNonNull(context.getGuild()).getGuildEmojiById(Snowflake.of("749009520507879556")).block();
         GuildEmoji offlineEmoji = Objects.requireNonNull(context.getGuild()).getGuildEmojiById(Snowflake.of("749009521006870598")).block();
         GuildEmoji idleEmoji = Objects.requireNonNull(context.getGuild()).getGuildEmojiById(Snowflake.of("749009520713531503")).block();
