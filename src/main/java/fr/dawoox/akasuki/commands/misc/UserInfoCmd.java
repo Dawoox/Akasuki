@@ -37,7 +37,6 @@ public class UserInfoCmd extends BaseCmd{
 
     @Override
     public void execute(Context context) {
-        context.requireArgs(0, 1);
 
         final MessageChannel channel = context.getChannel();
         GuildEmoji onlineEmoji = Objects.requireNonNull(context.getGuild()).getGuildEmojiById(Snowflake.of("749009520507879556")).block();
@@ -80,7 +79,7 @@ public class UserInfoCmd extends BaseCmd{
                 break;
         }
 
-        Objects.requireNonNull(channel).createEmbed(embed ->
+        channel.createEmbed(embed ->
                 embed.setColor(Color.of(54,57,63))
                         .setAuthor(author, null, member.getAvatarUrl())
                         .addField("Membre depuis le", memberOld, true)
