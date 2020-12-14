@@ -113,4 +113,8 @@ public class Context {
     public GatewayDiscordClient getClient() {
         return this.event.getClient();
     }
+
+    public Snowflake getSelfId() {
+        return getClient().getSelfId();
+    }
 }
