@@ -2,8 +2,9 @@ package fr.dawoox.akasuki.core.command;
 
 import discord4j.common.util.Snowflake;
 import discord4j.core.event.domain.message.MessageCreateEvent;
-import fr.dawoox.akasuki.data.ConfigLoader;
+import fr.dawoox.akasuki.data.Config;
 import io.prometheus.client.Counter;
+import io.sentry.Sentry;
 
 public class MessageProcessor {
 
@@ -46,7 +47,7 @@ public class MessageProcessor {
     }
 
     private static void processGuildMessage(Snowflake guildId, MessageCreateEvent event){
-        Context context = new Context(event, ConfigLoader.DEFAULT_PREFIX);
+        Context context = new Context(event, Config.DEFAULT_PREFIX);
         executeCommand(guildId, context);
     }
 
@@ -60,7 +61,8 @@ public class MessageProcessor {
 
         // The command is not enabled.
         if (!command.isEnabled()) {
-            context.getMessage().getChannel().block().createMessage("Cette commande est désactivée, désoler pour ça").block();
+            context.getMessage().getChannel().block().createMessage("Cette commande est désactivée").block();
+            return;
         }
 
         if (context.getPermissions().getPower() < command.getPermission().getPower()){
@@ -68,7 +70,11 @@ public class MessageProcessor {
             return;
         }
 
-        command.execute(context);
+        try {
+            command.execute(context);
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
     }
 
 }

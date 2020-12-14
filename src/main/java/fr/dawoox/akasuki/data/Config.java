@@ -5,13 +5,12 @@ import reactor.util.Loggers;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
-public class ConfigLoader {
+public class Config {
 
     private static final Logger LOGGER = Loggers.getLogger("akasuki.configloader");
-    private static final Properties PROPERTIES = ConfigLoader.loadProperties();
+    private static final Properties PROPERTIES = Config.loadProperties();
 
     public static final String GITHUB_URL = PROPERTIES.getProperty("github.url");
     public static final String SUPPORT_SERVER_URL = PROPERTIES.getProperty("support.server.url");

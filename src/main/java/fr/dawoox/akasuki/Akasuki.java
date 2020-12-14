@@ -9,7 +9,7 @@ import discord4j.core.object.presence.Activity;
 import discord4j.core.object.presence.Presence;
 import discord4j.rest.response.ResponseFunction;
 import fr.dawoox.akasuki.core.command.MessageProcessor;
-import fr.dawoox.akasuki.data.ConfigLoader;
+import fr.dawoox.akasuki.data.Config;
 import io.prometheus.client.exporter.HTTPServer;
 import io.sentry.Sentry;
 import org.slf4j.LoggerFactory;
@@ -27,6 +27,7 @@ import java.util.Locale;
 public class Akasuki {
 
     public static final Logger DEFAULT_LOGGER = Loggers.getLogger("akasuki");
+    private static int guildCounts;
 
     private static Snowflake owner_id;
 
@@ -53,7 +54,7 @@ public class Akasuki {
 
         DEFAULT_LOGGER.info("Initializing ");
 
-        final DiscordClient client = DiscordClient.builder(ConfigLoader.TOKEN).onClientResponse(ResponseFunction.emptyIfNotFound()).build();
+        final DiscordClient client = DiscordClient.builder(Config.TOKEN).onClientResponse(ResponseFunction.emptyIfNotFound()).build();
 
         Akasuki.owner_id = Snowflake.of(client.getApplicationInfo().block().owner().id());
 
@@ -61,7 +62,7 @@ public class Akasuki {
 
         final GatewayDiscordClient gateway = client.login().block();
 
-        System.setProperty("http.agent", ConfigLoader.USER_AGENT);
+        System.setProperty("http.agent", Config.USER_AGENT);
         assert gateway != null;
 
         //Get call when a new message is send in any guild where the bot is
@@ -70,6 +71,7 @@ public class Akasuki {
         //Get call when the bot start
         gateway.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(readyEvent -> {
+                    guildCounts = gateway.getGuilds().collectList().block().size();
                     //Update status if present.
                     if (args.length >= 1){
                         LoggerFactory.getLogger(Akasuki.class).info("Changing Activity...");
@@ -85,11 +87,11 @@ public class Akasuki {
         gateway.onDisconnect().block();
     }
 
-    public static final Snowflake getOwnerId() {
+    public static Snowflake getOwnerId() {
         return owner_id;
     }
 
-    public static final long getGuildCount() {
-        return 1;
+    public static long getGuildCount() {
+        return guildCounts;
     }
 }
