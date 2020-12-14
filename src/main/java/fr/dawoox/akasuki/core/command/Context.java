@@ -75,6 +75,10 @@ public class Context {
         return event.getMessage().getAuthor().get();
     }
 
+    public Member getAuthorAsMember() {
+        return getMessage().getAuthorAsMember().block();
+    }
+
     public MessageChannel getChannel() {
         return event.getMessage().getChannel().block();
     }
