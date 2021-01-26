@@ -1,0 +1,11 @@
+{
+  "config" : {
+    "rollout_time": "30"
+  },
+  "activities" : [
+    "Hold my Beer",
+    "%version !",
+    "I am a joke to you?",
+    "Not i'm not terminator"
+  ]
+}

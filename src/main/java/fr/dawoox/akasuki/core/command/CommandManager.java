@@ -1,7 +1,8 @@
 package fr.dawoox.akasuki.core.command;
 
-import fr.dawoox.akasuki.commands.misc.InfoCmd;
-import fr.dawoox.akasuki.commands.misc.UserInfoCmd;
+import fr.dawoox.akasuki.commands.utils.InfoCmd;
+import fr.dawoox.akasuki.commands.utils.ServerInfoCmd;
+import fr.dawoox.akasuki.commands.utils.UserInfoCmd;
 import fr.dawoox.akasuki.commands.moderator.KickCmd;
 import fr.dawoox.akasuki.commands.owner.SendMessageCmd;
 
@@ -27,7 +28,7 @@ public class CommandManager {
                 new SendMessageCmd(),
 
                 //Utilities Commands
-                new UserInfoCmd(), new InfoCmd(),
+                new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(),
 
                 //Moderation Commands
                 new KickCmd()

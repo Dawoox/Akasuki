@@ -14,7 +14,7 @@ import java.util.Objects;
 /**
  * Kick the member mentioned /!\ IN BETA /!\
  * @author Dawoox
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class KickCmd extends BaseCmd {
     private static String reply = "default error";
@@ -25,10 +25,10 @@ public class KickCmd extends BaseCmd {
 
     @Override
     public void execute(Context context) {
-        final Member sender = context.getMessage().getAuthorAsMember().block();
-        final boolean canKick = Objects.requireNonNull(Objects.requireNonNull(sender).getBasePermissions().block()).toString().contains("KICK_MEMBERS");
+        final Member sender = context.getAuthorAsMember();
+        final java.util.List<String> args = context.requireArgs(1);
 
-        if (canKick && !context.getMessage().getUserMentionIds().isEmpty()){
+        if (!context.getMessage().getUserMentionIds().isEmpty()){
             final Member target = Objects.requireNonNull(context.getMessage().getUserMentions().blockFirst()).asMember(context.getGuildId()).block();
             assert target != null;
             reply = sender.getUsername() + " vient d'expulser " + target.getUsername();

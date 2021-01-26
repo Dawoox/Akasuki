@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.commands.misc;
+package fr.dawoox.akasuki.commands.utils;
 
 import com.sun.tools.javac.util.List;
 import discord4j.rest.util.Color;
@@ -36,7 +36,6 @@ public class InfoCmd extends BaseCmd {
                         .addField("Links", links, true)
                         .setFooter("Akasuki", null)
                         .setTimestamp(Instant.now())
-
         ).block();
     }
 
