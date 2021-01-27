@@ -1,11 +1,13 @@
 {
   "config" : {
-    "rollout_time": "30"
+    "rollout_time": "10",
+    "type": "playing"
   },
   "activities" : [
     "Hold my Beer",
-    "%version !",
+    "%v !",
     "I am a joke to you?",
-    "Not i'm not terminator"
+    "No i'm not terminator",
+    "%gl"
   ]
 }
