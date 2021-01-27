@@ -1,0 +1,13 @@
+{
+  "config" : {
+    "rollout_time": "10",
+    "type": "playing"
+  },
+  "activities" : [
+    "Hold my Beer",
+    "%v !",
+    "I am a joke to you?",
+    "No i'm not terminator",
+    "%gl"
+  ]
+}
