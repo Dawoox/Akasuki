@@ -1,6 +1,13 @@
 package fr.dawoox.akasuki.commands.gifs;
 
 import discord4j.core.object.entity.Member;
+import discord4j.core.object.entity.channel.MessageChannel;
+import fr.dawoox.akasuki.utils.Command;
+import fr.dawoox.akasuki.utils.EmbedTemplate;
+import fr.dawoox.akasuki.utils.LogsWriter;
+
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Show a random kiss gif
@@ -12,8 +19,7 @@ public class Kiss {
     private static Member target;
     private static String reply = "default error";
 
-    /*
-    public static void reg(Map<String, BaseCmd> commands){
+    public static void reg(Map<String, Command> commands){
         commands.put("kiss", event -> {
             MessageChannel channel = event.getMessage().getChannel().block();
             Member sender = event.getMessage().getAuthorAsMember().block();
@@ -31,6 +37,6 @@ public class Kiss {
             EmbedTemplate.sendEmbed(channel, reply, "kiss");
             LogsWriter.logAction("Kiss : ", sender, Kiss.class);
         });
-    }*/
+    }
 
 }

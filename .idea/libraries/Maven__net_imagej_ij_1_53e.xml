@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: net.imagej:ij:1.53e">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/imagej/ij/1.53e/ij-1.53e.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/net/imagej/ij/1.53e/ij-1.53e-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/imagej/ij/1.53e/ij-1.53e-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
