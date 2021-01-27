@@ -1,18 +1,5 @@
 package fr.dawoox.akasuki.commands.moderator;
 
-import discord4j.common.util.Snowflake;
-import discord4j.core.object.PermissionOverwrite;
-import discord4j.core.object.entity.Member;
-import discord4j.rest.util.Color;
-import discord4j.rest.util.PermissionSet;
-import fr.dawoox.akasuki.utils.EmbedTemplate;
-import fr.dawoox.akasuki.utils.ArgumentUtils;
-import fr.dawoox.akasuki.utils.Command;
-import fr.dawoox.akasuki.utils.LogsWriter;
-
-import java.util.Map;
-import java.util.Objects;
-
 /**
  * Mute the member mentioned
  * @author Dawoox
@@ -21,7 +8,8 @@ import java.util.Objects;
 public class Mute {
     private static String reply = "default error";
 
-    public static void reg(Map<String, Command> commands){
+    /*
+    public static void reg(Map<String, BaseCmd> commands){
         commands.put("mute", event -> {
             final Member sender = event.getMessage().getAuthorAsMember().block();
             final boolean canMute = Objects.requireNonNull(Objects.requireNonNull(sender).getBasePermissions().block()).toString().contains("MANAGE_ROLES");
@@ -72,5 +60,5 @@ public class Mute {
                 LogsWriter.logAction("Mute : ", sender, Mute.class);
             }
         });
-    }
+    }*/
 }

@@ -1,14 +1,5 @@
 package fr.dawoox.akasuki.commands.moderator;
 
-import discord4j.common.util.Snowflake;
-import discord4j.core.object.entity.Member;
-import fr.dawoox.akasuki.utils.EmbedTemplate;
-import fr.dawoox.akasuki.utils.Command;
-import fr.dawoox.akasuki.utils.LogsWriter;
-
-import java.util.Map;
-import java.util.Objects;
-
 /**
  * Unmute the member mentioned
  * @author Dawoox
@@ -17,7 +8,8 @@ import java.util.Objects;
 public class Unmute {
     private static String reply = "default error";
 
-    public static void reg(Map<String, Command> commands){
+    /*
+    public static void reg(Map<String, BaseCmd> commands){
         commands.put("unmute", event -> {
             final Member sender = event.getMessage().getAuthorAsMember().block();
             final boolean canUnmute = Objects.requireNonNull(Objects.requireNonNull(sender).getBasePermissions().block()).toString().contains("MANAGE_ROLES");
@@ -45,5 +37,5 @@ public class Unmute {
                 }
             }
         });
-    }
+    }*/
 }

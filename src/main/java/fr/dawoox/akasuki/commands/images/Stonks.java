@@ -1,6 +1,6 @@
 package fr.dawoox.akasuki.commands.images;
 
-import fr.dawoox.akasuki.utils.Command;
+import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.utils.ImageUtils;
 import ij.IJ;
 import ij.ImagePlus;
@@ -16,7 +16,8 @@ import java.util.Map;
  */
 public class Stonks {
 
-    public static void reg(Map<String, Command> commands) {
+    /*
+    public static void reg(Map<String, BaseCmd> commands) {
         commands.put("stonks", event -> {
             ImagePlus font = IJ.openImage("src\\main\\java\\fr\\dawoox\\akasuki\\commands\\images\\stonks.png");
             ImagePlus avatar = IJ.openImage(event.getMessage().getAuthor().get().getAvatarUrl());
@@ -41,5 +42,5 @@ public class Stonks {
             event.getMessage().getChannel().block().createMessage(MessageCreateSpec ->
                     MessageCreateSpec.addFile("stonks.png", ImageUtils.getDiscordCompatibleFile(font))).block();
         });
-    }
+    }*/
 }
