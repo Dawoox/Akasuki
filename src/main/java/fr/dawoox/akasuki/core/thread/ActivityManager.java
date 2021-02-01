@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class ActivityManager extends Thread{
 
@@ -71,7 +72,7 @@ public class ActivityManager extends Thread{
     public static String readStream(InputStream is) {
         StringBuilder sb = new StringBuilder(512);
         try {
-            Reader r = new InputStreamReader(is, "UTF-8");
+            Reader r = new InputStreamReader(is, StandardCharsets.UTF_8);
             int c = 0;
             while ((c = r.read()) != -1) {
                 sb.append((char) c);

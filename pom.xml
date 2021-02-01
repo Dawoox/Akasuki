@@ -135,6 +135,12 @@
             <artifactId>maven-model</artifactId>
             <version>3.3.9</version>
         </dependency>
+        <!-- Giphy4J API -->
+        <dependency>
+            <groupId>at.mukprojects</groupId>
+            <artifactId>giphy4j</artifactId>
+            <version>1.0.1</version>
+        </dependency>
         <!-- Others -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

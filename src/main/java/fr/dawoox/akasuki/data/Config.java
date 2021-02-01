@@ -27,6 +27,7 @@ public class Config {
     public static final String DB_MAIN = PROPERTIES.getProperty("db.main");
 
     public static final String NASA_API_KEY = PROPERTIES.getProperty("api.nasa");
+    public static final String GIPHY_API_KEY = PROPERTIES.getProperty("api.giphy");
 
     private static Properties loadProperties() {
         final Properties properties = new Properties();

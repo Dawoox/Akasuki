@@ -1,5 +1,7 @@
 package fr.dawoox.akasuki.core.command;
 
+import fr.dawoox.akasuki.commands.gifs.Hug;
+import fr.dawoox.akasuki.commands.images.Apod;
 import fr.dawoox.akasuki.commands.utils.InfoCmd;
 import fr.dawoox.akasuki.commands.utils.ServerInfoCmd;
 import fr.dawoox.akasuki.commands.utils.UserInfoCmd;
@@ -31,7 +33,13 @@ public class CommandManager {
                 new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(),
 
                 //Moderation Commands
-                new KickCmd()
+                new KickCmd(),
+
+                //Image Commands
+                new Apod(),
+
+                //Fun Commands
+                new Hug()
         );
     }
 

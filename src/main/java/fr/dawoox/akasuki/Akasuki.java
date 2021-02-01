@@ -60,7 +60,7 @@ public class Akasuki {
 
         gateway.getEventDispatcher().on(MessageCreateEvent.class).subscribe(MessageProcessor::processEvent);
 
-        DEFAULT_LOGGER.info("Updating bot activity");
+        DEFAULT_LOGGER.info("Start thread bot activity");
         gateway.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(readyEvent -> {
                     guildCounts = gateway.getGuilds().collectList().block().size();
