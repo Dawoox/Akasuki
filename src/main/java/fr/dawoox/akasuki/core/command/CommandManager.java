@@ -1,7 +1,9 @@
 package fr.dawoox.akasuki.core.command;
 
 import fr.dawoox.akasuki.commands.gifs.Hug;
+import fr.dawoox.akasuki.commands.gifs.Kiss;
 import fr.dawoox.akasuki.commands.images.Apod;
+import fr.dawoox.akasuki.commands.images.Stonks;
 import fr.dawoox.akasuki.commands.utils.InfoCmd;
 import fr.dawoox.akasuki.commands.utils.ServerInfoCmd;
 import fr.dawoox.akasuki.commands.utils.UserInfoCmd;
@@ -36,10 +38,10 @@ public class CommandManager {
                 new KickCmd(),
 
                 //Image Commands
-                new Apod(),
+                new Apod(), new Stonks(),
 
                 //Fun Commands
-                new Hug()
+                new Hug(), new Kiss()
         );
     }
 
