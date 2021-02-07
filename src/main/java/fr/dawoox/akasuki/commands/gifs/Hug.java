@@ -52,25 +52,4 @@ public class Hug extends BaseCmd {
         }).block();
     }
 
-    /*
-    public static void reg(Map<String, BaseCmd> commands){
-        commands.put("hug", event -> {
-            MessageChannel channel = event.getMessage().getChannel().block();
-            Member sender = event.getMessage().getAuthorAsMember().block();
-
-            assert sender != null;
-            assert channel != null;
-
-            if (!event.getMessage().getUserMentionIds().isEmpty()){
-                Hug.target = Objects.requireNonNull(event.getMessage().getUserMentions().blockFirst()).asMember(event.getGuildId().get()).block();
-                reply = sender.getUsername() + " fait un calin à " + target.getUsername();
-            } else {
-                reply = sender.getUsername() + " fait un calin";
-            }
-
-            EmbedTemplate.sendEmbed(channel, reply, "hug");
-            LogsWriter.logAction("Hug : ", sender, Hug.class);
-        });
-    }*/
-
 }
