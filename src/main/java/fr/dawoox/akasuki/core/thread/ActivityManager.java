@@ -30,25 +30,22 @@ public class ActivityManager extends Thread{
         int state = 1;
 
         while (true) {
+            String activity = activities.get(state).toString().replace("%v", Maven.PROJECT_VERSION).replace("%gl", Config.GITHUB_URL.substring(8));
             switch (type) {
                 case "watching":
-                    gateway.updatePresence(Presence.online(Activity.watching(activities.get(state).toString()
-                            .replace("%v", Maven.PROJECT_VERSION).replace("%gl", Config.GITHUB_URL)))).block();
+                    gateway.updatePresence(Presence.online(Activity.watching(activity))).block();
                     break;
 
                 case "listening":
-                    gateway.updatePresence(Presence.online(Activity.listening(activities.get(state).toString()
-                            .replace("%v", Maven.PROJECT_VERSION).replace("%gl", Config.GITHUB_URL)))).block();
+                    gateway.updatePresence(Presence.online(Activity.listening(activity))).block();
                     break;
 
                 case "competing":
-                    gateway.updatePresence(Presence.online(Activity.competing(activities.get(state).toString()
-                            .replace("%v", Maven.PROJECT_VERSION).replace("%gl", Config.GITHUB_URL)))).block();
+                    gateway.updatePresence(Presence.online(Activity.competing(activity))).block();
                     break;
 
                 case "playing":
-                    gateway.updatePresence(Presence.online(Activity.playing(activities.get(state).toString()
-                            .replace("%v", Maven.PROJECT_VERSION).replace("%gl", Config.GITHUB_URL)))).block();
+                    gateway.updatePresence(Presence.online(Activity.playing(activity))).block();
                     break;
 
                 default:
@@ -61,7 +58,7 @@ public class ActivityManager extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (state >= activities.length()) {
+            if (state >= activities.length() - 1) {
                 state=1;
             } else {
                 state++;
