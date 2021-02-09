@@ -3,7 +3,6 @@ package fr.dawoox.akasuki.commands.gifs;
 import at.mukprojects.giphy4j.Giphy;
 import at.mukprojects.giphy4j.exception.GiphyException;
 import com.sun.tools.javac.util.List;
-import discord4j.core.object.entity.Member;
 import discord4j.rest.util.Color;
 import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.core.command.CommandCategory;
