@@ -36,9 +36,11 @@ public class WeatherCmd extends BaseCmd {
                     embedCreateSpec.setColor(Color.DEEP_LILAC)
                             .setAuthor("Météo : " + city, null, "https:"+weather.current.condition.icon)
                             .setDescription(weather.current.condition.text)
-                            .addField("Température", ":thermometer: " + String.valueOf(weather.current.temp_c) + "°C", true)
-                            .addField("Informations", ":cloud_tornado: " + String.valueOf(weather.current.wind_kph) + " km/h", true)
-                            .setFooter("Akasuki", null)
+                            .addField("Température", ":thermometer: " + String.valueOf(weather.current.temp_c) + "°C"
+                                    +"\n :small_orange_diamond: " + String.valueOf(weather.current.feelslike_c) + "°C", true)
+                            .addField("Informations", ":cloud_tornado: " + String.valueOf(weather.current.wind_kph) + " km/h"
+                                    +"\n :droplet: " + String.valueOf(weather.current.humidity) + " %", true)
+                            .setFooter("Akasuki / Powered by WeatherAPI.com", null)
                             .setTimestamp(Instant.now());
                 }).block();
             } catch (Exception e) {
