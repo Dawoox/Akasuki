@@ -10,6 +10,7 @@ import fr.dawoox.akasuki.commands.utils.ServerInfoCmd;
 import fr.dawoox.akasuki.commands.utils.UserInfoCmd;
 import fr.dawoox.akasuki.commands.moderator.KickCmd;
 import fr.dawoox.akasuki.commands.owner.SendMessageCmd;
+import fr.dawoox.akasuki.commands.utils.WeatherCmd;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -33,7 +34,7 @@ public class CommandManager {
                 new SendMessageCmd(), new LeaveGuildCmd(),
 
                 //Utilities Commands
-                new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(),
+                new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(), new WeatherCmd(),
 
                 //Moderation Commands
                 new KickCmd(),
