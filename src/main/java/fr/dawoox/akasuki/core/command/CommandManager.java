@@ -4,6 +4,7 @@ import fr.dawoox.akasuki.commands.gifs.Hug;
 import fr.dawoox.akasuki.commands.gifs.Kiss;
 import fr.dawoox.akasuki.commands.images.Apod;
 import fr.dawoox.akasuki.commands.images.Stonks;
+import fr.dawoox.akasuki.commands.owner.LeaveGuildCmd;
 import fr.dawoox.akasuki.commands.utils.InfoCmd;
 import fr.dawoox.akasuki.commands.utils.ServerInfoCmd;
 import fr.dawoox.akasuki.commands.utils.UserInfoCmd;
@@ -29,7 +30,7 @@ public class CommandManager {
     private CommandManager() {
         this.commandsMap = CommandManager.initialize(
                 //Owner Commands
-                new SendMessageCmd(),
+                new SendMessageCmd(), new LeaveGuildCmd(),
 
                 //Utilities Commands
                 new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(),
