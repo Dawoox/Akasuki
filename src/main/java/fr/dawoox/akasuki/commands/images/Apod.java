@@ -7,8 +7,8 @@ import fr.dawoox.akasuki.core.command.CommandPermission;
 import fr.dawoox.akasuki.core.command.Context;
 import fr.dawoox.akasuki.utils.template.EmbedTemplate;
 import fr.dawoox.akasuki.core.command.BaseCmd;
-import fr.dawoox.akasuki.utils.API.NasaAPIUtils;
-import fr.dawoox.akasuki.utils.json.APOD;
+import fr.dawoox.akasuki.utils.API.NasaAPI;
+import fr.dawoox.akasuki.utils.json.ApodBody;
 
 import java.time.Instant;
 import java.util.Objects;
@@ -26,7 +26,7 @@ public class Apod extends BaseCmd{
 
     @Override
     public void execute(Context context) {
-        APOD apod = NasaAPIUtils.requestAPOD();
+        ApodBody apod = NasaAPI.requestAPOD();
         if (apod.mediaType.equalsIgnoreCase("image")) {
             EmbedTemplate.sendEmbed(Objects.requireNonNull(context.getMessage().getChannel().block()),
                     "NASA Astronomy Picture of the Day", apod.title, Color.DEEP_LILAC, apod.hdUrl);

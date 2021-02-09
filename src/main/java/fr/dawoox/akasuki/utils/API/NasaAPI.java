@@ -2,7 +2,7 @@ package fr.dawoox.akasuki.utils.API;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.dawoox.akasuki.data.Config;
-import fr.dawoox.akasuki.utils.json.APOD;
+import fr.dawoox.akasuki.utils.json.ApodBody;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +15,7 @@ import java.net.URL;
  * @author Dawoox
  * @version 1.1.1
  */
-public class NasaAPIUtils {
+public class NasaAPI {
     private static final String API_KEY = Config.NASA_API_KEY;
 
     /**
@@ -24,12 +24,12 @@ public class NasaAPIUtils {
      *  APOD Object fill with information about the APOD image/video of the day.
      * @since 1.0.0
      */
-    public static APOD requestAPOD(){
+    public static ApodBody requestAPOD(){
         URL url = null;
         HttpURLConnection connection = null;
         InputStream responseStream = null;
         ObjectMapper mapper = new ObjectMapper();
-        APOD apod = null;
+        ApodBody apod = null;
 
         try {
             url = new URL("https://api.nasa.gov/planetary/apod?api_key=" + API_KEY);
@@ -52,7 +52,7 @@ public class NasaAPIUtils {
         }
 
         try {
-            apod = mapper.readValue(responseStream, APOD.class);
+            apod = mapper.readValue(responseStream, ApodBody.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

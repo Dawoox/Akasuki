@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Dawoox
  * @version 1.0.0
  */
-public class APOD {
+public class ApodBody {
     public final String copyright;
     public final String date;
     public final String explanation;
@@ -17,14 +17,14 @@ public class APOD {
     public final String title;
     public final String url;
 
-    public APOD(@JsonProperty("copyright") String copyright,
-                @JsonProperty("date") String date,
-                @JsonProperty("explanation") String explanation,
-                @JsonProperty("hdurl") String hdUrl,
-                @JsonProperty("media_type") String mediaType,
-                @JsonProperty("service_version") String serviceVersion,
-                @JsonProperty("title") String title,
-                @JsonProperty("url") String url) {
+    public ApodBody(@JsonProperty("copyright") String copyright,
+                    @JsonProperty("date") String date,
+                    @JsonProperty("explanation") String explanation,
+                    @JsonProperty("hdurl") String hdUrl,
+                    @JsonProperty("media_type") String mediaType,
+                    @JsonProperty("service_version") String serviceVersion,
+                    @JsonProperty("title") String title,
+                    @JsonProperty("url") String url) {
         this.copyright = copyright;
         this.date = date;
         this.explanation = explanation;
