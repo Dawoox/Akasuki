@@ -15,6 +15,8 @@ import reactor.util.Logger;
 import reactor.util.Loggers;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
 /**
@@ -28,6 +30,7 @@ public class Akasuki {
     private static int guildCounts;
 
     private static Snowflake owner_id;
+    private static final Instant startup = Instant.now();
 
     /**
      * Main class, call on startup.
@@ -75,5 +78,8 @@ public class Akasuki {
     }
     public static long getGuildCount() {
         return guildCounts;
+    }
+    public static long getUptime() {
+        return ChronoUnit.SECONDS.between(startup, Instant.now());
     }
 }
