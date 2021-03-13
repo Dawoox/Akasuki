@@ -1,15 +1,18 @@
-package fr.dawoox.akasuki.core.thread;
+package fr.dawoox.akasuki.core;
 
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.object.presence.Activity;
 import discord4j.core.object.presence.Presence;
 import fr.dawoox.akasuki.data.Config;
 import fr.dawoox.akasuki.data.Maven;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import io.sentry.Sentry;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public class ActivityManager extends Thread{
 
@@ -18,15 +21,25 @@ public class ActivityManager extends Thread{
     public void run(GatewayDiscordClient gateway) {
         JSONObject JSON = null;
         try {
-            JSON = new JSONObject(readStream(new FileInputStream("C:\\Akasuki\\activities.json")));
-        } catch (FileNotFoundException e) {
+            String inline = "";
+            Scanner scanner = new Scanner(new FileInputStream("activities.json"));
+            while (scanner.hasNext()) {
+                inline += scanner.nextLine();
+            }
+            scanner.close();
+
+            JSON = (JSONObject) new JSONParser().parse(inline);
+        } catch (ParseException | FileNotFoundException e) {
+            Sentry.captureException(e);
             e.printStackTrace();
         }
+
         assert JSON != null;
 
-        JSONArray activities = JSON.getJSONArray("activities");
-        int rollout = JSON.getJSONObject("config").getInt("rollout_time") * 1000;
-        String type = JSON.getJSONObject("config").getString("type");
+        JSONArray activities = (JSONArray) JSON.get("activities");
+        JSONObject config = (JSONObject) JSON.get("config");
+        int rollout = Integer.parseInt(config.get("rollout_time").toString()) * 1000;
+        String type = config.get("type").toString();
         int state = 1;
 
         while (true) {
@@ -56,28 +69,15 @@ public class ActivityManager extends Thread{
             try {
                 sleep(rollout);
             } catch (InterruptedException e) {
+                Sentry.captureException(e);
                 e.printStackTrace();
             }
-            if (state >= activities.length() - 1) {
+            if (state >= activities.size() - 1) {
                 state=1;
             } else {
                 state++;
             }
         }
-    }
-
-    public static String readStream(InputStream is) {
-        StringBuilder sb = new StringBuilder(512);
-        try {
-            Reader r = new InputStreamReader(is, StandardCharsets.UTF_8);
-            int c = 0;
-            while ((c = r.read()) != -1) {
-                sb.append((char) c);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return sb.toString();
     }
 
 }

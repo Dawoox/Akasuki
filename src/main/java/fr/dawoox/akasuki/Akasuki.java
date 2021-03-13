@@ -7,7 +7,7 @@ import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.rest.response.ResponseFunction;
 import fr.dawoox.akasuki.core.command.MessageProcessor;
-import fr.dawoox.akasuki.core.thread.ActivityManager;
+import fr.dawoox.akasuki.core.ActivityManager;
 import fr.dawoox.akasuki.data.Config;
 import io.prometheus.client.exporter.HTTPServer;
 import io.sentry.Sentry;
@@ -45,12 +45,13 @@ public class Akasuki {
 
         try {
             HTTPServer server = new HTTPServer(8080);
-        } catch (IOException e) { e.printStackTrace(); }
-
-        if (true){
-            DEFAULT_LOGGER.info("Initializing Sentry");
-            Sentry.init(sentryOptions -> sentryOptions.setDsn("https://8f8f812b07284a7b99b8527cb2b94839@o473268.ingest.sentry.io/5508041"));
+        } catch (IOException e) {
+            Sentry.captureException(e);
+            e.printStackTrace();
         }
+
+        DEFAULT_LOGGER.info("Initializing Sentry");
+        Sentry.init(sentryOptions -> sentryOptions.setDsn(Config.SENTRY_IO_API_URL));
 
         DEFAULT_LOGGER.info("Initializing");
         final DiscordClient client = DiscordClient.builder(Config.TOKEN).onClientResponse(ResponseFunction.emptyIfNotFound()).build();

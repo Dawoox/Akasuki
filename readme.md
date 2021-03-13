@@ -1,8 +1,6 @@
 # Akasuki
 > Simple and funny little Java Discord bot, build with Discord4J.
 
-This page is available in [French](./translations/french.md)
-
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
@@ -21,35 +19,52 @@ help you in the moderation of your server, or even encourage your members to
 be active via a system of inventories, rewards and levels!
 
 ## Screenshots
-![Example of the ban command](./img/ban.gif)
-![Example of the hug command](./img/hug.gif)
+![Example of the ban command](./img/weather.png)
+![Example of the hug command](./img/apod.png)
 ![Example of the userinfo command](./img/userinfo.png)
 
 ## Technologies
 Akasuki is created with:
-* Discord4J: 3.1.1
-* Lavaplayer: 1.3.50
-* Logback: 1.2.3
-* MongoDB Sync Driver: 4.1.0
-* Maven Compiler: 3.8.1
-* ImageJ: 1.53e
-* Rssreader: 2.3.1
+* Discord4J
+* Lavaplayer
+* SLF4J
+* Sentry
+* Prometheus
+* Javaluator
+* Giphy4J
+* Maven
+* ImageJ
+* JUnit
+* Json-Simple
 	
 ## Setup  
 ```
-$ git clone https://github.com/Dawoox/Akasuki.git
+$ git clone https://github.com/Akasuki-Bot/Akasuki.git
 $ cd ./Akasuki
 $ mvn clean install
 $ touch config.properties
 $ vim config.properties
 
-token={your bot token}
-db_user={your database username}
-db_passwd={your database password}
-db_ip={ip adress of your database}
-db_retry={true/false the db will retry to connect if the connexion crash}
-db_main={the name of the database}
-nasa_api_key={a NASA api key}
+# suppress inspection "SpellCheckingInspection" for whole file
+#
+# -------------------------------------------------------------- #
+# -------------------| Akasuki Config File |-------------------- #
+# -------------------------------------------------------------- #
+#
+# -------------| Links Config
+github.url=https://github.com/Akasuki-bot/Akasuki
+support.server.url=https://discord.gg/973paeN
+invite.url=https://discord.com/api/oauth2/authorize?client_id=746742167594074132&permissions=8&scope=bot
+
+# -------------| Main Config
+akasuki.prefix=
+akasuki.token=
+
+# -------------| Api Keys
+api.nasa=
+api.giphy=
+api.weatherapi=
+api.sentryio.url=
 ~
 ~
 
@@ -62,7 +77,6 @@ $ java -jar Akasuki-jar-with-dependencies.fr
 Features on the stable version
 * Randoms gif (*kiss, *hug, etc)
 * UserInfo
-* Moderation (*ban, *kick, *warn etc)
 
 To-do list:
 * Marry
@@ -70,16 +84,17 @@ To-do list:
 * Prefix customization
 * Module system
 * Inventory and items system
+* Moderation (*ban, *kick, *warn etc)
 
 ## Status
-Maintained
+Maintained as 2021
 
 ## Inspiration
 The gif system is inspired by [Koya](https://koya.gg/) <br>
-The database side of the inventory system is inspired by PWK (it's a private bot)
+The inventory system is inspired by PWK (private bot)
 
 ## Support
-If you need help with Akasuki, how to config it or if you find any bugs join us on the [Discord](https://discord.com/invite/973paeN)
+If you need help with Akasuki **(not about self-hosting)**, how to config it or if you find any bugs join us on the [Discord](https://discord.com/invite/973paeN)
 
 ## NB
 I know at the beginning of this project some Discord token and database id leaked, these id had been changed a long time ago, and the IPs have changed. <br>

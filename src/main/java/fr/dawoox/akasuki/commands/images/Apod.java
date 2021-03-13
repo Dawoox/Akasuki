@@ -5,7 +5,6 @@ import discord4j.rest.util.Color;
 import fr.dawoox.akasuki.core.command.CommandCategory;
 import fr.dawoox.akasuki.core.command.CommandPermission;
 import fr.dawoox.akasuki.core.command.Context;
-import fr.dawoox.akasuki.utils.template.EmbedTemplate;
 import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.utils.API.NasaAPI;
 import fr.dawoox.akasuki.utils.json.ApodBody;
@@ -28,16 +27,20 @@ public class Apod extends BaseCmd{
     public void execute(Context context) {
         ApodBody apod = NasaAPI.requestAPOD();
         if (apod.mediaType.equalsIgnoreCase("image")) {
-            EmbedTemplate.sendEmbed(Objects.requireNonNull(context.getMessage().getChannel().block()),
-                    "NASA Astronomy Picture of the Day", apod.title, Color.DEEP_LILAC, apod.hdUrl);
+            context.getChannel().createEmbed( embedCreateSpec ->
+                    embedCreateSpec.setColor(Color.DEEP_LILAC)
+                    .setAuthor("NASA Astronomy Picture of the Day", null, null)
+                    .setDescription(apod.title)
+                    .setImage(apod.hdUrl)
+                    .setFooter("Akasuki", null)
+                    .setTimestamp(Instant.now())).block();
         }   else {
-            context.getChannel().createEmbed( embedCreateSpec -> {
-                embedCreateSpec.setColor(Color.DEEP_LILAC)
-                        .setAuthor("NASA Astronomy Picture of the Day", null, null)
-                        .setDescription(apod.title+":\n "+apod.url)
-                        .setFooter("Akasuki", null)
-                        .setTimestamp(Instant.now());
-            }).block();
+            context.getChannel().createEmbed( embedCreateSpec ->
+                    embedCreateSpec.setColor(Color.DEEP_LILAC)
+                    .setAuthor("NASA Astronomy Picture of the Day", null, null)
+                    .setDescription(apod.title+":\n "+apod.url)
+                    .setFooter("Akasuki", null)
+                    .setTimestamp(Instant.now())).block();
         }
     }
 }

@@ -11,7 +11,7 @@ public class Current {
     public final Condition condition;
     public final short wind_mph;
     public final short wind_kph;
-    public final byte wind_degree;
+    public final short wind_degree;
     public final String wind_dir;
     public final short pressure_mb;
     public final short pressure_in;
@@ -35,7 +35,7 @@ public class Current {
                    @JsonProperty("condition") Condition condition,
                    @JsonProperty("wind_mph") short wind_mph,
                    @JsonProperty("wind_kph") short wind_kph,
-                   @JsonProperty("wind_degree") byte wind_degree,
+                   @JsonProperty("wind_degree") short wind_degree,
                    @JsonProperty("wind_dir") String wind_dir,
                    @JsonProperty("pressure_mb") short pressure_mb,
                    @JsonProperty("pressure_in") short pressure_in,
