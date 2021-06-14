@@ -4,7 +4,9 @@ import fr.dawoox.akasuki.commands.gifs.Hug;
 import fr.dawoox.akasuki.commands.gifs.Kiss;
 import fr.dawoox.akasuki.commands.images.Apod;
 import fr.dawoox.akasuki.commands.images.Stonks;
+import fr.dawoox.akasuki.commands.music.PlayCmd;
 import fr.dawoox.akasuki.commands.owner.LeaveGuildCmd;
+import fr.dawoox.akasuki.commands.owner.SayCmd;
 import fr.dawoox.akasuki.commands.utils.InfoCmd;
 import fr.dawoox.akasuki.commands.utils.ServerInfoCmd;
 import fr.dawoox.akasuki.commands.utils.UserInfoCmd;
@@ -31,7 +33,7 @@ public class CommandManager {
     private CommandManager() {
         this.commandsMap = CommandManager.initialize(
                 //Owner Commands
-                new SendMessageCmd(), new LeaveGuildCmd(),
+                new SendMessageCmd(), new LeaveGuildCmd(), new SayCmd(),
 
                 //Utilities Commands
                 new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(), new WeatherCmd(),
@@ -41,6 +43,9 @@ public class CommandManager {
 
                 //Image Commands
                 new Apod(), new Stonks(),
+
+                //Music Commands
+                new PlayCmd(),
 
                 //Fun Commands
                 new Hug(), new Kiss()

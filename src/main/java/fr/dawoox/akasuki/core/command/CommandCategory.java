@@ -7,6 +7,7 @@ public enum CommandCategory {
     IMAGE("Image"),
     ADMIN("Admin"),
     FUN("Fun"),
+    MUSIC("Music"),
     OWNER("Owner");
 
     private final String name;

@@ -32,12 +32,6 @@ public class Akasuki {
     private static Snowflake owner_id;
     private static final Instant startup = Instant.now();
 
-    /**
-     * Main class, call on startup.
-     * @param args
-     * Args are the supplied command-line argument.
-     * @since 1.0.0
-     */
     public static void main(String[] args) {
         //Set default locale to FR
         Locale.setDefault(Locale.FRANCE);
