@@ -27,6 +27,10 @@ public class MessageProcessor {
             return;
         }
 
+        if (event.getMessage().getContent().toLowerCase().charAt(0) != Config.DEFAULT_PREFIX.charAt(0)) {
+            return;
+        }
+
         MESSAGE_TRIGGERED.inc();
         if (!event.getGuildId().isPresent()){
             MESSAGE_IN_DM.inc();

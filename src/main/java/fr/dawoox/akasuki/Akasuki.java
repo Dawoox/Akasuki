@@ -7,7 +7,7 @@ import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.rest.response.ResponseFunction;
 import fr.dawoox.akasuki.core.command.MessageProcessor;
-import fr.dawoox.akasuki.core.thread.ActivityManager;
+import fr.dawoox.akasuki.core.ActivityManager;
 import fr.dawoox.akasuki.data.Config;
 import io.prometheus.client.exporter.HTTPServer;
 import io.sentry.Sentry;
@@ -15,6 +15,8 @@ import reactor.util.Logger;
 import reactor.util.Loggers;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
 /**
@@ -28,13 +30,8 @@ public class Akasuki {
     private static int guildCounts;
 
     private static Snowflake owner_id;
+    private static final Instant startup = Instant.now();
 
-    /**
-     * Main class, call on startup.
-     * @param args
-     * Args are the supplied command-line argument.
-     * @since 1.0.0
-     */
     public static void main(String[] args) {
         //Set default locale to FR
         Locale.setDefault(Locale.FRANCE);
@@ -42,12 +39,13 @@ public class Akasuki {
 
         try {
             HTTPServer server = new HTTPServer(8080);
-        } catch (IOException e) { e.printStackTrace(); }
-
-        if (true){
-            DEFAULT_LOGGER.info("Initializing Sentry");
-            Sentry.init(sentryOptions -> sentryOptions.setDsn("https://8f8f812b07284a7b99b8527cb2b94839@o473268.ingest.sentry.io/5508041"));
+        } catch (IOException e) {
+            Sentry.captureException(e);
+            e.printStackTrace();
         }
+
+        DEFAULT_LOGGER.info("Initializing Sentry");
+        Sentry.init(sentryOptions -> sentryOptions.setDsn(Config.SENTRY_IO_API_URL));
 
         DEFAULT_LOGGER.info("Initializing");
         final DiscordClient client = DiscordClient.builder(Config.TOKEN).onClientResponse(ResponseFunction.emptyIfNotFound()).build();
@@ -60,7 +58,7 @@ public class Akasuki {
 
         gateway.getEventDispatcher().on(MessageCreateEvent.class).subscribe(MessageProcessor::processEvent);
 
-        DEFAULT_LOGGER.info("Updating bot activity");
+        DEFAULT_LOGGER.info("Start thread bot activity");
         gateway.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(readyEvent -> {
                     guildCounts = gateway.getGuilds().collectList().block().size();
@@ -75,5 +73,8 @@ public class Akasuki {
     }
     public static long getGuildCount() {
         return guildCounts;
+    }
+    public static long getUptime() {
+        return ChronoUnit.SECONDS.between(startup, Instant.now());
     }
 }

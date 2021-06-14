@@ -20,13 +20,10 @@ public class Config {
     public static final String DEFAULT_PREFIX = PROPERTIES.getProperty("akasuki.prefix");
     public static final String TOKEN = PROPERTIES.getProperty("akasuki.token");
 
-    public static final String DB_USER = PROPERTIES.getProperty("db.user");
-    public static final String DB_PASSWD = PROPERTIES.getProperty("db.ip");
-    public static final String DB_IP = PROPERTIES.getProperty("db.passwd");
-    public static final boolean DB_RETRY = PROPERTIES.getProperty("db.retry").endsWith("true");
-    public static final String DB_MAIN = PROPERTIES.getProperty("db.main");
-
     public static final String NASA_API_KEY = PROPERTIES.getProperty("api.nasa");
+    public static final String GIPHY_API_KEY = PROPERTIES.getProperty("api.giphy");
+    public static final String WEATHER_API_KEY = PROPERTIES.getProperty("api.weatherapi");
+    public static final String SENTRY_IO_API_URL = PROPERTIES.getProperty("api.sentryio.url");
 
     private static Properties loadProperties() {
         final Properties properties = new Properties();

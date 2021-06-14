@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="akasuki" target="8" />
       <module name="Akasuki" target="8" />
     </bytecodeTargetLevel>
   </component>

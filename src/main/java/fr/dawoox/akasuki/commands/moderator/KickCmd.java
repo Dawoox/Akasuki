@@ -5,7 +5,6 @@ import discord4j.core.object.entity.Member;
 import fr.dawoox.akasuki.core.command.CommandCategory;
 import fr.dawoox.akasuki.core.command.CommandPermission;
 import fr.dawoox.akasuki.core.command.Context;
-import fr.dawoox.akasuki.utils.template.EmbedTemplate;
 import fr.dawoox.akasuki.utils.ArgumentUtils;
 import fr.dawoox.akasuki.core.command.BaseCmd;
 
@@ -43,7 +42,7 @@ public class KickCmd extends BaseCmd {
 
             target.kick(reply).block();
 
-            EmbedTemplate.sendEmbed(Objects.requireNonNull(context.getMessage().getChannel().block()), reply, "kick");
+            //EmbedTemplate.sendEmbed(Objects.requireNonNull(context.getMessage().getChannel().block()), reply, "kick");
         }
     }
 }
