@@ -7,12 +7,9 @@ import fr.dawoox.akasuki.commands.images.Stonks;
 import fr.dawoox.akasuki.commands.music.PlayCmd;
 import fr.dawoox.akasuki.commands.owner.LeaveGuildCmd;
 import fr.dawoox.akasuki.commands.owner.SayCmd;
-import fr.dawoox.akasuki.commands.utils.InfoCmd;
-import fr.dawoox.akasuki.commands.utils.ServerInfoCmd;
-import fr.dawoox.akasuki.commands.utils.UserInfoCmd;
+import fr.dawoox.akasuki.commands.utils.*;
 import fr.dawoox.akasuki.commands.moderator.KickCmd;
 import fr.dawoox.akasuki.commands.owner.SendMessageCmd;
-import fr.dawoox.akasuki.commands.utils.WeatherCmd;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -36,10 +33,10 @@ public class CommandManager {
                 new SendMessageCmd(), new LeaveGuildCmd(), new SayCmd(),
 
                 //Utilities Commands
-                new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(), new WeatherCmd(),
+                new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(), new WeatherCmd(), new EpicGameStoreCmd(),
 
                 //Moderation Commands
-                new KickCmd(),
+                //new KickCmd(),
 
                 //Image Commands
                 new Apod(), new Stonks(),
