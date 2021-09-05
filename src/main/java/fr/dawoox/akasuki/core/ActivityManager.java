@@ -72,8 +72,8 @@ public class ActivityManager extends Thread{
                 Sentry.captureException(e);
                 e.printStackTrace();
             }
-            if (state >= activities.size() - 1) {
-                state=1;
+            if (state >= activities.size()-1) {
+                state=0;
             } else {
                 state++;
             }
