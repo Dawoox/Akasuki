@@ -34,6 +34,7 @@ public class SendMessageCmd extends BaseCmd {
                 .onErrorMap(ClientException.isStatusCode(HttpResponseStatus.FORBIDDEN.code()), err -> Usererror(context)).block();
 
         user.getPrivateChannel().block().createMessage(args.get(1)).block();
+        context.getChannel().createMessage(String.format(":white_check_mark: Successfully send msg to user with ID **%s**", args.get(0))).block();
     }
 
     public CommandException Usererror(Context context) {
