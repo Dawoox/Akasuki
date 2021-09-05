@@ -33,10 +33,10 @@ public class CommandManager {
                 new SendMessageCmd(), new LeaveGuildCmd(), new SayCmd(),
 
                 //Utilities Commands
-                new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(), new WeatherCmd(), new EpicGameStoreCmd(),
+                new UserInfoCmd(), new InfoCmd(), /*new ServerInfoCmd(), region check is deactivated now on discord side*/ new WeatherCmd(), new EpicGameStoreCmd(),
 
                 //Moderation Commands
-                //new KickCmd(),
+                //new KickCmd(), command to fix
 
                 //Image Commands
                 new Apod(), new Stonks(),

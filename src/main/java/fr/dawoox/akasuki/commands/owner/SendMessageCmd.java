@@ -3,10 +3,13 @@ package fr.dawoox.akasuki.commands.owner;
 import com.sun.tools.javac.util.List;
 import discord4j.common.util.Snowflake;
 import discord4j.core.object.entity.User;
+import discord4j.rest.http.client.ClientException;
+import fr.dawoox.akasuki.commands.CommandException;
 import fr.dawoox.akasuki.core.command.BaseCmd;
 import fr.dawoox.akasuki.core.command.CommandCategory;
 import fr.dawoox.akasuki.core.command.CommandPermission;
 import fr.dawoox.akasuki.core.command.Context;
+import io.netty.handler.codec.http.HttpResponseStatus;
 
 /**
  * Display a list of commands or the usage of a specified command
@@ -16,23 +19,30 @@ import fr.dawoox.akasuki.core.command.Context;
 public class SendMessageCmd extends BaseCmd {
 
     public SendMessageCmd() {
-        super(CommandCategory.OWNER, CommandPermission.OWNER, List.of("send_message"));
+        super(CommandCategory.OWNER, CommandPermission.OWNER, List.of("send_msg"));
     }
 
     @Override
     public void execute(Context context){
         final java.util.List<String> args = context.requireArgs(2);
 
-        final Long userId = Long.valueOf(args.get(0));
-        assert userId != null;
-        if (userId.equals(context.getClient().getSelfId().asLong())) {
-            context.getChannel().createMessage("Je ne peut pas envoyer de message à moi-même ou à cette personne.. :f").block();
-            return;
+        if (Long.valueOf(args.get(0)).equals(context.getClient().getSelfId().asLong())) {
+            throw IDerror(context);
         }
 
-        final User target = context.getClient().getUserById(Snowflake.of(userId)).block();
-        assert target != null;
-        target.getPrivateChannel().block().createMessage(args.get(1)).block();
+        User user = context.getClient().getUserById(Snowflake.of(args.get(0)))
+                .onErrorMap(ClientException.isStatusCode(HttpResponseStatus.FORBIDDEN.code()), err -> Usererror(context)).block();
+
+        user.getPrivateChannel().block().createMessage(args.get(1)).block();
     }
 
+    public CommandException Usererror(Context context) {
+        context.getChannel().createMessage(":x: Cannot send messages to this user").block();
+        return new CommandException("User not found/does not accept dm.");
+    }
+
+    public CommandException IDerror(Context context) {
+        context.getChannel().createMessage(":x: Cannot send messages to myself").block();
+        return new CommandException("User is myself.");
+    }
 }
