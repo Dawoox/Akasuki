@@ -22,6 +22,11 @@ public class MessageProcessor {
             .namespace("akasuki").name("message_in_dm").help("Message Send In DM").register();
 
     public static void processEvent(MessageCreateEvent event){
+        //If the message contain a embed, ignore it (if not a NoSuchElementException will be throw)
+        if (event.getMessage().getEmbeds().size() > 0) {
+            return;
+        }
+
         //If the message is from a bot, ignore it
         if (event.getMessage().getAuthor().get().isBot()) {
             return;

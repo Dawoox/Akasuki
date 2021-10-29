@@ -6,13 +6,11 @@ import fr.dawoox.akasuki.commands.images.Apod;
 import fr.dawoox.akasuki.commands.images.Stonks;
 import fr.dawoox.akasuki.commands.music.PlayCmd;
 import fr.dawoox.akasuki.commands.owner.LeaveGuildCmd;
+import fr.dawoox.akasuki.commands.owner.ListGuildCmd;
 import fr.dawoox.akasuki.commands.owner.SayCmd;
-import fr.dawoox.akasuki.commands.utils.InfoCmd;
-import fr.dawoox.akasuki.commands.utils.ServerInfoCmd;
-import fr.dawoox.akasuki.commands.utils.UserInfoCmd;
+import fr.dawoox.akasuki.commands.utils.*;
 import fr.dawoox.akasuki.commands.moderator.KickCmd;
 import fr.dawoox.akasuki.commands.owner.SendMessageCmd;
-import fr.dawoox.akasuki.commands.utils.WeatherCmd;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -33,13 +31,13 @@ public class CommandManager {
     private CommandManager() {
         this.commandsMap = CommandManager.initialize(
                 //Owner Commands
-                new SendMessageCmd(), new LeaveGuildCmd(), new SayCmd(),
+                new SendMessageCmd(), new LeaveGuildCmd(), new SayCmd(), new ListGuildCmd(),
 
                 //Utilities Commands
-                new UserInfoCmd(), new InfoCmd(), new ServerInfoCmd(), new WeatherCmd(),
+                new UserInfoCmd(), new InfoCmd(), /*new ServerInfoCmd(), region check is deactivated now on discord side*/ new WeatherCmd(), new EpicGameStoreCmd(),
 
                 //Moderation Commands
-                new KickCmd(),
+                //new KickCmd(), command to fix
 
                 //Image Commands
                 new Apod(), new Stonks(),

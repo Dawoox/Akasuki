@@ -1,13 +1,12 @@
 {
   "config" : {
     "rollout_time": "10",
-    "type": "playing"
+    "type": "watching"
   },
   "activities" : [
-    "Hold my Beer",
-    "%v !",
-    "I am a joke to you?",
-    "No i'm not terminator",
+    "uwu",
+    "%v",
+    "omawa mu shindeio",
     "%gl"
   ]
 }
