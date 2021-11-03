@@ -40,15 +40,15 @@ public class Akasuki {
         Locale.setDefault(Locale.FRANCE);
         DEFAULT_LOGGER.info(Figlet.render());
 
+        DEFAULT_LOGGER.info("Initializing Sentry");
+        Sentry.init(sentryOptions -> sentryOptions.setDsn(Config.SENTRY_IO_API_URL));
+
         try {
             HTTPServer server = new HTTPServer(8080);
         } catch (IOException e) {
             Sentry.captureException(e);
             e.printStackTrace();
         }
-
-        DEFAULT_LOGGER.info("Initializing Sentry");
-        Sentry.init(sentryOptions -> sentryOptions.setDsn(Config.SENTRY_IO_API_URL));
 
         DEFAULT_LOGGER.info("Initializing");
         final DiscordClient client = DiscordClient.builder(Config.TOKEN).onClientResponse(ResponseFunction.emptyIfNotFound()).build();
