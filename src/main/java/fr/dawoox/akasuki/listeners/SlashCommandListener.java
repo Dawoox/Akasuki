@@ -1,9 +1,10 @@
 package fr.dawoox.akasuki.listeners;
 
-import discord4j.common.util.Snowflake;
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.rest.service.ApplicationService;
 import fr.dawoox.akasuki.Akasuki;
+import fr.dawoox.akasuki.commands.owner.LeaveGuildCmd;
+import fr.dawoox.akasuki.commands.owner.ListGuildsCmd;
 import fr.dawoox.akasuki.commands.owner.SayCmd;
 import fr.dawoox.akasuki.commands.owner.SendMessageCmd;
 import fr.dawoox.akasuki.commands.utils.PingCmd;
@@ -14,18 +15,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SlashCommandListener {
-    private final static List<SlashBaseCmd> commands = new ArrayList<>();
+    private final static List<SlashBaseCmd> globalCommands = new ArrayList<>();
+    private final static List<SlashBaseCmd> guildsCommands = new ArrayList<>();
 
     static {
-        commands.add(new PingCmd());
-        commands.add(new SayCmd());
-        commands.add(new SendMessageCmd());
+        guildsCommands.add(new PingCmd());
+        guildsCommands.add(new SayCmd());
+        guildsCommands.add(new SendMessageCmd());
+        guildsCommands.add(new LeaveGuildCmd());
+        guildsCommands.add(new ListGuildsCmd());
     }
 
     public static void handle(ChatInputInteractionEvent event) {
-        commands.forEach(command -> {
+        guildsCommands.forEach(command -> {
             if (command.getName().equalsIgnoreCase(event.getCommandName())){
                 command.handle(event);
+                return;
             }
         });
     }
@@ -33,10 +38,12 @@ public class SlashCommandListener {
     public static void registerCommands(ApplicationService applicationService, Boolean asGlobal) {
         try {
             if (asGlobal) {
-                //TODO
+                globalCommands.forEach(command -> {
+                    applicationService.createGlobalApplicationCommand(Akasuki.getApplicationId(), command.getRequest()).block();
+                });
             } else {
                 cleanCommands(applicationService);
-                commands.forEach(command -> {
+                guildsCommands.forEach(command -> {
                     applicationService.createGuildApplicationCommand(Akasuki.getApplicationId(), Config.GUILD_ID.asLong(), command.getRequest()).block();
                 });
             }
@@ -47,10 +54,11 @@ public class SlashCommandListener {
 
     private static void cleanCommands(ApplicationService applicationService) {
         applicationService.getGuildApplicationCommands(Akasuki.getApplicationId(), Config.GUILD_ID.asLong())
-                .doOnEach(application -> applicationService.deleteGuildApplicationCommand(Akasuki.getApplicationId(),
-                        Config.GUILD_ID.asLong(), Long.valueOf(application.get().id())).block());
+                .collectList().block().forEach(application -> applicationService.deleteGuildApplicationCommand(Akasuki.getApplicationId(),
+                        Config.GUILD_ID.asLong(), Long.parseLong(application.id())).block());
+        /*
         applicationService.getGlobalApplicationCommands(Akasuki.getApplicationId())
                 .doOnEach(application -> applicationService.deleteGlobalApplicationCommand(Akasuki.getApplicationId(),
-                        Snowflake.asLong(application.get().id())).block());
+                        Snowflake.asLong(application.get().id())).block());*/
     }
 }
