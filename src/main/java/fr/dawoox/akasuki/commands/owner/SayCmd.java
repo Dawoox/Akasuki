@@ -1,22 +1,40 @@
 package fr.dawoox.akasuki.commands.owner;
 
-import com.sun.tools.javac.util.List;
-import fr.dawoox.akasuki.core.command.BaseCmd;
-import fr.dawoox.akasuki.core.command.CommandCategory;
-import fr.dawoox.akasuki.core.command.CommandPermission;
-import fr.dawoox.akasuki.core.command.Context;
+import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
+import discord4j.core.object.command.ApplicationCommandOption;
+import discord4j.discordjson.json.ApplicationCommandOptionData;
+import discord4j.discordjson.json.ApplicationCommandRequest;
+import fr.dawoox.akasuki.core.SlashBaseCmd;
 
-public class SayCmd extends BaseCmd {
+public class SayCmd implements SlashBaseCmd {
 
-    public SayCmd() {
-        super(CommandCategory.OWNER, CommandPermission.OWNER, List.of("say"));
+    @Override
+    public String getName() {
+        return "say";
     }
 
     @Override
-    public void execute(Context context) {
-        final java.util.List<String> args = context.requireArgs(1);
+    public ApplicationCommandRequest getRequest() {
+        return ApplicationCommandRequest.builder()
+                .name("say")
+                .description("Let the bot say something")
+                .addOption(ApplicationCommandOptionData.builder()
+                    .name("sentence")
+                    .description("The sentence the bot is going to say")
+                    .type(ApplicationCommandOption.Type.STRING.getValue())
+                    .required(true)
+                    .build())
+                .build();
+    }
 
-        context.getMessage().delete().block();
-        context.getChannel().createMessage(args.get(0)).block();
+    @Override
+    public void handle(ChatInputInteractionEvent event) {
+        String sentence = event.getOption("sentence").get().getValue().get().asString();
+        event.getInteraction().getChannel().block().createMessage(sentence).block();
+
+        event.reply()
+                .withEphemeral(true)
+                .withContent("Message send")
+                .block();
     }
 }

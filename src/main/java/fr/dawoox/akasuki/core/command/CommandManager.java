@@ -31,7 +31,7 @@ public class CommandManager {
     private CommandManager() {
         this.commandsMap = CommandManager.initialize(
                 //Owner Commands
-                new SendMessageCmd(), new LeaveGuildCmd(), new SayCmd(), new ListGuildCmd(),
+                new LeaveGuildCmd(), new ListGuildCmd(),
 
                 //Utilities Commands
                 new UserInfoCmd(), new InfoCmd(), /*new ServerInfoCmd(), region check is deactivated now on discord side*/ new WeatherCmd(), new EpicGameStoreCmd(),

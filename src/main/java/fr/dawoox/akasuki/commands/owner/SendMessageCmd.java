@@ -1,49 +1,56 @@
 package fr.dawoox.akasuki.commands.owner;
 
 import com.sun.tools.javac.util.List;
-import discord4j.common.util.Snowflake;
+import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
+import discord4j.core.object.command.ApplicationCommandOption;
 import discord4j.core.object.entity.User;
-import discord4j.rest.http.client.ClientException;
-import fr.dawoox.akasuki.commands.CommandException;
-import fr.dawoox.akasuki.core.command.BaseCmd;
-import fr.dawoox.akasuki.core.command.CommandCategory;
-import fr.dawoox.akasuki.core.command.CommandPermission;
-import fr.dawoox.akasuki.core.command.Context;
-import io.netty.handler.codec.http.HttpResponseStatus;
+import discord4j.discordjson.json.ApplicationCommandOptionData;
+import discord4j.discordjson.json.ApplicationCommandRequest;
+import fr.dawoox.akasuki.core.SlashBaseCmd;
 
 /**
  * Display a list of commands or the usage of a specified command
  * @author Dawoox
  * @version 1.0.0
  */
-public class SendMessageCmd extends BaseCmd {
+public class SendMessageCmd implements SlashBaseCmd {
 
-    public SendMessageCmd() {
-        super(CommandCategory.OWNER, CommandPermission.OWNER, List.of("send_msg"));
+    @Override
+    public String getName() {
+        return "sendMessage";
     }
 
     @Override
-    public void execute(Context context){
-        final java.util.List<String> args = context.requireArgs(2);
-
-        if (Long.valueOf(args.get(0)).equals(context.getClient().getSelfId().asLong())) {
-            throw IDerror(context);
-        }
-
-        User user = context.getClient().getUserById(Snowflake.of(args.get(0)))
-                .onErrorMap(ClientException.isStatusCode(HttpResponseStatus.FORBIDDEN.code()), err -> Usererror(context)).block();
-
-        user.getPrivateChannel().block().createMessage(args.get(1)).block();
-        context.getChannel().createMessage(String.format(":white_check_mark: Successfully send msg to user with ID **%s**", args.get(0))).block();
+    public ApplicationCommandRequest getRequest() {
+        return ApplicationCommandRequest.builder()
+                .name("sendmessage")
+                .description("Send a message in the DM of a user")
+                .addAllOptions(List.of(
+                        ApplicationCommandOptionData.builder()
+                            .name("sentence")
+                            .description("The sentence the bot is going to say")
+                            .type(ApplicationCommandOption.Type.STRING.getValue())
+                            .required(true)
+                            .build(),
+                        ApplicationCommandOptionData.builder()
+                            .name("user")
+                            .description("The user")
+                            .type(ApplicationCommandOption.Type.USER.getValue())
+                            .required(true)
+                            .build()
+                        ))
+                .build();
     }
 
-    public CommandException Usererror(Context context) {
-        context.getChannel().createMessage(":x: Cannot send messages to this user").block();
-        return new CommandException("User not found/does not accept dm.");
-    }
+    @Override
+    public void handle(ChatInputInteractionEvent event){
+        String sentence = event.getOption("sentence").get().getValue().get().asString();
+        User user = event.getOption("user").get().getValue().get().asUser().block();
 
-    public CommandException IDerror(Context context) {
-        context.getChannel().createMessage(":x: Cannot send messages to myself").block();
-        return new CommandException("User is myself.");
+        user.getPrivateChannel().block().createMessage(sentence).block();
+        event.reply()
+                .withEphemeral(true)
+                .withContent(String.format("Successfully send msg to **%s**", user.getMention()))
+                .block();
     }
 }
