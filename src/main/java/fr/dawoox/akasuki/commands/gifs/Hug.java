@@ -31,7 +31,7 @@ public class Hug extends BaseCmd {
         Giphy giphy = new Giphy(Config.GIPHY_API_KEY);
 
         if (!context.getMessage().getUserMentionIds().isEmpty()) {
-            reply = context.getAuthor().getUsername()+" hug "+context.getMessage().getUserMentions().blockFirst().asMember(context.getGuildId()).block();
+            reply = context.getAuthor().getUsername()+" hug "+context.getMessage().getUserMentions().get(0).asMember(context.getGuildId()).block();
         } else {
             reply = context.getAuthor().getUsername()+" hug";
         }

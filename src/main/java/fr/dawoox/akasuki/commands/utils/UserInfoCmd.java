@@ -45,10 +45,10 @@ public class UserInfoCmd extends BaseCmd{
         GuildEmoji distrubEmoji = Objects.requireNonNull(context.getGuild()).getGuildEmojiById(Snowflake.of("749009520180723825")).block();
 
         if (!context.getMessage().getUserMentionIds().isEmpty()){
-            UserInfoCmd.member = Objects.requireNonNull(context.getMessage().getUserMentions().blockFirst()).asMember(context.getGuildId()).block();
+            UserInfoCmd.member = Objects.requireNonNull(context.getMessage().getUserMentions().get(0)).asMember(context.getGuildId()).block();
             UserInfoCmd.author = Objects.requireNonNull(member).getUsername() + "#" + member.getDiscriminator();
-            UserInfoCmd.memberOld = format(member.getJoinTime())
-                    + "\n(soit il y a " + diffInDays(member.getJoinTime(), Instant.now()) + " jours)";
+            UserInfoCmd.memberOld = format(member.getJoinTime().get())
+                    + "\n(soit il y a " + diffInDays(member.getJoinTime().get(), Instant.now()) + " jours)";
             UserInfoCmd.accountOld = format(MemberUtils.getAccountCreationDate(member))
                     + "\n(soit il y a " + diffInDays(MemberUtils.getAccountCreationDate(member), Instant.now()) + " jours)";
             UserInfoCmd.statut = Objects.requireNonNull(member.getPresence().block()).getStatus().toString();
@@ -56,8 +56,8 @@ public class UserInfoCmd extends BaseCmd{
         } else {
             UserInfoCmd.member = context.getMember();
             UserInfoCmd.author = Objects.requireNonNull(member).getUsername() + "#" + member.getDiscriminator();
-            UserInfoCmd.memberOld = format(member.getJoinTime())
-                    + "\n(soit il y a " + diffInDays(member.getJoinTime(), Instant.now()) + " jours)";
+            UserInfoCmd.memberOld = format(member.getJoinTime().get())
+                    + "\n(soit il y a " + diffInDays(member.getJoinTime().get(), Instant.now()) + " jours)";
             UserInfoCmd.accountOld = format(MemberUtils.getAccountCreationDate(member))
                     + "\n(soit il y a " + diffInDays(MemberUtils.getAccountCreationDate(member), Instant.now()) + " jours)";
             UserInfoCmd.statut = Objects.requireNonNull(member.getPresence().block()).getStatus().toString();

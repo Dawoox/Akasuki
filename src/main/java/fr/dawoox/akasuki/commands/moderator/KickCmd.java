@@ -28,7 +28,7 @@ public class KickCmd extends BaseCmd {
         final java.util.List<String> args = context.requireArgs(1);
 
         if (!context.getMessage().getUserMentionIds().isEmpty()){
-            final Member target = Objects.requireNonNull(context.getMessage().getUserMentions().blockFirst()).asMember(context.getGuildId()).block();
+            final Member target = Objects.requireNonNull(context.getMessage().getUserMentions().get(0)).asMember(context.getGuildId()).block();
             assert target != null;
             reply = sender.getUsername() + " vient d'expulser " + target.getUsername();
 

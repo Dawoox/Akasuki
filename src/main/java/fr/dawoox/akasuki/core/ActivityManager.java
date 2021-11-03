@@ -1,8 +1,8 @@
 package fr.dawoox.akasuki.core;
 
 import discord4j.core.GatewayDiscordClient;
-import discord4j.core.object.presence.Activity;
-import discord4j.core.object.presence.Presence;
+import discord4j.core.object.presence.*;
+import fr.dawoox.akasuki.Akasuki;
 import fr.dawoox.akasuki.data.Config;
 import fr.dawoox.akasuki.data.Maven;
 import io.sentry.Sentry;
@@ -46,23 +46,23 @@ public class ActivityManager extends Thread{
             String activity = activities.get(state).toString().replace("%v", Maven.PROJECT_VERSION).replace("%gl", Config.GITHUB_URL.substring(8));
             switch (type) {
                 case "watching":
-                    gateway.updatePresence(Presence.online(Activity.watching(activity))).block();
+                    gateway.updatePresence(ClientPresence.online(ClientActivity.watching(activity))).block();
                     break;
 
                 case "listening":
-                    gateway.updatePresence(Presence.online(Activity.listening(activity))).block();
+                    gateway.updatePresence(ClientPresence.online(ClientActivity.listening(activity))).block();
                     break;
 
                 case "competing":
-                    gateway.updatePresence(Presence.online(Activity.competing(activity))).block();
+                    gateway.updatePresence(ClientPresence.online(ClientActivity.competing(activity))).block();
                     break;
 
                 case "playing":
-                    gateway.updatePresence(Presence.online(Activity.playing(activity))).block();
+                    gateway.updatePresence(ClientPresence.online(ClientActivity.playing(activity))).block();
                     break;
 
                 default:
-                    gateway.updatePresence(Presence.online(Activity.watching("Invalid Activity Type /!\\"))).block();
+                    gateway.updatePresence(ClientPresence.online(ClientActivity.watching("Invalid Activity Type !"))).block();
                     break;
             }
 

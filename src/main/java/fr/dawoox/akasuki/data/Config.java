@@ -1,5 +1,6 @@
 package fr.dawoox.akasuki.data;
 
+import discord4j.common.util.Snowflake;
 import reactor.util.Logger;
 import reactor.util.Loggers;
 
@@ -19,6 +20,7 @@ public class Config {
 
     public static final String DEFAULT_PREFIX = PROPERTIES.getProperty("akasuki.prefix");
     public static final String TOKEN = PROPERTIES.getProperty("akasuki.token");
+    public static final Snowflake GUILD_ID = Snowflake.of(PROPERTIES.getProperty("akasuki.guild"));
 
     public static final String NASA_API_KEY = PROPERTIES.getProperty("api.nasa");
     public static final String GIPHY_API_KEY = PROPERTIES.getProperty("api.giphy");

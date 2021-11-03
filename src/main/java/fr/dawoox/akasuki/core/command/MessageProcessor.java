@@ -21,6 +21,11 @@ public class MessageProcessor {
     private static final Counter MESSAGE_IN_DM = Counter.build()
             .namespace("akasuki").name("message_in_dm").help("Message Send In DM").register();
 
+    /**
+     *
+     * @param event
+     * @deprecated
+     */
     public static void processEvent(MessageCreateEvent event){
         //If the message contain a embed, ignore it (if not a NoSuchElementException will be throw)
         if (event.getMessage().getEmbeds().size() > 0) {
