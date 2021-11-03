@@ -6,6 +6,7 @@ import discord4j.core.object.command.ApplicationCommandOption;
 import discord4j.core.object.entity.User;
 import discord4j.discordjson.json.ApplicationCommandOptionData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
+import fr.dawoox.akasuki.Akasuki;
 import fr.dawoox.akasuki.core.SlashBaseCmd;
 
 /**
@@ -44,6 +45,11 @@ public class SendMessageCmd implements SlashBaseCmd {
 
     @Override
     public void handle(ChatInputInteractionEvent event){
+        if (!event.getInteraction().getUser().getId().equals(Akasuki.getOwnerId())) {
+            event.reply().withEphemeral(true).withContent("This command require developer permissions").block();
+            return;
+        }
+
         String sentence = event.getOption("sentence").get().getValue().get().asString();
         User user = event.getOption("user").get().getValue().get().asUser().block();
 
