@@ -92,7 +92,7 @@
         <dependency>
             <groupId>com.sedmelluq</groupId>
             <artifactId>lavaplayer</artifactId>
-            <version>1.3.77</version>
+            <version>1.3.78</version>
         </dependency>
         <!-- Loggers -->
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
@@ -152,7 +152,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>20.1.0</version>
+            <version>23.0.0</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
