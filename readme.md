@@ -1,5 +1,6 @@
 # Akasuki
-> Simple and funny little Java Discord bot, build with Discord4J.
+> Akasuki is your bot of choice to moderate and add fun littles perks to your server.<br>
+> Inventory and Housing System coming soon !
 
 ## Table of contents
 * [General info](#general-info)
