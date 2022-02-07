@@ -122,7 +122,7 @@
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient</artifactId>
-            <version>0.12.0</version>
+            <version>0.15.0</version>
         </dependency>
         <!-- Prometheus Simple HTTPServer -->
         <dependency>
