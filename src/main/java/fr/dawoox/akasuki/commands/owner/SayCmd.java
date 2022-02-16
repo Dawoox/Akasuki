@@ -1,12 +1,11 @@
 package fr.dawoox.akasuki.commands.owner;
 
-import discord4j.common.util.Snowflake;
-import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.core.object.command.ApplicationCommandOption;
 import discord4j.discordjson.json.ApplicationCommandOptionData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
-import fr.dawoox.akasuki.Akasuki;
-import fr.dawoox.akasuki.core.SlashBaseCmd;
+import fr.dawoox.akasuki.core.command.CommandPermission;
+import fr.dawoox.akasuki.core.command.slashcommands.SlashContext;
+import fr.dawoox.akasuki.core.command.slashcommands.SlashBaseCmd;
 
 public class SayCmd implements SlashBaseCmd {
 
@@ -30,16 +29,16 @@ public class SayCmd implements SlashBaseCmd {
     }
 
     @Override
-    public void handle(ChatInputInteractionEvent event) {
-        if (!event.getInteraction().getUser().getId().equals(Akasuki.getOwnerId())) {
-            event.reply().withEphemeral(true).withContent("This command require developer permissions").block();
+    public void handle(SlashContext context) {
+        if (!context.getPermissions().equals(CommandPermission.OWNER)) {
+            context.getEvent().reply().withContent("This command require developer permissions").block();
             return;
         }
 
-        String sentence = event.getOption("sentence").get().getValue().get().asString();
-        event.getInteraction().getChannel().block().createMessage(sentence).block();
+        String sentence = context.getOption("sentence").getValue().get().asString();
+        context.getChannel().createMessage(sentence).block();
 
-        event.reply()
+        context.getEvent().reply()
                 .withEphemeral(true)
                 .withContent("Message send")
                 .block();

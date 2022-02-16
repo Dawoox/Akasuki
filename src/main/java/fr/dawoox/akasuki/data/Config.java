@@ -21,11 +21,14 @@ public class Config {
     public static final String DEFAULT_PREFIX = PROPERTIES.getProperty("akasuki.prefix");
     public static final String TOKEN = PROPERTIES.getProperty("akasuki.token");
     public static final Snowflake GUILD_ID = Snowflake.of(PROPERTIES.getProperty("akasuki.guild"));
+    public static final Boolean DEV_MODE = Boolean.parseBoolean(PROPERTIES.getProperty("akasuki.dev"));
 
     public static final String NASA_API_KEY = PROPERTIES.getProperty("api.nasa");
     public static final String GIPHY_API_KEY = PROPERTIES.getProperty("api.giphy");
     public static final String WEATHER_API_KEY = PROPERTIES.getProperty("api.weatherapi");
     public static final String SENTRY_IO_API_URL = PROPERTIES.getProperty("api.sentryio.url");
+
+    public static final String DATABASE_NAME = PROPERTIES.getProperty("db.name");
 
     private static Properties loadProperties() {
         final Properties properties = new Properties();

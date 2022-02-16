@@ -1,9 +1,10 @@
 package fr.dawoox.akasuki.commands.owner;
 
-import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.core.object.entity.Guild;
 import discord4j.discordjson.json.ApplicationCommandRequest;
-import fr.dawoox.akasuki.core.SlashBaseCmd;
+import fr.dawoox.akasuki.core.command.CommandPermission;
+import fr.dawoox.akasuki.core.command.slashcommands.SlashBaseCmd;
+import fr.dawoox.akasuki.core.command.slashcommands.SlashContext;
 
 import java.util.List;
 
@@ -24,8 +25,13 @@ public class ListGuildsCmd implements SlashBaseCmd {
     }
 
     @Override
-    public void handle(ChatInputInteractionEvent event) {
-        List<Guild> guilds = event.getClient().getGuilds().collectList().block();
+    public void handle(SlashContext context) {
+        if (!context.getPermissions().equals(CommandPermission.OWNER)) {
+            context.getEvent().reply().withContent("This command require developer permissions").block();
+            return;
+        }
+
+        List<Guild> guilds = context.getClient().getGuilds().collectList().block();
         StringBuilder content = new StringBuilder();
 
         if (guilds.size() < maxShowServers) {
@@ -40,7 +46,7 @@ public class ListGuildsCmd implements SlashBaseCmd {
             content.append("\n"+(guilds.size()-maxShowServers)+" more servers.");
         }
 
-        event.reply()
+        context.getEvent().reply()
                 .withEphemeral(true)
                 .withContent(content.toString())
                 .block();

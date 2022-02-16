@@ -1,8 +1,8 @@
 package fr.dawoox.akasuki.commands.utils;
 
-import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.discordjson.json.ApplicationCommandRequest;
-import fr.dawoox.akasuki.core.SlashBaseCmd;
+import fr.dawoox.akasuki.core.command.slashcommands.SlashBaseCmd;
+import fr.dawoox.akasuki.core.command.slashcommands.SlashContext;
 
 public class PingCmd implements SlashBaseCmd {
 
@@ -20,8 +20,8 @@ public class PingCmd implements SlashBaseCmd {
     }
 
     @Override
-    public void handle(ChatInputInteractionEvent event) {
-        event.reply()
+    public void handle(SlashContext context) {
+        context.getEvent().reply()
                 .withEphemeral(false)
                 .withContent("Pong!")
                 .block();

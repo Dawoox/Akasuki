@@ -2,10 +2,8 @@ package fr.dawoox.akasuki.core;
 
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.object.presence.*;
-import fr.dawoox.akasuki.Akasuki;
 import fr.dawoox.akasuki.data.Config;
-import fr.dawoox.akasuki.data.Maven;
-import io.sentry.Sentry;
+import fr.dawoox.akasuki.data.Maven;;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -30,7 +28,6 @@ public class ActivityManager extends Thread{
 
             JSON = (JSONObject) new JSONParser().parse(inline);
         } catch (ParseException | FileNotFoundException e) {
-            Sentry.captureException(e);
             e.printStackTrace();
         }
 
@@ -69,7 +66,6 @@ public class ActivityManager extends Thread{
             try {
                 sleep(rollout);
             } catch (InterruptedException e) {
-                Sentry.captureException(e);
                 e.printStackTrace();
             }
             if (state >= activities.size()-1) {

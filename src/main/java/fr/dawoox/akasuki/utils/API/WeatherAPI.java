@@ -3,7 +3,7 @@ package fr.dawoox.akasuki.utils.API;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.dawoox.akasuki.commands.CommandException;
 import fr.dawoox.akasuki.data.Config;
-import fr.dawoox.akasuki.utils.json.WeatherBody;
+import fr.dawoox.akasuki.utils.API.json.WeatherBody;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,4 +29,5 @@ public class WeatherAPI {
 
         return weather;
     }
+
 }

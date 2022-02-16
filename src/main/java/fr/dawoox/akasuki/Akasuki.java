@@ -7,16 +7,14 @@ import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.rest.response.ResponseFunction;
-import fr.dawoox.akasuki.core.command.MessageProcessor;
 import fr.dawoox.akasuki.core.ActivityManager;
+import fr.dawoox.akasuki.core.command.legacycommands.MessageProcessor;
 import fr.dawoox.akasuki.data.Config;
+import fr.dawoox.akasuki.data.sqlite.SQLiteJBC;
 import fr.dawoox.akasuki.listeners.SlashCommandListener;
-import io.prometheus.client.exporter.HTTPServer;
-import io.sentry.Sentry;
 import reactor.util.Logger;
 import reactor.util.Loggers;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
@@ -40,20 +38,13 @@ public class Akasuki {
         Locale.setDefault(Locale.FRANCE);
         DEFAULT_LOGGER.info(Figlet.render());
 
-        DEFAULT_LOGGER.info("Initializing Sentry");
-        Sentry.init(sentryOptions -> sentryOptions.setDsn(Config.SENTRY_IO_API_URL));
-
-        try {
-            HTTPServer server = new HTTPServer(8080);
-        } catch (IOException e) {
-            Sentry.captureException(e);
-            e.printStackTrace();
-        }
-
         DEFAULT_LOGGER.info("Initializing");
         final DiscordClient client = DiscordClient.builder(Config.TOKEN).onClientResponse(ResponseFunction.emptyIfNotFound()).build();
         Akasuki.ownerId = Snowflake.of(client.getApplicationInfo().block().owner().id());
         Akasuki.applicationId = client.getApplicationId().block();
+
+        DEFAULT_LOGGER.info("Connecting to the database");
+        //SQLiteJBC.initialize();
 
         DEFAULT_LOGGER.info("Connecting to Discord");
         final GatewayDiscordClient gateway = client.login().block();
@@ -67,11 +58,13 @@ public class Akasuki {
                 });
 
         DEFAULT_LOGGER.info("Registering commands with Discord");
-        SlashCommandListener.registerCommands(client.getApplicationService(), false);
+        SlashCommandListener.registerCommands(client.getApplicationService());
 
         DEFAULT_LOGGER.info("Listening to events now");
         gateway.getEventDispatcher().on(ChatInputInteractionEvent.class).subscribe(SlashCommandListener::handle);
         gateway.getEventDispatcher().on(MessageCreateEvent.class).subscribe(MessageProcessor::processEvent);
+
+        DEFAULT_LOGGER.info("All initialized");
 
         gateway.onDisconnect().block();
     }

@@ -2,7 +2,7 @@ package fr.dawoox.akasuki.utils.API;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.dawoox.akasuki.data.Config;
-import fr.dawoox.akasuki.utils.json.ApodBody;
+import fr.dawoox.akasuki.utils.API.json.ApodBody;
 
 import java.io.IOException;
 import java.io.InputStream;

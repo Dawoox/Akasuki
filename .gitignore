@@ -31,3 +31,6 @@ hs_err_pid*
 
 # Config file
 *.properties
+
+# Database file
+*.db
