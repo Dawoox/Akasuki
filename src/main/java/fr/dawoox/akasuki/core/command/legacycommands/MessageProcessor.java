@@ -3,6 +3,7 @@ package fr.dawoox.akasuki.core.command.legacycommands;
 import discord4j.common.util.Snowflake;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import fr.dawoox.akasuki.data.Config;
+import fr.dawoox.akasuki.data.sqlite.UConfig;
 import fr.dawoox.akasuki.features.ScamOMeter;
 
 public class MessageProcessor {
@@ -24,7 +25,8 @@ public class MessageProcessor {
             }
         }
 
-        if (ScamOMeter.analyse(event) && ) {
+        if (ScamOMeter.analyse(event) && UConfig.isAutoModEnabled(event.getGuildId().get())) {
+            ScamOMeter.sendSecurityAuditLog(event);
             event.getMessage().delete("AUTO-MOD::SCAM LINK").block();
         }
     }

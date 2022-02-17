@@ -44,7 +44,7 @@ public class Akasuki {
         Akasuki.applicationId = client.getApplicationId().block();
 
         DEFAULT_LOGGER.info("Connecting to the database");
-        //SQLiteJBC.initialize();
+        SQLiteJBC.initialize();
 
         DEFAULT_LOGGER.info("Connecting to Discord");
         final GatewayDiscordClient gateway = client.login().block();

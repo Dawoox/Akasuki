@@ -50,16 +50,16 @@
     <orderEntry type="library" name="Maven: com.discord4j:stores-jdk:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: com.discord4j:stores-api:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: com.austinv11.servicer:Servicer:1.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.33" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.33" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.36" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
     <orderEntry type="library" name="Maven: com.fathzer:javaluator:3.0.3" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.12.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel:0.12.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_common:0.12.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.12.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_httpserver:0.12.0" level="project" />
-    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.12.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.8.3" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel:0.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_common:0.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_httpserver:0.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.15.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.8.4" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: at.mukprojects:giphy4j:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.6.2" level="project" />
@@ -69,11 +69,21 @@
     <orderEntry type="library" name="Maven: junit:junit:4.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.10.19" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.36.0.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.1" level="project" />
+    <orderEntry type="library" name="Maven: net.imagej:ij:1.53j" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.sun:tools:1.4.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../Program Files/Java/jdk1.8.0_271/lib/tools.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.8.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:23.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />

@@ -131,6 +131,12 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.36.0.3</version>
         </dependency>
+        <!-- Needed to import com.sun.tools.javac.util.List sadly -->
+        <dependency>
+            <groupId>net.imagej</groupId>
+            <artifactId>ij</artifactId>
+            <version>1.53j</version>
+        </dependency>
         <!-- Others -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
