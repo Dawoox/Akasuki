@@ -44,7 +44,7 @@ public class ScamOMeter {
             lastLookupTime = Instant.now();
         }
 
-        if (Arrays.stream(domains).anyMatch(matchContent::equals)) {
+        if (Arrays.asList(domains).contains(matchContent)) {
             try {
                 sendAuditLog(event);
             } catch (IOException e) {
