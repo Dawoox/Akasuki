@@ -1,11 +1,10 @@
-package fr.dawoox.akasuki.commands.owner;
+package fr.dawoox.akasuki.modules;
 
 import discord4j.core.object.command.ApplicationCommandOption;
 import discord4j.discordjson.json.ApplicationCommandOptionData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
-import fr.dawoox.akasuki.core.command.CommandPermission;
-import fr.dawoox.akasuki.core.command.slashcommands.SlashContext;
-import fr.dawoox.akasuki.core.command.slashcommands.SlashBaseCmd;
+import fr.dawoox.akasuki.core.SlashContext;
+import fr.dawoox.akasuki.core.SlashBaseCmd;
 
 public class SayCmd implements SlashBaseCmd {
 
@@ -30,7 +29,7 @@ public class SayCmd implements SlashBaseCmd {
 
     @Override
     public void handle(SlashContext context) {
-        if (!context.getPermissions().equals(CommandPermission.OWNER)) {
+        if (!context.authorIsOwner()) {
             context.getEvent().reply().withContent("This command require developer permissions").block();
             return;
         }

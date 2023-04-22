@@ -15,7 +15,7 @@ public class Figlet {
             "       _&p\\/\\\\\\&r_______&p\\/\\\\\\&r_&p\\/\\\\\\&r_&p\\///\\\\\\&r_&p\\//\\\\\\\\\\\\\\\\/\\\\&r__&p/\\\\\\\\\\\\\\\\\\\\&r_&p\\//\\\\\\\\\\\\\\\\\\&r__&p\\/\\\\\\&r_&p\\///\\\\\\&r_&p\\/\\\\\\&r_ \n" +
             "        _&p\\///&r________&p\\///&r__&p\\///&r____&p\\///&r___&p\\////////\\//&r__&p\\//////////&r___&p\\/////////&r___&p\\///&r____&p\\///&r__&p\\///&r__&p&r";
 
-    public static final String render() {
+    public static String render() {
         return template.replace("&p", AnsiColors.PURPLE.toString()).replace("&r", AnsiColors.RESET.toString());
     }
 

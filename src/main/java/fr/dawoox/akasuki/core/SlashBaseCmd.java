@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.core.command.slashcommands;
+package fr.dawoox.akasuki.core;
 
 import discord4j.discordjson.json.ApplicationCommandRequest;
 

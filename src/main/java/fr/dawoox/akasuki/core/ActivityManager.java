@@ -19,14 +19,14 @@ public class ActivityManager extends Thread{
     public void run(GatewayDiscordClient gateway) {
         JSONObject JSON = null;
         try {
-            String inline = "";
+            StringBuilder inline = new StringBuilder();
             Scanner scanner = new Scanner(new FileInputStream("activities.json"));
             while (scanner.hasNext()) {
-                inline += scanner.nextLine();
+                inline.append(scanner.nextLine());
             }
             scanner.close();
 
-            JSON = (JSONObject) new JSONParser().parse(inline);
+            JSON = (JSONObject) new JSONParser().parse(inline.toString());
         } catch (ParseException | FileNotFoundException e) {
             e.printStackTrace();
         }

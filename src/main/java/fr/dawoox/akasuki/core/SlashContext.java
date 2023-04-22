@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.core.command.slashcommands;
+package fr.dawoox.akasuki.core;
 
 import discord4j.common.util.Snowflake;
 import discord4j.core.GatewayDiscordClient;
@@ -8,14 +8,10 @@ import discord4j.core.object.command.ApplicationCommandInteractionOption;
 import discord4j.core.object.entity.Guild;
 import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.User;
-import discord4j.core.object.entity.channel.Channel;
 import discord4j.core.object.entity.channel.MessageChannel;
-import discord4j.rest.util.Permission;
 import fr.dawoox.akasuki.Akasuki;
-import fr.dawoox.akasuki.core.command.CommandPermission;
 
 import java.util.List;
-import java.util.Objects;
 
 public class SlashContext {
 
@@ -67,19 +63,12 @@ public class SlashContext {
         return event.getOption(name).get();
     }
 
-    public CommandPermission getPermissions() {
-        if (this.getAuthorId().equals(Akasuki.getOwnerId())) {
-            return CommandPermission.OWNER;
-        } else if (this.getChannel().getType().equals(Channel.Type.DM)
-                || Objects.requireNonNull(Objects.requireNonNull(getAuthor().asMember(getGuildId()).block()).getBasePermissions().block()).contains(Permission.ADMINISTRATOR)) {
-            return CommandPermission.ADMIN;
-        }
-
-        return CommandPermission.USER;
-    }
-
     public GatewayDiscordClient getClient() {
         return this.event.getClient();
+    }
+
+    public Boolean authorIsOwner() {
+        return getAuthorId().equals(Akasuki.getOwnerId());
     }
 
     public Snowflake getSelfId() {

@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.utils.embeds;
+package fr.dawoox.akasuki.utils;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.awt.Color;

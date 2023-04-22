@@ -5,12 +5,11 @@ import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.core.event.domain.lifecycle.ReadyEvent;
-import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.gateway.intent.Intent;
+import discord4j.gateway.intent.IntentSet;
 import discord4j.rest.response.ResponseFunction;
 import fr.dawoox.akasuki.core.ActivityManager;
-import fr.dawoox.akasuki.core.command.legacycommands.MessageProcessor;
 import fr.dawoox.akasuki.data.Config;
-import fr.dawoox.akasuki.data.sqlite.SQLiteJBC;
 import fr.dawoox.akasuki.listeners.SlashCommandListener;
 import reactor.util.Logger;
 import reactor.util.Loggers;
@@ -38,20 +37,16 @@ public class Akasuki {
         Locale.setDefault(Locale.FRANCE);
         DEFAULT_LOGGER.info(Figlet.render());
 
-        DEFAULT_LOGGER.info("Initializing");
+        DEFAULT_LOGGER.info("Starting up...");
         final DiscordClient client = DiscordClient.builder(Config.TOKEN).onClientResponse(ResponseFunction.emptyIfNotFound()).build();
         Akasuki.ownerId = Snowflake.of(client.getApplicationInfo().block().owner().id());
         Akasuki.applicationId = client.getApplicationId().block();
-
-        DEFAULT_LOGGER.info("Connecting to the database");
-        SQLiteJBC.initialize();
-
-        DEFAULT_LOGGER.info("Connecting to Discord");
-        final GatewayDiscordClient gateway = client.login().block();
+        final GatewayDiscordClient gateway = client.gateway().setEnabledIntents(IntentSet.nonPrivileged()
+                .andNot(IntentSet.of(Intent.MESSAGE_CONTENT))).login().block();
         System.setProperty("http.agent", Config.USER_AGENT);
         assert gateway != null;
 
-        DEFAULT_LOGGER.info("Start thread bot activity");
+        DEFAULT_LOGGER.info("Start bot activity");
         gateway.getEventDispatcher().on(ReadyEvent.class).subscribe(readyEvent -> {
                     guildCounts = gateway.getGuilds().collectList().block().size();
                     new ActivityManager().run(gateway);
@@ -59,12 +54,8 @@ public class Akasuki {
 
         DEFAULT_LOGGER.info("Registering commands with Discord");
         SlashCommandListener.registerCommands(client.getApplicationService());
-
-        DEFAULT_LOGGER.info("Listening to events now");
         gateway.getEventDispatcher().on(ChatInputInteractionEvent.class).subscribe(SlashCommandListener::handle);
-        gateway.getEventDispatcher().on(MessageCreateEvent.class).subscribe(MessageProcessor::processEvent);
-
-        DEFAULT_LOGGER.info("All initialized");
+        DEFAULT_LOGGER.info("Akasuki is now ready");
 
         gateway.onDisconnect().block();
     }
