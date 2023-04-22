@@ -3,10 +3,10 @@ package fr.dawoox.akasuki.listeners;
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.rest.service.ApplicationService;
 import fr.dawoox.akasuki.Akasuki;
-import fr.dawoox.akasuki.modules.SayCmd;
+import fr.dawoox.akasuki.modules.owner.SayCmd;
 import fr.dawoox.akasuki.core.SlashContext;
 import fr.dawoox.akasuki.core.SlashBaseCmd;
-import fr.dawoox.akasuki.data.Config;
+import fr.dawoox.akasuki.config.Config;
 
 import java.util.ArrayList;
 import java.util.List;

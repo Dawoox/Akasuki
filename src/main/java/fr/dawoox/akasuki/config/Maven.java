@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.data;
+package fr.dawoox.akasuki.config;
 
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;

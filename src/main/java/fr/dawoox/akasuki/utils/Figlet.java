@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki;
+package fr.dawoox.akasuki.utils;
 
 import fr.dawoox.akasuki.utils.AnsiColors;
 

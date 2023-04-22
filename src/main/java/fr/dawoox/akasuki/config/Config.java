@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.data;
+package fr.dawoox.akasuki.config;
 
 import discord4j.common.util.Snowflake;
 import reactor.util.Logger;

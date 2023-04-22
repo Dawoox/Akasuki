@@ -1,4 +1,4 @@
-package fr.dawoox.akasuki.modules;
+package fr.dawoox.akasuki.modules.owner;
 
 import discord4j.core.object.command.ApplicationCommandOption;
 import discord4j.discordjson.json.ApplicationCommandOptionData;

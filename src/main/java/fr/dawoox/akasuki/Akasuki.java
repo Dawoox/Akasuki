@@ -9,8 +9,9 @@ import discord4j.gateway.intent.Intent;
 import discord4j.gateway.intent.IntentSet;
 import discord4j.rest.response.ResponseFunction;
 import fr.dawoox.akasuki.core.ActivityManager;
-import fr.dawoox.akasuki.data.Config;
+import fr.dawoox.akasuki.config.Config;
 import fr.dawoox.akasuki.listeners.SlashCommandListener;
+import fr.dawoox.akasuki.utils.Figlet;
 import reactor.util.Logger;
 import reactor.util.Loggers;
 
