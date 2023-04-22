@@ -1,9 +1,10 @@
 package fr.dawoox.akasuki.core;
 
 import discord4j.core.GatewayDiscordClient;
-import discord4j.core.object.presence.*;
-import fr.dawoox.akasuki.data.Config;
-import fr.dawoox.akasuki.data.Maven;;
+import discord4j.core.object.presence.ClientActivity;
+import discord4j.core.object.presence.ClientPresence;
+import fr.dawoox.akasuki.config.Config;
+import fr.dawoox.akasuki.config.Maven;;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
